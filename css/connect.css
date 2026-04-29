@@ -1,0 +1,346 @@
+/* =========================================
+   CONNECT PAGE CSS
+   ========================================= */
+
+.connect-experience {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg);
+    overflow: hidden;
+}
+
+.connect-sticky {
+    /* Auto height centers naturally due to main flex if any, or we use flex here */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+/* H1 STYLES */
+.connect-title {
+    font-family: var(--font-raleway);
+    font-size: clamp(4rem, 15vw, 12rem);
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    color: var(--white, var(--text));
+    text-align: center;
+    margin: 15vh 0 2rem;
+    line-height: 0.9;
+    display: inline-block;
+    max-width: 900px;
+    z-index: 2;
+}
+
+.connect-subtitle {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--color-light);
+    font-weight: 400;
+    max-width: 40rem;
+}
+
+.earth-and-text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.connect-desc {
+    flex: 1;
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.method-left .connect-desc {
+    text-align: right;
+}
+
+.method-right .connect-desc {
+    text-align: left;
+}
+
+/* Fallback for when they are in the flex wrapper directly */
+.earth-and-text-wrapper .connect-desc:first-child { text-align: right; }
+.earth-and-text-wrapper .connect-desc:last-child { text-align: left; }
+
+.earth-model-wrapper {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.earth-model-wrapper model-viewer {
+    width: 400px;
+    height: 400px;
+}
+
+.connect-base {
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
+.connect-char {
+    display: inline-block;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* --- CONNECT EXPERIMENT --- */
+.connect-experiment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.word-part {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform, opacity;
+}
+
+.word-part span {
+    display: inline-block;
+    will-change: transform;
+}
+
+.handshake-n {
+    display: inline-block;
+    will-change: transform;
+    /* transform-origin set by GSAP, but good to ensure inline-block allows rotation */
+}
+
+.handshake-t {
+    display: inline-block;
+    will-change: transform;
+    /* transform-origin set by GSAP — used by the Spanish 't' handshake */
+}
+
+/* --- CONNECT METHODS SPLIT --- */
+.connect-methods-wrapper {
+    margin-top: 4rem;
+    opacity: 1;
+    transform: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* When JS is loaded and pending GSAP reveal, hide so animation can play */
+html.js-pending .connect-methods-wrapper {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Fallback: force contact links visible when JS is disabled OR GSAP/engine fails */
+html.connect-fallback .connect-methods-wrapper,
+html:not(.js-pending):not(.js-ready) .connect-methods-wrapper {
+    opacity: 1;
+    transform: none;
+}
+
+html.connect-fallback .method-card-wrapper,
+html:not(.js-pending):not(.js-ready) .method-card-wrapper {
+    width: auto;
+    overflow: visible;
+    opacity: 1;
+}
+
+/* Reset native button chrome for method-icon-btn (converted from div) */
+button.method-icon-btn {
+    padding: 0;
+    font: inherit;
+    outline-offset: 2px;
+}
+
+.connect-methods-intro {
+    margin: 0 0 1.4rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.connect-methods-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.method-half {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.method-left {
+    justify-content: flex-end;
+    padding-right: 1.5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.method-right {
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+}
+
+.method-card-wrapper {
+    width: 0; /* JS handles expansion */
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+}
+
+.method-card-inner {
+    padding: 0 1.25rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#whatsappCard .method-card-inner {
+    gap: 0.6rem;
+}
+
+.method-card-inner .connect-btn {
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.whatsapp-note {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: .9rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    font-style: italic;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (min-width: 1920px) {
+    .connect-sticky {
+        padding-bottom: 7vh;
+    }
+
+    .connect-title {
+        max-width: 1080px;
+    }
+
+    .earth-and-text-wrapper {
+        max-width: 1400px;
+        gap: 3rem;
+    }
+
+    .connect-desc {
+        font-size: 1.35rem;
+    }
+
+    .earth-model-wrapper model-viewer {
+        width: 460px;
+        height: 460px;
+    }
+
+    .connect-methods-intro {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .connect-title {
+        font-size: clamp(2rem, 8vw, 4rem);
+        margin-top: 10vh;
+    }
+
+    .connect-subtitle {
+        max-width: 22rem;
+    }
+
+    .earth-and-text-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .earth-model-wrapper model-viewer {
+        width: min(78vw, 340px);
+        height: min(78vw, 340px);
+    }
+
+    .connect-desc {
+        text-align: center !important;
+        white-space: normal;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+    }
+    
+    .connect-methods-wrapper {
+        margin-top: 3rem;
+    }
+
+    .connect-methods-intro {
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+    }
+    
+    .connect-methods-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .method-half {
+        flex: none;
+        width: 100%;
+        min-width: 0;
+        border: none;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .method-card-wrapper {
+        min-width: 0;
+        max-width: calc(100% - 3.75rem);
+    }
+
+    .method-card-inner {
+        padding: 0 0.75rem;
+        white-space: normal;
+        min-width: 0;
+    }
+
+    .method-card-inner .connect-btn,
+    .whatsapp-note {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+    
+    /* On mobile, standardizing outward expansion to the right */
+    .method-left {
+        flex-direction: row-reverse;
+    }
+}

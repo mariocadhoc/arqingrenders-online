@@ -1,0 +1,59 @@
+/* =========================================
+   GALLERY-LIGHTBOX.CSS
+   Floating Parallax Gallery — Lightbox & Hover
+   ========================================= */
+
+/* --- HOVER MINI THUMBNAILS --- */
+.gp-thumb-container {
+  --gp-thumb-size: 80px;
+  --gp-thumb-gap: 12px;
+  --gp-thumb-offset: 16px;
+  position: absolute;
+  display: flex;
+  gap: var(--gp-thumb-gap);
+  pointer-events: auto; /* Allow hovering children to maintain parent state */
+  z-index: 100;
+  width: max-content;
+}
+
+.gp-thumb-container.gp-thumb-stack-left,
+.gp-thumb-container.gp-thumb-stack-right {
+  top: 50%;
+  flex-direction: column;
+  transform: translateY(-50%);
+}
+
+.gp-thumb-container.gp-thumb-stack-left {
+  right: calc(100% + var(--gp-thumb-offset));
+  align-items: flex-end;
+}
+
+.gp-thumb-container.gp-thumb-stack-bottom {
+  top: calc(100% + var(--gp-thumb-offset));
+  left: 50%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  transform: translateX(-50%);
+}
+
+.gp-thumb-container.gp-thumb-stack-right {
+  left: calc(100% + var(--gp-thumb-offset));
+  align-items: flex-start;
+}
+
+.gp-thumb-container .gp-mini-thumb {
+  width: var(--gp-thumb-size);
+  height: var(--gp-thumb-size);
+  aspect-ratio: 1 / 1;
+  flex: 0 0 var(--gp-thumb-size);
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center center;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  display: block;
+}
+
+/* --- LIGHTBOX MODAL --- */

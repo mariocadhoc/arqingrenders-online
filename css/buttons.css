@@ -1,0 +1,790 @@
+/* =========================================
+   BUTTONS.CSS
+   Shared button and control styles
+   ========================================= */
+
+/* Standard Button */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    transition: all 0.4s;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text);
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.sp-back-nav {
+    display: flex;
+    justify-content: center;
+    margin: clamp(4rem, 8vw, 7rem) 5vw 10vw;
+}
+
+.selected-project-page .sp-back-nav {
+    margin: clamp(4rem, 8vw, 7rem) 0 0;
+}
+
+.sp-back-link {
+    position: relative;
+    display: grid;
+    gap: 0.8rem;
+    min-width: min(100%, 780px);
+    padding: clamp(1.35rem, 2.4vw, 1.8rem) clamp(1.4rem, 3.6vw, 2.25rem);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+        radial-gradient(circle at 18% 50%, rgba(255, 255, 255, 0.1), transparent 28%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.022));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 28px 65px rgba(0, 0, 0, 0.26);
+    overflow: hidden;
+    isolation: isolate;
+    text-decoration: none;
+    color: rgba(244, 242, 249, 0.94);
+    transition:
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+.sp-back-link::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+.sp-back-link:hover,
+.sp-back-link:focus-visible {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 34px 80px rgba(0, 0, 0, 0.32);
+}
+
+.sp-back-link-main {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    justify-content: center;
+    font-family: var(--font-raleway);
+    font-size: clamp(1.35rem, 3vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.sp-back-link-arrow {
+    display: inline-block;
+    font-size: 0.72em;
+    letter-spacing: -0.08em;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-back-link-label {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sp-back-link-meta {
+    position: relative;
+    z-index: 1;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(232, 229, 240, 0.58);
+}
+
+.sp-back-char {
+    --back-char-scale: 1;
+    display: inline-block;
+    transform: scale(var(--back-char-scale));
+    transform-origin: center 72%;
+    transition: transform 0.18s ease;
+    will-change: transform;
+}
+
+.sp-back-char-space {
+    width: 0.32em;
+}
+
+.sp-back-link:hover .sp-back-link-arrow,
+.sp-back-link:focus-visible .sp-back-link-arrow {
+    transform: translateX(-8px);
+}
+
+.burger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1002;
+    padding: 0;
+}
+
+.method-icon-btn {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+    color: var(--text);
+    flex-shrink: 0;
+}
+
+.method-icon-btn svg {
+    width: 36px;
+    height: 36px;
+    fill: currentColor;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.method-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: scale(1.05);
+}
+
+.method-icon-btn.is-active {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.method-icon-btn.is-active svg {
+    transform: scale(0.9);
+}
+
+.method-card-inner .btn {
+    padding: 1.6rem 3.3rem;
+    margin: 0;
+    font-size: 1.125rem;
+    background: transparent;
+}
+
+.method-card-inner .btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+
+.scroll-top-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.scroll-top-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--text, #fff);
+    transform: translateY(-2px);
+}
+
+.scroll-top-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.scroll-top-btn:hover svg {
+    transform: translateY(-2px);
+}
+
+.gp-filter-btn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    text-align: left;
+    position: relative;
+}
+
+.gp-filter-btn:hover {
+    color: rgba(255, 255, 255, 0.7);
+    transform: translateX(4px);
+}
+
+.gp-filter-btn.gp-active {
+    color: #fff;
+}
+
+.sp-gallery-item {
+    --col-span: 4;
+    --row-span: 12;
+    --offset-y: 0px;
+    --lift: 0px;
+    --tilt: 0deg;
+    position: relative;
+    display: block;
+    grid-column: span var(--col-span);
+    grid-row: span var(--row-span);
+    min-height: 260px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transform: translate3d(0, calc(var(--offset-y) + var(--lift)), 0) rotate(var(--tilt));
+    transition: transform 0.7s var(--transition-smooth);
+}
+
+.sp-gallery-item:hover {
+    --lift: -8px;
+}
+
+.sp-gallery-item:hover .sp-gallery-frame::before {
+    opacity: 0.86;
+}
+
+.sp-gallery-item:hover .sp-gallery-image {
+    transform: scale(1.06);
+    filter: saturate(1.05) contrast(1.05);
+}
+
+.cinema-play-button {
+    position: relative;
+    z-index: 6;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: transform 0.35s ease, opacity 0.25s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.cinema-play-button:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cinema-player[data-state="playing"] .cinema-play-button {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.92);
+}
+
+.cinema-thumb {
+    position: relative;
+    flex: 0 0 auto;
+    width: var(--cinema-thumb-width);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    transition: none;
+    will-change: transform, opacity;
+}
+
+.cinema-thumb.active .thumb-media {
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.stills-project-btn {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.stills-project-btn:hover {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.final-cta-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: none;
+    padding: clamp(1.76rem, 3.52vh, 2.56rem) clamp(4.48rem, 9.6vw, 9.6rem);
+    border-radius: 160px;
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    transition:
+        opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+.final-cta-btn.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.final-cta-svg-border {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.final-cta-svg-border rect {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.55);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    transition: stroke 0.24s ease, stroke-width 0.2s ease;
+}
+
+.final-cta-btn:hover .final-cta-svg-border rect {
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-width: 0.5;
+}
+
+.final-cta-fill {
+    position: absolute;
+    inset: 0;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.06);
+    transform: scaleX(0.88) scaleY(0.7);
+    opacity: 0;
+    transition:
+        transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.18s ease;
+    pointer-events: none;
+}
+
+.final-cta-btn:hover .final-cta-fill {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+}
+
+.final-cta-text {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-raleway, var(--font-sans));
+    font-size: clamp(3.2rem, 8.8vw, 8.8rem);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition:
+        letter-spacing 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.18s ease,
+        transform 0.16s ease-out;
+    will-change: letter-spacing, filter;
+}
+
+.final-cta-btn:hover .final-cta-text {
+    letter-spacing: 0.04em;
+    filter: none;
+}
+
+.final-cta-arrow {
+    position: relative;
+    z-index: 2;
+    width: 0;
+    height: clamp(3.2rem, 8.8vw, 8.8rem);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: width 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.final-cta-btn:hover .final-cta-arrow {
+    width: clamp(3.84rem, 6.4vw, 6.4rem);
+}
+
+.final-cta-arrow-dot {
+    width: clamp(2.88rem, 4.8vw, 4.8rem);
+    height: clamp(2.88rem, 4.8vw, 4.8rem);
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+    transition:
+        transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.16s ease;
+}
+
+.final-cta-btn:hover .final-cta-arrow-dot {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+.final-cta-arrow-dot svg {
+    width: 42%;
+    height: 42%;
+    stroke: #000;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    transform: rotate(-45deg);
+}
+
+.cta-cursor-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.cta-cursor {
+    position: relative;
+    width: 94px;
+    height: 94px;
+    margin-top: -47px;
+    margin-left: -47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.2) rotate(-30deg);
+    overflow: visible;
+    transition: opacity 0.16s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta-cursor.is-active {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.cta-cursor-ring {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+}
+
+.cta-cursor-ring::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: conic-gradient(from 20deg,
+            rgba(255, 255, 255, 0.04) 0deg 56deg,
+            rgba(255, 255, 255, 0.2) 56deg 126deg,
+            rgba(255, 255, 255, 0.05) 126deg 210deg,
+            rgba(255, 255, 255, 0.16) 210deg 312deg,
+            rgba(255, 255, 255, 0.04) 312deg 360deg);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+    opacity: 0.75;
+    mix-blend-mode: difference;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.12));
+    animation: ctaCursorSpin 6.5s linear infinite;
+}
+
+.cta-cursor-ring::after {
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: 11px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg,
+            rgba(255, 255, 255, 0) 0deg 96deg,
+            rgba(255, 255, 255, 0.96) 96deg 198deg,
+            rgba(255, 255, 255, 0.08) 198deg 252deg,
+            rgba(255, 255, 255, 0.72) 252deg 314deg,
+            rgba(255, 255, 255, 0) 314deg 360deg);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+    mix-blend-mode: difference;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22));
+    animation: ctaCursorSpinReverse 8.2s linear infinite;
+}
+
+.cta-cursor-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    mix-blend-mode: difference;
+}
+
+.cta-cursor.is-active .cta-cursor-icon {
+    transform: scale(1);
+}
+
+@keyframes ctaCursorSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ctaCursorSpinReverse {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.stills-cross-nav {
+    width: min(1120px, calc(100% - 48px));
+    margin: clamp(3rem, 6vw, 5.5rem) auto clamp(1.75rem, 3vw, 2.5rem);
+    display: grid;
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+.stills-cross-nav-copy {
+    max-width: 520px;
+    display: grid;
+    gap: 0.6rem;
+    justify-items: center;
+    text-align: center;
+}
+
+.stills-cross-nav-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(226, 221, 211, 0.62);
+}
+
+.stills-cross-nav-copy p {
+    margin: 0;
+    font-family: var(--font-raleway);
+    font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+    line-height: 1.45;
+    color: rgba(248, 245, 239, 0.88);
+}
+
+.stills-cross-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(330px, 420px));
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.stills-cross-link {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 143px;
+    padding: 1.15rem 1.5rem 1.2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    isolation: isolate;
+}
+
+.stills-cross-link-kicker {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.stills-cross-link .final-cta-text {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-raleway);
+    font-size: clamp(1.4rem, 2vw, 1.95rem);
+    font-weight: 400;
+    line-height: 0.94;
+    text-transform: lowercase;
+    padding-bottom: 3px;
+}
+
+.stills-cross-link .final-cta-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    height: clamp(1.8rem, 2.6vw, 2.4rem);
+    transform: translateY(-50%);
+    transition: width 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stills-cross-link:hover .final-cta-arrow {
+    width: clamp(2.2rem, 3.3vw, 2.8rem);
+}
+
+.stills-cross-link .final-cta-arrow-dot {
+    width: clamp(1.7rem, 2.2vw, 2.1rem);
+    height: clamp(1.7rem, 2.2vw, 2.1rem);
+    min-width: 1.7rem;
+    min-height: 1.7rem;
+}
+
+@media (min-width: 1920px) {
+    .btn {
+        padding: 1.4rem 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gp-filter-btn:hover {
+        transform: none;
+    }
+
+    .sp-back-link {
+        width: 100%;
+        border-radius: 2rem;
+    }
+
+    .sp-back-link-main {
+        justify-content: flex-start;
+        font-size: clamp(1.25rem, 6vw, 1.8rem);
+    }
+
+    .sp-back-link-meta {
+        text-align: left;
+    }
+
+    .sp-gallery-item {
+        --offset-y: 0px !important;
+        --tilt: 0deg !important;
+    }
+
+    .burger-btn {
+        display: block;
+    }
+
+    .cinema-play-button {
+        width: 60px;
+        height: 60px;
+    }
+
+    .scroll-top-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .final-cta-btn {
+        padding: 1.92rem 4.16rem;
+    }
+
+    .final-cta-arrow {
+        width: clamp(3.52rem, 12.8vw, 4.8rem);
+    }
+
+    .final-cta-arrow-dot {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    .final-cta-text {
+        font-size: clamp(4.16rem, 16vw, 6.4rem);
+        letter-spacing: -0.01em;
+    }
+
+    .stills-cross-nav {
+        width: min(calc(100% - 28px), 1120px);
+        margin-top: 2rem;
+    }
+
+    .stills-cross-nav-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+
+    .stills-cross-link {
+        min-height: 132px;
+        padding-inline: 1.2rem;
+    }
+
+    .stills-cross-link .final-cta-text {
+        font-size: clamp(1.45rem, 6.2vw, 1.85rem);
+    }
+
+    .stills-cross-link .final-cta-arrow {
+        right: 0.85rem;
+        width: 2.2rem;
+    }
+
+    .stills-cross-link .final-cta-arrow-dot {
+        width: 1.7rem;
+        height: 1.7rem;
+        min-width: 1.7rem;
+        min-height: 1.7rem;
+    }
+}

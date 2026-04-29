@@ -1,0 +1,608 @@
+{
+  "meta": {
+    "cardsOrderNote": "The cards render in this exact order from top to bottom in the data array below.",
+    "assetsNote": "parent.card is used in the archive card, parent.full in the lightbox, children[].thumb in hover/sidebar, and children[].full in the lightbox.",
+    "seoNote": "Optional: use parent.alt to define the main image alt text for SEO and accessibility.",
+    "namingNote": "Source files are slugified for web-safe paths. Full AVIF files are preserved and proportional derived variants are generated for cards and thumbs.",
+    "parentCardScale": 1.3,
+    "generatedBy": "stills_pipeline.py"
+  },
+  "cards": [
+    {
+      "type": "project",
+      "category": "Commercial",
+      "slug": "1-kent",
+      "label": "Kent",
+      "parent": {
+        "role": "parent",
+        "name": "1-kent-arqing-2.avif",
+        "alt": "Kent",
+        "displayWidth": 255,
+        "displayHeight": 140,
+        "full": {
+          "name": "1-kent-arqing-2.avif",
+          "src": "/assets/img/stills/1-kent/1-kent-arqing-2.avif",
+          "width": 2960,
+          "height": 1440
+        },
+        "card": {
+          "name": "1-kent-arqing-2-card.avif",
+          "src": "/assets/img/stills/1-kent/1-kent-arqing-2-card.avif",
+          "width": 1200,
+          "height": 584
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "1-kent-arqing-1.avif",
+          "full": {
+            "name": "1-kent-arqing-1.avif",
+            "src": "/assets/img/stills/1-kent/children/1-kent-arqing-1.avif",
+            "width": 2960,
+            "height": 1440
+          },
+          "thumb": {
+            "name": "1-kent-arqing-1-thumb.avif",
+            "src": "/assets/img/stills/1-kent/children/1-kent-arqing-1-thumb.avif",
+            "width": 320,
+            "height": 156
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Commercial",
+      "slug": "29-wythe",
+      "label": "Wythe",
+      "parent": {
+        "role": "parent",
+        "name": "29-wythe-jan-2025-front.avif",
+        "alt": "Wythe",
+        "displayWidth": 255,
+        "displayHeight": 140,
+        "full": {
+          "name": "29-wythe-jan-2025-front.avif",
+          "src": "/assets/img/stills/29-wythe/29-wythe-jan-2025-front.avif",
+          "width": 3000,
+          "height": 1563
+        },
+        "card": {
+          "name": "29-wythe-jan-2025-front-card.avif",
+          "src": "/assets/img/stills/29-wythe/29-wythe-jan-2025-front-card.avif",
+          "width": 1200,
+          "height": 625
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "29-wythe-jan-2025-north.avif",
+          "full": {
+            "name": "29-wythe-jan-2025-north.avif",
+            "src": "/assets/img/stills/29-wythe/children/29-wythe-jan-2025-north.avif",
+            "width": 3000,
+            "height": 2220
+          },
+          "thumb": {
+            "name": "29-wythe-jan-2025-north-thumb.avif",
+            "src": "/assets/img/stills/29-wythe/children/29-wythe-jan-2025-north-thumb.avif",
+            "width": 320,
+            "height": 237
+          }
+        },
+        {
+          "role": "child",
+          "name": "29-wythe-small.avif",
+          "full": {
+            "name": "29-wythe-small.avif",
+            "src": "/assets/img/stills/29-wythe/children/29-wythe-small.avif",
+            "width": 1920,
+            "height": 2571
+          },
+          "thumb": {
+            "name": "29-wythe-small-thumb.avif",
+            "src": "/assets/img/stills/29-wythe/children/29-wythe-small-thumb.avif",
+            "width": 239,
+            "height": 320
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Mixed-Use",
+      "slug": "35-13-steinway",
+      "label": "13 Steinway",
+      "parent": {
+        "role": "parent",
+        "name": "35-13-steinway.avif",
+        "alt": "13 Steinway",
+        "displayWidth": 255,
+        "displayHeight": 170,
+        "full": {
+          "name": "35-13-steinway.avif",
+          "src": "/assets/img/stills/35-13-steinway/35-13-steinway.avif",
+          "width": 1536,
+          "height": 1024
+        },
+        "card": {
+          "name": "35-13-steinway-card.avif",
+          "src": "/assets/img/stills/35-13-steinway/35-13-steinway-card.avif",
+          "width": 1200,
+          "height": 800
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "11-brown.avif",
+          "full": {
+            "name": "11-brown.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/11-brown.avif",
+            "width": 1536,
+            "height": 1024
+          },
+          "thumb": {
+            "name": "11-brown-thumb.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/11-brown-thumb.avif",
+            "width": 320,
+            "height": 213
+          }
+        },
+        {
+          "role": "child",
+          "name": "detail-1-brown.avif",
+          "full": {
+            "name": "detail-1-brown.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/detail-1-brown.avif",
+            "width": 1760,
+            "height": 2400
+          },
+          "thumb": {
+            "name": "detail-1-brown-thumb.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/detail-1-brown-thumb.avif",
+            "width": 235,
+            "height": 320
+          }
+        },
+        {
+          "role": "child",
+          "name": "detail-2.avif",
+          "full": {
+            "name": "detail-2.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/detail-2.avif",
+            "width": 2048,
+            "height": 2080
+          },
+          "thumb": {
+            "name": "detail-2-thumb.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/detail-2-thumb.avif",
+            "width": 315,
+            "height": 320
+          }
+        },
+        {
+          "role": "child",
+          "name": "detail-3.avif",
+          "full": {
+            "name": "detail-3.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/detail-3.avif",
+            "width": 944,
+            "height": 1536
+          },
+          "thumb": {
+            "name": "detail-3-thumb.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/detail-3-thumb.avif",
+            "width": 197,
+            "height": 320
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Residential",
+      "slug": "64-11-queens-blvd",
+      "label": "11 Queens Blvd",
+      "parent": {
+        "role": "parent",
+        "name": "64-11-queens-blvd-cam-2-gfrc.avif",
+        "alt": "11 Queens Blvd",
+        "displayWidth": 255,
+        "displayHeight": 189,
+        "full": {
+          "name": "64-11-queens-blvd-cam-2-gfrc.avif",
+          "src": "/assets/img/stills/64-11-queens-blvd/64-11-queens-blvd-cam-2-gfrc.avif",
+          "width": 3300,
+          "height": 2442
+        },
+        "card": {
+          "name": "64-11-queens-blvd-cam-2-gfrc-card.avif",
+          "src": "/assets/img/stills/64-11-queens-blvd/64-11-queens-blvd-cam-2-gfrc-card.avif",
+          "width": 1200,
+          "height": 888
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "61-11-queens-blvd-cam-3-aluminium.avif",
+          "full": {
+            "name": "61-11-queens-blvd-cam-3-aluminium.avif",
+            "src": "/assets/img/stills/64-11-queens-blvd/children/61-11-queens-blvd-cam-3-aluminium.avif",
+            "width": 3300,
+            "height": 1857
+          },
+          "thumb": {
+            "name": "61-11-queens-blvd-cam-3-aluminium-thumb.avif",
+            "src": "/assets/img/stills/64-11-queens-blvd/children/61-11-queens-blvd-cam-3-aluminium-thumb.avif",
+            "width": 320,
+            "height": 180
+          }
+        },
+        {
+          "role": "child",
+          "name": "64-11-queens-blvd-cam-1-gfrc.avif",
+          "full": {
+            "name": "64-11-queens-blvd-cam-1-gfrc.avif",
+            "src": "/assets/img/stills/64-11-queens-blvd/children/64-11-queens-blvd-cam-1-gfrc.avif",
+            "width": 3300,
+            "height": 1857
+          },
+          "thumb": {
+            "name": "64-11-queens-blvd-cam-1-gfrc-thumb.avif",
+            "src": "/assets/img/stills/64-11-queens-blvd/children/64-11-queens-blvd-cam-1-gfrc-thumb.avif",
+            "width": 320,
+            "height": 180
+          }
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "text": "Archive",
+      "width": 300,
+      "height": 100
+    },
+    {
+      "type": "project",
+      "category": "Mixed-Use",
+      "slug": "83-wythe-2025",
+      "label": "Wythe 2025",
+      "parent": {
+        "role": "parent",
+        "name": "83-wythe-life-time-3.avif",
+        "alt": "Wythe 2025",
+        "displayWidth": 234,
+        "displayHeight": 275,
+        "full": {
+          "name": "83-wythe-life-time-3.avif",
+          "src": "/assets/img/stills/83-wythe-2025/83-wythe-life-time-3.avif",
+          "width": 2125,
+          "height": 2500
+        },
+        "card": {
+          "name": "83-wythe-life-time-3-card.avif",
+          "src": "/assets/img/stills/83-wythe-2025/83-wythe-life-time-3-card.avif",
+          "width": 1020,
+          "height": 1200
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "83-wythe-jan-2025-c8.avif",
+          "full": {
+            "name": "83-wythe-jan-2025-c8.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/83-wythe-jan-2025-c8.avif",
+            "width": 2500,
+            "height": 2500
+          },
+          "thumb": {
+            "name": "83-wythe-jan-2025-c8-thumb.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/83-wythe-jan-2025-c8-thumb.avif",
+            "width": 320,
+            "height": 320
+          }
+        },
+        {
+          "role": "child",
+          "name": "83-wythe-jan-2025-c9.avif",
+          "full": {
+            "name": "83-wythe-jan-2025-c9.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/83-wythe-jan-2025-c9.avif",
+            "width": 2500,
+            "height": 1478
+          },
+          "thumb": {
+            "name": "83-wythe-jan-2025-c9-thumb.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/83-wythe-jan-2025-c9-thumb.avif",
+            "width": 320,
+            "height": 189
+          }
+        },
+        {
+          "role": "child",
+          "name": "column.avif",
+          "full": {
+            "name": "column.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/column.avif",
+            "width": 3392,
+            "height": 5056
+          },
+          "thumb": {
+            "name": "column-thumb.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/column-thumb.avif",
+            "width": 215,
+            "height": 320
+          }
+        },
+        {
+          "role": "child",
+          "name": "lattice.avif",
+          "full": {
+            "name": "lattice.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/lattice.avif",
+            "width": 3392,
+            "height": 5056
+          },
+          "thumb": {
+            "name": "lattice-thumb.avif",
+            "src": "/assets/img/stills/83-wythe-2025/children/lattice-thumb.avif",
+            "width": 215,
+            "height": 320
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Mixed-Use",
+      "slug": "83-wythe-2026",
+      "label": "Wythe 2026",
+      "parent": {
+        "role": "parent",
+        "name": "83-wythe.avif",
+        "alt": "Wythe 2026",
+        "displayWidth": 236,
+        "displayHeight": 275,
+        "full": {
+          "name": "83-wythe.avif",
+          "src": "/assets/img/stills/83-wythe-2026/83-wythe.avif",
+          "width": 2150,
+          "height": 2500
+        },
+        "card": {
+          "name": "83-wythe-card.avif",
+          "src": "/assets/img/stills/83-wythe-2026/83-wythe-card.avif",
+          "width": 1032,
+          "height": 1200
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "83-wythe-cam-3.avif",
+          "full": {
+            "name": "83-wythe-cam-3.avif",
+            "src": "/assets/img/stills/83-wythe-2026/children/83-wythe-cam-3.avif",
+            "width": 2150,
+            "height": 2164
+          },
+          "thumb": {
+            "name": "83-wythe-cam-3-thumb.avif",
+            "src": "/assets/img/stills/83-wythe-2026/children/83-wythe-cam-3-thumb.avif",
+            "width": 318,
+            "height": 320
+          }
+        },
+        {
+          "role": "child",
+          "name": "83-wythe-cam-4.avif",
+          "full": {
+            "name": "83-wythe-cam-4.avif",
+            "src": "/assets/img/stills/83-wythe-2026/children/83-wythe-cam-4.avif",
+            "width": 2150,
+            "height": 2500
+          },
+          "thumb": {
+            "name": "83-wythe-cam-4-thumb.avif",
+            "src": "/assets/img/stills/83-wythe-2026/children/83-wythe-cam-4-thumb.avif",
+            "width": 275,
+            "height": 320
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Commercial",
+      "slug": "135-kent",
+      "label": "Kent",
+      "parent": {
+        "role": "parent",
+        "name": "135-kent-chase.avif",
+        "alt": "Kent",
+        "displayWidth": 179,
+        "displayHeight": 275,
+        "full": {
+          "name": "135-kent-chase.avif",
+          "src": "/assets/img/stills/135-kent/135-kent-chase.avif",
+          "width": 1664,
+          "height": 2560
+        },
+        "card": {
+          "name": "135-kent-chase-card.avif",
+          "src": "/assets/img/stills/135-kent/135-kent-chase-card.avif",
+          "width": 780,
+          "height": 1200
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "135-kent-chase.avif",
+          "full": {
+            "name": "135-kent-chase.avif",
+            "src": "/assets/img/stills/135-kent/children/135-kent-chase.avif",
+            "width": 3300,
+            "height": 2445
+          },
+          "thumb": {
+            "name": "135-kent-chase-thumb.avif",
+            "src": "/assets/img/stills/135-kent/children/135-kent-chase-thumb.avif",
+            "width": 320,
+            "height": 237
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Hospitality",
+      "slug": "caesars-palace-las-vegas",
+      "label": "Caesars Palace Las Vegas",
+      "parent": {
+        "role": "parent",
+        "name": "caesars-palace-cam-1.avif",
+        "alt": "Caesars Palace Las Vegas",
+        "displayWidth": 255,
+        "displayHeight": 170,
+        "full": {
+          "name": "caesars-palace-cam-1.avif",
+          "src": "/assets/img/stills/caesars-palace-las-vegas/caesars-palace-cam-1.avif",
+          "width": 2500,
+          "height": 1666
+        },
+        "card": {
+          "name": "caesars-palace-cam-1-card.avif",
+          "src": "/assets/img/stills/caesars-palace-las-vegas/caesars-palace-cam-1-card.avif",
+          "width": 1200,
+          "height": 800
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "caesars-palace-cam-2.avif",
+          "full": {
+            "name": "caesars-palace-cam-2.avif",
+            "src": "/assets/img/stills/caesars-palace-las-vegas/children/caesars-palace-cam-2.avif",
+            "width": 2500,
+            "height": 1420
+          },
+          "thumb": {
+            "name": "caesars-palace-cam-2-thumb.avif",
+            "src": "/assets/img/stills/caesars-palace-las-vegas/children/caesars-palace-cam-2-thumb.avif",
+            "width": 320,
+            "height": 182
+          }
+        },
+        {
+          "role": "child",
+          "name": "caesars-palace-close.avif",
+          "full": {
+            "name": "caesars-palace-close.avif",
+            "src": "/assets/img/stills/caesars-palace-las-vegas/children/caesars-palace-close.avif",
+            "width": 2418,
+            "height": 1728
+          },
+          "thumb": {
+            "name": "caesars-palace-close-thumb.avif",
+            "src": "/assets/img/stills/caesars-palace-las-vegas/children/caesars-palace-close-thumb.avif",
+            "width": 320,
+            "height": 229
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Hospitality",
+      "slug": "hacienda-sacnicte",
+      "label": "Hacienda Sacnicte",
+      "parent": {
+        "role": "parent",
+        "name": "hacienda-sacnicte-1.avif",
+        "alt": "Hacienda Sacnicte",
+        "displayWidth": 255,
+        "displayHeight": 170,
+        "full": {
+          "name": "hacienda-sacnicte-1.avif",
+          "src": "/assets/img/stills/hacienda-sacnicte/hacienda-sacnicte-1.avif",
+          "width": 2528,
+          "height": 1684
+        },
+        "card": {
+          "name": "hacienda-sacnicte-1-card.avif",
+          "src": "/assets/img/stills/hacienda-sacnicte/hacienda-sacnicte-1-card.avif",
+          "width": 1200,
+          "height": 799
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "hacienda-sacnicte-3.avif",
+          "full": {
+            "name": "hacienda-sacnicte-3.avif",
+            "src": "/assets/img/stills/hacienda-sacnicte/children/hacienda-sacnicte-3.avif",
+            "width": 2352,
+            "height": 1518
+          },
+          "thumb": {
+            "name": "hacienda-sacnicte-3-thumb.avif",
+            "src": "/assets/img/stills/hacienda-sacnicte/children/hacienda-sacnicte-3-thumb.avif",
+            "width": 320,
+            "height": 207
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Residential",
+      "slug": "kauai",
+      "label": "Kauai",
+      "parent": {
+        "role": "parent",
+        "name": "kauai-2.avif",
+        "alt": "Kauai",
+        "displayWidth": 255,
+        "displayHeight": 170,
+        "full": {
+          "name": "kauai-2.avif",
+          "src": "/assets/img/stills/kauai/kauai-2.avif",
+          "width": 2528,
+          "height": 1684
+        },
+        "card": {
+          "name": "kauai-2-card.avif",
+          "src": "/assets/img/stills/kauai/kauai-2-card.avif",
+          "width": 1200,
+          "height": 799
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "kauai-1.avif",
+          "full": {
+            "name": "kauai-1.avif",
+            "src": "/assets/img/stills/kauai/children/kauai-1.avif",
+            "width": 3000,
+            "height": 2000
+          },
+          "thumb": {
+            "name": "kauai-1-thumb.avif",
+            "src": "/assets/img/stills/kauai/children/kauai-1-thumb.avif",
+            "width": 320,
+            "height": 213
+          }
+        }
+      ]
+    }
+  ]
+}

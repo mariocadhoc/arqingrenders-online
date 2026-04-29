@@ -1,0 +1,192 @@
+/* =========================================
+   STILLS.CSS
+   Architectural Stills Grid System
+   ========================================= */
+
+/* --- SECTION LABEL --- */
+.stills-section-label {
+    font-family: var(--font-sans);
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--accent);
+    text-align: center;
+    margin: 0 0 2rem;
+    opacity: 1;
+    position: sticky;
+    top: clamp(1.5rem, 5vh, 4rem);
+    z-index: 40;
+}
+
+/* --- STILLS SHOWCASE SECTION --- */
+.stills-showcase-section {
+    padding-bottom: 20vh;
+    width: 100%;
+}
+
+#selected-projects {
+    scroll-margin-top: 12vh;
+}
+
+.stills-project {
+    position: relative;
+    width: 100%;
+    min-height: 140vh;
+    /* Allows scrolling room for the sticky effect */
+    z-index: 1;
+}
+
+.stills-project:first-of-type {
+    margin-top: -18vh;
+}
+
+.stills-project + .stills-project {
+    margin-top: -40vh;
+}
+
+/* Reduce overlap only for Project 2 to avoid blocking Project 1 interactions */
+.stills-project:nth-of-type(2) {
+    margin-top: -28vh;
+}
+
+.stills-project-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.stills-project-images {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.stills-img-left,
+.stills-img-right {
+    position: absolute;
+    width: clamp(280px, 35vw, 532px);
+    aspect-ratio: 4 / 5;
+    background: #1a1c1e;
+    will-change: transform, opacity;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.stills-img-left {
+    z-index: 2;
+}
+
+.stills-img-right {
+    z-index: 3;
+}
+
+.stills-img-left img,
+.stills-img-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stills-project-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    width: min(30vw, 420px);
+    min-width: 280px;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.stills-project-content * {
+    pointer-events: auto;
+}
+
+.stills-project-title {
+    font-family: var(--font-raleway);
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    color: var(--white);
+    margin: 0.5rem 0 1.5rem;
+    line-height: 1;
+    text-transform: capitalize;
+    text-shadow: none;
+}
+
+.stills-project-loc {
+    font-family: var(--font-sans);
+    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-shadow: none;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .stills-project {
+        min-height: 105vh;
+    }
+
+    .stills-project + .stills-project {
+        margin-top: -15vh;
+    }
+
+    .stills-project:nth-of-type(2) {
+        margin-top: -8vh;
+    }
+
+    .stills-project:first-of-type {
+        margin-top: -8vh;
+    }
+
+    .stills-img-left,
+    .stills-img-right {
+        width: clamp(308px, 84vw, 490px);
+    }
+
+    .stills-project-content {
+        top: auto;
+        bottom: 10vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(100%, 420px);
+        min-width: 0;
+        padding: 0 5vw;
+        justify-content: flex-start;
+    }
+
+}
+
+@media (min-width: 1920px) {
+    .stills-project-images {
+        height: 100%;
+    }
+
+    .stills-img-left,
+    .stills-img-right {
+        width: clamp(479px, 32.76vw, 693px);
+    }
+}

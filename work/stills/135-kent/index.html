@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT485BXPK0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HT485BXPK0');
+    </script>
+    <script src="/js/engines/boot-ready-init.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Selected Project | Arqing</title>
+    <meta name="description"
+        content="Selected project landing with a one-pin map and a curated editorial gallery of architectural stills.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://www.arqingrenders.com/work/stills/135-kent/">
+    <meta name="language" content="en-US">
+    <meta name="author" content="Arqing">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/resources/favicon/Favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/resources/favicon/Favicon_16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/resources/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/selected-project.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <main id="main" class="selected-project-page" data-selected-project-slug="135-kent">
+        <div class="sp-shell">
+
+            <section class="sp-hero" data-js-reveal>
+                <div class="sp-hero-inner">
+                    <div class="sp-copy">
+                        <span class="sp-kicker" data-project-eyebrow>Selected Projects</span>
+                        <h1 class="sp-title" data-project-name>Selected Project</h1>
+                        <p class="sp-intro" data-project-description></p>
+
+                        <div class="sp-meta-grid">
+                            <article class="sp-meta-card">
+                                <span class="sp-meta-label">Location</span>
+                                <p data-project-location>Location</p>
+                            </article>
+
+                            <article class="sp-meta-card">
+                                <span class="sp-meta-label">Client</span>
+                                <p data-project-client>Client</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <aside class="sp-map-card">
+                        <div class="sp-map-header">
+                            <div>
+                                <span class="sp-map-heading">Map</span>
+                                <p class="sp-map-address" data-project-address>Project address</p>
+                            </div>
+                        </div>
+
+                        <div class="sp-map-shell">
+                            <div id="selected-project-map" class="sp-map"></div>
+                            <div class="sp-map-empty hidden" data-map-empty>
+                                <div>
+                                    <span>Coordinates Pending</span>
+                                    <p>Add latitude and longitude in the project data module to activate the map pin.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="sp-gallery-section">
+                <div class="sp-section-head">
+                    <span class="sp-kicker">Gallery</span>
+                    <div>
+                        <h2 class="sp-section-title">Shots</h2>
+                        <p class="sp-section-copy" data-gallery-summary></p>
+                    </div>
+                </div>
+
+                <div id="selected-project-gallery" class="sp-gallery" aria-live="polite"></div>
+
+                <div class="sp-back-nav">
+                    <a href="/work/stills/" class="sp-back-link" aria-label="Back to Stills">
+                        <span class="sp-back-link-main">
+                            <span class="sp-back-link-arrow" aria-hidden="true">←</span>
+                            <span class="sp-back-link-label">back to Stills</span>
+                        </span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script defer src="/js/load-components.js"></script>
+    <script defer src="/js/burger.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script type="module" src="/js/engines/selected-project-page.js"></script>
+    <script defer src="/js/boot-ready.js"></script>
+</body>
+
+</html>

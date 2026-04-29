@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- HOME (EN) -->
+  <url>
+    <loc>https://www.arqingrenders.com/</loc>
+  </url>
+  <!-- HOME (ES) -->
+  <url>
+    <loc>https://www.arqingrenders.com/es/</loc>
+  </url>
+
+  <!-- WORK (EN) -->
+  <url>
+    <loc>https://www.arqingrenders.com/work/</loc>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/work/stills/</loc>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/work/animations/</loc>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/work/360/</loc>
+  </url>
+
+  <!-- PROYECTOS (ES) -->
+  <url>
+    <loc>https://www.arqingrenders.com/es/proyectos/</loc>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/es/proyectos/renders/</loc>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/es/proyectos/animaciones/</loc>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/es/proyectos/360/</loc>
+  </url>
+
+  <!-- STUDIO (EN) -->
+  <url>
+    <loc>https://www.arqingrenders.com/studio/team/</loc>
+  </url>
+
+  <!-- ESTUDIO (ES) -->
+  <url>
+    <loc>https://www.arqingrenders.com/es/estudio/nosotros/</loc>
+  </url>
+
+  <!-- CONTACT (EN) -->
+  <url>
+    <loc>https://www.arqingrenders.com/connect/</loc>
+  </url>
+
+  <!-- CONTACTO (ES) -->
+  <url>
+    <loc>https://www.arqingrenders.com/es/contacto/</loc>
+  </url>
+
+</urlset>

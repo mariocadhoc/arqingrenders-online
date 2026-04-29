@@ -1,0 +1,309 @@
+/* =========================================
+   ANIMATIONS.CSS
+   Cinematic Motion Archive - Player Layout
+   ========================================= */
+
+:root {
+    --animations-gutter-x: 5vw;
+    --animations-title-clearance: clamp(78px, 7vw, 132px);
+    --animations-content-left: calc(var(--animations-gutter-x) + var(--animations-title-clearance));
+    --animations-content-right: var(--animations-gutter-x);
+    --animations-content-width: calc(100% - var(--animations-content-left) - var(--animations-content-right));
+    --cinema-thumb-width: clamp(152px, 18vw, 232px);
+}
+
+.animations-title {
+    color: var(--text);
+}
+
+.animations-subtitle {
+    width: min(100%, var(--animations-content-width));
+    margin-left: var(--animations-content-left);
+    margin-right: var(--animations-content-right);
+    margin-bottom: 4rem;
+}
+
+/* --- CINEMA SECTION --- */
+.animations-cinema-section {
+    width: 100%;
+    padding-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3rem;
+}
+
+/* MAIN STAGE PLAYER */
+.cinema-main-stage {
+    width: min(100%, var(--animations-content-width));
+    margin-left: var(--animations-content-left);
+    margin-right: var(--animations-content-right);
+    box-sizing: border-box;
+}
+
+.cinema-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--bg-alt);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cinema-embed {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #000;
+    z-index: 1;
+}
+
+.cinema-poster {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.12) 45%, rgba(0, 0, 0, 0.28) 100%),
+        radial-gradient(circle at center, rgba(30, 30, 35, 0.4) 0%, #0c0e10 100%);
+    background-position: center;
+    background-size: cover;
+    transition: opacity 0.45s ease, transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: scale(1.0);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.cinema-player[data-state="playing"] .cinema-poster {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.play-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 5px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+/* Overlay Info & Controls */
+.cinema-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 3vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    pointer-events: none; /* Let clicks pass through except on inner buttons */
+    z-index: 10;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cinema-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cinema-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+}
+
+.cinema-title-display {
+    font-family: var(--font-raleway);
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    color: var(--text);
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.cinema-player[data-has-played="true"] .cinema-overlay {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+/* THUMBNAILS CAROUSEL */
+.cinema-thumbnails-wrapper {
+    width: min(100%, var(--animations-content-width));
+    margin-left: var(--animations-content-left);
+    margin-right: var(--animations-content-right);
+    box-sizing: border-box;
+}
+
+.cinema-swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    justify-content: center;
+    color: var(--text);
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    opacity: 0.72;
+    transition: opacity 0.3s ease;
+}
+
+.cinema-swipe-text {
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+.cinema-swipe-line {
+    position: relative;
+    flex: 1 1 0;
+    max-width: 220px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.18);
+    overflow: hidden;
+}
+
+.cinema-swipe-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    animation: cinemaSwipeLine 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+.cinema-swipe-hint.is-dismissed .cinema-swipe-line::after {
+    animation: none;
+    transform: scaleX(1);
+}
+
+.cinema-swipe-line-left::after {
+    transform-origin: right center;
+}
+
+.cinema-swipe-line-right::after {
+    transform-origin: left center;
+}
+
+@keyframes cinemaSwipeLine {
+    0% {
+        transform: scaleX(0);
+    }
+
+    45% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.cinema-thumbnails {
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+    padding: 3rem 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.cinema-thumbnails.is-dragging {
+    scroll-snap-type: none;
+}
+
+.cinema-thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+.cinema-thumbnails::before,
+.cinema-thumbnails::after {
+    content: '';
+    flex: 0 0 max(0px, calc(50% - (var(--cinema-thumb-width) / 2)));
+}
+
+.thumb-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--bg-alt);
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.thumb-img {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(30,30,35,0.4) 0%, #0c0e10 100%);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.thumb-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --animations-title-clearance: clamp(96px, 7vw, 156px);
+        --cinema-thumb-width: clamp(184px, 18vw, 280px);
+    }
+
+    .animations-subtitle {
+        margin-bottom: 5rem;
+    }
+
+    .cinema-swipe-hint {
+        font-size: 0.74rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --animations-title-clearance: 0px;
+        --animations-content-left: var(--animations-gutter-x);
+        --animations-content-right: var(--animations-gutter-x);
+    }
+
+    .animations-subtitle {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .cinema-swipe-hint {
+        gap: 0.7rem;
+        font-size: 0.62rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .thumb-title {
+        font-size: 0.75rem;
+    }
+
+}
