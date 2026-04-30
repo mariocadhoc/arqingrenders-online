@@ -124,8 +124,13 @@
     z-index: 5;
 }
 
+.big-title-mobile-static {
+    display: none;
+}
+
 /* Sticky centering wrapper — injected by BigTitleGravityEngine.js */
 .section-big-title-sticky {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -135,6 +140,7 @@
     perspective: 1500px;
     z-index: 5;
     padding: 0 5vw 3vh;
+    overflow: hidden; /* Clip GSAP char scatter so it never bleeds outside viewport */
 }
 
 #bigTitleHeader,
@@ -664,6 +670,15 @@ a.collage-item:hover {
 
 /* Mobile Devices */
 @media (max-width: 768px) {
+    html {
+        width: 100%;
+        max-width: 100vw;
+    }
+    body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
 
     /* --- SECTION 1: HERO --- */
     .hero-wrap {
@@ -680,31 +695,102 @@ a.collage-item:hover {
         height: 120px;
     }
 
-    /* --- SECTION 1.5: BIG TITLE --- */
+    /* --- SECTION 1.5: BIG TITLE (MOBILE — simple fade, no GSAP scatter) --- */
+
     .section-big-title {
-        height: 170vh;
-        margin-top: -20vh;
+        min-height: 88vh;
+        height: auto !important;
+        margin-top: 0 !important;
+        padding: 14vh 6vw 12vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
     }
 
-    .section-big-title-sticky {
-        padding: 0 5vw 2vh;
-    }
-
-    .gravity-secondary {
+    #bigTitleCinematic {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
-        font-size: clamp(3.6rem, 7.5vw, 7.2rem);
-        line-height: 1;
+        justify-content: center;
+        gap: 4vh;
+        width: min(100%, 88vw);
+        margin: 0;
+        color: var(--text);
+        font-size: inherit;
+        line-height: inherit;
+        text-align: center;
     }
 
-    .gravity-word {
-        display: block;
-    }
-
-    .gravity-space {
+    .big-title-desktop-text {
         display: none;
+    }
+
+    .big-title-mobile-static {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4vh;
+        width: 100%;
+    }
+
+    /* Primary phrase — "ARQING" */
+    .btm-primary {
+        display: block;
+        font-family: var(--font-sans);
+        font-size: clamp(3.8rem, 18vw, 7rem);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+        padding-bottom: 0.12em;
+        text-align: center;
+        background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.45) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(10px);
+    }
+
+    /* Secondary phrase — "stories beyond pixels" */
+    .btm-secondary {
+        display: block;
+        font-family: var(--font-sans);
+        font-size: clamp(1rem, 4.5vw, 1.6rem);
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        line-height: 1.4;
+        text-align: center;
+        text-transform: lowercase;
+        color: rgba(232, 229, 240, 0.7);
+        -webkit-text-fill-color: rgba(232, 229, 240, 0.7);
+        background: none;
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(10px);
+    }
+
+    .section-big-title.is-mobile-title-visible .btm-primary {
+        animation: mobileBigTitleFade 1.8s 0.08s cubic-bezier(0.19, 1, 0.22, 1) both;
+    }
+
+    .section-big-title.is-mobile-title-visible .btm-secondary {
+        animation: mobileBigTitleFade 2.7s 0.55s cubic-bezier(0.19, 1, 0.22, 1) both;
+    }
+
+    @keyframes mobileBigTitleFade {
+        from {
+            opacity: 0;
+            transform: translateY(18px);
+            filter: blur(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
     }
 
     /* --- SECTION 2: EDITORIAL --- */

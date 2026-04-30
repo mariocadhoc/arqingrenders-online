@@ -4,6 +4,11 @@ import { initVerticalCardsFade } from './engines/verticalCardsFade.js';
 import AerialZoomEngine from './engines/aerialZoom.js';
 
 let horizontalTween = null;
+const MOBILE_WORK_MEDIA_QUERY = '(max-width: 768px)';
+
+function isMobileWorkViewport() {
+    return window.matchMedia(MOBILE_WORK_MEDIA_QUERY).matches;
+}
 
 function scrollToAllWorkSection({ behavior = 'auto' } = {}) {
     const targetElement = document.querySelector('#all-work');
@@ -63,6 +68,8 @@ function revealWorkSectionsImmediately() {
 }
 
 function initHorizontalGallery() {
+    if (isMobileWorkViewport()) return;
+
     const wrap = document.querySelector('.horizontal-scroll-container');
     const content = document.querySelector('.horizontal-scroll-content');
 
@@ -111,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const shouldDeferAllWorkNavigation = window.location.hash === '#all-work';
     const shouldSkipWorkIntro = Boolean(window.__ARQ_SKIP_WORK_INTRO__);
 
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = isMobileWorkViewport();
 
     if (!shouldSkipWorkIntro && isMobile) {
         // --- MOBILE OPTIMIZED ANIMATIONS ---
@@ -137,7 +144,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     initGalleryOffsets();
     initHorizontalGallery();
     initVerticalCardsFade();
-    initMinimap();
+    if (!isMobileWorkViewport()) {
+        initMinimap();
+    }
     new AerialZoomEngine();
 
     if (shouldSkipWorkIntro) {

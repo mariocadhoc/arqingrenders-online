@@ -274,11 +274,19 @@ html.js-ready .gp-deferred-reveal.gp-is-visible {
   }
 
   #gp-filters-wrapper {
-    position: relative;
-    top: 0;
+    position: sticky;
+    top: clamp(72px, 10vh, 88px);
     transform: none;
-    width: 100%;
+    width: calc(100% + 10vw);
+    margin-inline: -5vw;
+    padding: 0.9rem 5vw 1rem;
+    box-sizing: border-box;
     align-items: center;
+    z-index: 900;
+    background: rgba(9, 10, 12, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .gp-filters-label {

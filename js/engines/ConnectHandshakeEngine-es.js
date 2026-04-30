@@ -2,7 +2,7 @@ export class ConnectHandshakeEngineEs {
     constructor() {
         this.baseText = document.getElementById('connectExperiment');
         this.section = document.querySelector('.connect-experience');
-        this.methodsWrapper = document.querySelector('.connect-methods-wrapper');
+        this.methodsWrappers = document.querySelectorAll('.connect-methods-wrapper, .connect-mobile-methods');
         this.resizeTimer = 0;
         
         if (!this.section || !this.baseText) return;
@@ -183,7 +183,7 @@ export class ConnectHandshakeEngineEs {
         if (subtitle)     gsap.set(subtitle,          { opacity: 0, y: 20 });
         if (earthModel)   gsap.set(earthModel,         { opacity: 0, y: 20 });
         if (desc.length)  gsap.set(desc,               { opacity: 0, y: 20 });
-        if (this.methodsWrapper) gsap.set(this.methodsWrapper, { opacity: 0, y: 20 });
+        if (this.methodsWrappers.length) gsap.set(this.methodsWrappers, { opacity: 0, y: 20 });
 
         // Phase 1: word halves slide in from opposite sides
         tl.to([partCont, partTacto], {
@@ -229,8 +229,8 @@ export class ConnectHandshakeEngineEs {
             duration: 0.8,
             ease: "power2.out"
         }, "-=0.6")
-        // Methods UI block fades in AFTER globe + desc finish
-        .to(this.methodsWrapper, {
+        // Show methods UI block (desktop & mobile) — fades in AFTER globe + desc finish
+        .to(this.methodsWrappers, {
             y: 0,
             opacity: 1,
             duration: 0.8,

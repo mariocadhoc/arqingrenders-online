@@ -235,6 +235,7 @@
 }
 
 .large-images {
+    --work-gallery-width: 100%;
     width: calc(100% - 180px);
     min-width: 0;
     position: relative;
@@ -247,6 +248,10 @@
     box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.8);
     border-radius: 12px;
     transform: translateX(var(--offset, 0%));
+}
+
+.work-mobile-zone-title {
+    display: none;
 }
 
 .horizon-card .horizon-img {
@@ -274,8 +279,7 @@
 
 .horizon {
     position: relative;
-    width: 100cqw;
-    /* = ancho de .large-images, referencia estable para el scroll */
+    width: var(--work-gallery-width, 100%);
     height: calc(100vh - 40px);
     margin: 20px 0;
     flex-shrink: 0;
@@ -600,40 +604,50 @@
     }
 
     .minimap {
+        display: none;
+    }
+
+    .work-mobile-zone-title {
+        display: block;
+        margin: 10vh 0 -14vh;
         position: relative;
-        top: auto;
-        z-index: 1;
-        width: 100%;
-        min-height: auto;
-        padding: 1.25rem 0 0;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 0.75rem;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        z-index: 20;
+        pointer-events: none;
+        color: var(--accent);
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        line-height: 1.2;
+        text-transform: uppercase;
     }
 
-    .minimap::-webkit-scrollbar {
-        display: none;
-    }
-
-    .minimap-label,
-    .minimap-children {
-        display: none;
-    }
-
-    .thumb {
-        flex: 0 0 74px;
-        width: 74px;
+    .work-mobile-zone-title:first-child {
         margin-top: 0;
-        transform: none;
-        left: 0;
     }
 
-    .thumb:first-child {
-        margin-left: 0;
+    .horizontal-scroll-container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .horizontal-scroll-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: block;
+        transform: none !important;
+    }
+
+    .horizon {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 20px);
+        margin: 0;
     }
 }

@@ -221,8 +221,8 @@ export function initMinimap() {
     if (minimapContainer && thumbs.length > 0) {
         const textLabels = [
             { text: 'Interiors', insertBeforeIndex: 0 },
-            { text: 'Exteriors', insertBeforeIndex: 5 },
-            { text: 'Aerials', insertBeforeIndex: 10 },
+            { text: 'Exteriors', insertBeforeIndex: 4 },
+            { text: 'Aerials', insertBeforeIndex: 8 },
             {
                 text: 'All Work',
                 isSectionLink: true,

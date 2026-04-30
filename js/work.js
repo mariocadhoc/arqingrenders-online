@@ -4,6 +4,11 @@ import { initVerticalCardsFade } from './engines/verticalCardsFade.js';
 import AerialZoomEngine from './engines/aerialZoom.js';
 
 let horizontalTween = null;
+const MOBILE_WORK_MEDIA_QUERY = '(max-width: 768px)';
+
+function isMobileWorkViewport() {
+    return window.matchMedia(MOBILE_WORK_MEDIA_QUERY).matches;
+}
 
 function scrollToAllWorkSection({ behavior = 'auto' } = {}) {
     const targetElement = document.querySelector('#all-work');
@@ -63,15 +68,27 @@ function revealWorkSectionsImmediately() {
 }
 
 function initHorizontalGallery() {
+    if (isMobileWorkViewport()) return;
+
     const wrap = document.querySelector('.horizontal-scroll-container');
     const content = document.querySelector('.horizontal-scroll-content');
+    const galleryColumn = document.querySelector('.large-images');
 
-    if (!wrap || !content) return;
+    if (!wrap || !content || !galleryColumn) return;
 
     const cards = content.querySelectorAll('.horizon');
     if (!cards.length) return;
 
+    function syncGalleryWidth() {
+        const width = galleryColumn.clientWidth || wrap.clientWidth;
+        if (width > 0) {
+            galleryColumn.style.setProperty('--work-gallery-width', `${width}px`);
+        }
+        return width;
+    }
+
     function getScrollAmount() {
+        syncGalleryWidth();
         // Exact geometry: to bring card N into view from card 1,
         // translate left by (N-1) × (cardWidth + gap).
         // This avoids any scrollWidth ambiguity.
@@ -79,6 +96,8 @@ function initHorizontalGallery() {
         const gap = parseFloat(getComputedStyle(content).columnGap) || 40;
         return (cards.length - 1) * (cardWidth + gap);
     }
+
+    syncGalleryWidth();
 
     horizontalTween = gsap.to(content, {
         x: () => -getScrollAmount(),
@@ -98,8 +117,21 @@ function initHorizontalGallery() {
             delay: 0.01,
             ease: "power1.inOut"
         },
+        onRefreshInit: syncGalleryWidth,
         invalidateOnRefresh: true
     });
+
+    let resizeFrame = null;
+    window.addEventListener('resize', () => {
+        if (resizeFrame) cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(() => {
+            resizeFrame = null;
+            syncGalleryWidth();
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
+        });
+    }, { passive: true });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -111,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const shouldDeferAllWorkNavigation = window.location.hash === '#all-work';
     const shouldSkipWorkIntro = Boolean(window.__ARQ_SKIP_WORK_INTRO__);
 
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = isMobileWorkViewport();
 
     if (!shouldSkipWorkIntro && isMobile) {
         // --- MOBILE OPTIMIZED ANIMATIONS ---
@@ -137,7 +169,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     initGalleryOffsets();
     initHorizontalGallery();
     initVerticalCardsFade();
-    initMinimap();
+    if (!isMobileWorkViewport()) {
+        initMinimap();
+    }
     new AerialZoomEngine();
 
     if (shouldSkipWorkIntro) {

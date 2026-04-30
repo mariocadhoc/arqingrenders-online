@@ -3,6 +3,7 @@ import { ConnectHandshakeEngine } from './engines/ConnectHandshakeEngine.js';
 
 function activateFallback() {
     document.documentElement.classList.add('connect-fallback');
+    document.documentElement.classList.remove('connect-preparing');
 }
 
 document.addEventListener('DOMContentLoaded', () => {

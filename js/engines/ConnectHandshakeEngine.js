@@ -2,7 +2,7 @@ export class ConnectHandshakeEngine {
     constructor() {
         this.baseText = document.getElementById('connectExperiment');
         this.section = document.querySelector('.connect-experience');
-        this.methodsWrapper = document.querySelector('.connect-methods-wrapper');
+        this.methodsWrappers = document.querySelectorAll('.connect-methods-wrapper, .connect-mobile-methods');
         this.resizeTimer = 0;
         
         if (!this.section || !this.baseText) return;
@@ -11,15 +11,34 @@ export class ConnectHandshakeEngine {
     }
 
     init() {
+        this.prepareEntrance();
         this.setupInteractions();
         this.setupResizeHandling();
         
         document.fonts.ready.then(() => {
             this.measureCards();
-            setTimeout(() => {
-                this.playEntrance();
-            }, 100);
+            this.playEntrance();
         });
+    }
+
+    prepareEntrance() {
+        const nLeft = document.getElementById('nLeft');
+        const nRight = document.getElementById('nRight');
+        const partCon = document.getElementById('partCon');
+        const partNect = document.getElementById('partNect');
+        const subtitle = document.querySelector('.connect-subtitle');
+        const earthModel = document.querySelector('.earth-model-wrapper');
+        const desc = document.querySelectorAll('.connect-desc');
+
+        if (partCon) gsap.set(partCon, { x: '-15vw', opacity: 0 });
+        if (partNect) gsap.set(partNect, { x: '15vw', opacity: 0 });
+        if (nLeft) gsap.set(nLeft, { rotationZ: -90, transformOrigin: '50% 10%' });
+        if (nRight) gsap.set(nRight, { rotationZ: 90, transformOrigin: '50% 10%' });
+
+        if (subtitle) gsap.set(subtitle, { opacity: 0, y: 20 });
+        if (earthModel) gsap.set(earthModel, { opacity: 0, y: 20 });
+        if (desc.length) gsap.set(desc, { opacity: 0, y: 20 });
+        if (this.methodsWrappers.length) gsap.set(this.methodsWrappers, { opacity: 0, y: 20 });
     }
 
     setupInteractions() {
@@ -165,15 +184,8 @@ export class ConnectHandshakeEngine {
             modelViewer.cameraOrbit = `0deg 75deg auto`;
         }
 
-        gsap.set(partCon, { x: '-15vw', opacity: 0 });
-        gsap.set(partNect, { x: '15vw', opacity: 0 });
-        gsap.set(nLeft, { rotationZ: -90, transformOrigin: '50% 10%' });
-        gsap.set(nRight, { rotationZ: 90, transformOrigin: '50% 10%' });
-        
-        if (subtitle) gsap.set(subtitle, { opacity: 0, y: 20 });
-        if (earthModel) gsap.set(earthModel, { opacity: 0, y: 20 });
-        if (desc.length) gsap.set(desc, { opacity: 0, y: 20 });
-        if (this.methodsWrapper) gsap.set(this.methodsWrapper, { opacity: 0, y: 20 });
+        this.prepareEntrance();
+        document.documentElement.classList.remove('connect-preparing');
 
         // Phase 1: Come together
         tl.to([partCon, partNect], {
@@ -219,8 +231,8 @@ export class ConnectHandshakeEngine {
             duration: 0.8,
             ease: "power2.out"
         }, "-=0.6")
-        // Show methods UI block — fades in AFTER globe + desc finish
-        .to(this.methodsWrapper, {
+        // Show methods UI block (desktop & mobile) — fades in AFTER globe + desc finish
+        .to(this.methodsWrappers, {
             y: 0,
             opacity: 1,
             duration: 0.8,

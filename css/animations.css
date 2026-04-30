@@ -215,12 +215,15 @@
     position: relative;
     display: flex;
     gap: 0.5rem;
-    padding: 3rem 0;
+    padding-block: 3rem;
+    padding-inline: max(0px, calc(50% - (var(--cinema-thumb-width) / 2)));
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: max(0px, calc(50% - (var(--cinema-thumb-width) / 2)));
     scrollbar-width: none;
     perspective: 1200px;
     transform-style: preserve-3d;
+    box-sizing: border-box;
 }
 
 .cinema-thumbnails.is-dragging {
@@ -234,7 +237,7 @@
 .cinema-thumbnails::before,
 .cinema-thumbnails::after {
     content: '';
-    flex: 0 0 max(0px, calc(50% - (var(--cinema-thumb-width) / 2)));
+    display: none;
 }
 
 .thumb-media {

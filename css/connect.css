@@ -22,6 +22,15 @@
     padding-right: 5vw;
 }
 
+html.connect-js.connect-preparing:not(.connect-fallback) .connect-title,
+html.connect-js.connect-preparing:not(.connect-fallback) .connect-subtitle,
+html.connect-js.connect-preparing:not(.connect-fallback) .earth-and-text-wrapper,
+html.connect-js.connect-preparing:not(.connect-fallback) .connect-methods-wrapper,
+html.connect-js.connect-preparing:not(.connect-fallback) .connect-mobile-methods {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* H1 STYLES */
 .connect-title {
     font-family: var(--font-raleway);
@@ -143,14 +152,17 @@
 }
 
 /* When JS is loaded and pending GSAP reveal, hide so animation can play */
-html.js-pending .connect-methods-wrapper {
+html.js-pending .connect-methods-wrapper,
+html.js-pending .connect-mobile-methods {
     opacity: 0;
     transform: translateY(20px);
 }
 
 /* Fallback: force contact links visible when JS is disabled OR GSAP/engine fails */
 html.connect-fallback .connect-methods-wrapper,
-html:not(.js-pending):not(.js-ready) .connect-methods-wrapper {
+html.connect-fallback .connect-mobile-methods,
+html:not(.js-pending):not(.js-ready) .connect-methods-wrapper,
+html:not(.js-pending):not(.js-ready) .connect-mobile-methods {
     opacity: 1;
     transform: none;
 }
@@ -183,6 +195,10 @@ button.method-icon-btn {
     align-items: center;
     width: 100%;
     max-width: 1200px;
+}
+
+.connect-mobile-methods {
+    display: none;
 }
 
 .method-half {
@@ -272,23 +288,34 @@ button.method-icon-btn {
 }
 
 @media (max-width: 768px) {
+    .connect-sticky {
+        min-height: auto;
+        justify-content: flex-start;
+        padding-top: 12vh;
+        padding-bottom: 8vh;
+    }
+
     .connect-title {
         font-size: clamp(2rem, 8vw, 4rem);
-        margin-top: 10vh;
+        margin-top: 0;
+        margin-bottom: 1.2rem;
     }
 
     .connect-subtitle {
         max-width: 22rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
     }
 
     .earth-and-text-wrapper {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.75rem;
+        margin-top: 0;
     }
 
     .earth-model-wrapper model-viewer {
-        width: min(78vw, 340px);
-        height: min(78vw, 340px);
+        width: min(58vw, 240px);
+        height: min(58vw, 240px);
     }
 
     .connect-desc {
@@ -299,27 +326,40 @@ button.method-icon-btn {
     }
     
     .connect-methods-wrapper {
-        margin-top: 3rem;
+        display: none !important;
     }
 
     .connect-methods-intro {
-        margin-bottom: 1rem;
+        margin-bottom: 1.1rem;
         font-size: 0.85rem;
         letter-spacing: 0.06em;
     }
     
-    .connect-methods-container {
+    .connect-mobile-methods {
+        display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .method-half {
-        flex: none;
+        align-items: center;
         width: 100%;
-        min-width: 0;
-        border: none;
-        padding: 0;
+        margin-top: 1.5rem;
+    }
+
+    .connect-mobile-method-links {
+        display: flex;
+        align-items: center;
         justify-content: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .connect-mobile-method-link {
+        flex: 0 0 auto;
+        width: 76px;
+        height: 76px;
+    }
+
+    .connect-mobile-method-link svg {
+        width: 30px;
+        height: 30px;
     }
 
     .method-card-wrapper {

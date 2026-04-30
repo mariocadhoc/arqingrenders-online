@@ -10,7 +10,7 @@ export default class BigTitleCinematicEngine {
             return;
         }
 
-        this.primaryText = this.title.textContent.trim();
+        this.primaryText = this.title.dataset.primaryText || this.title.querySelector('.big-title-desktop-text')?.textContent.trim() || this.title.textContent.trim();
         this.secondaryText = this.title.dataset.morphText || 'Stories Beyond Pixels';
 
         this.init();

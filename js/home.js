@@ -18,6 +18,32 @@ import MobileCollabReveal from './engines/mobile/MobileCollabReveal.js';
 import TestimonialCardsMobile from './engines/mobile/TestimonialCardsMobile.js';
 import CollabRevealEngine from './engines/CollabRevealEngine.js';
 
+const isMobile = window.innerWidth <= 768;
+
+function initMobileBigTitleFade() {
+    const section = document.querySelector('.section-big-title');
+    if (!section) return;
+
+    const reveal = () => section.classList.add('is-mobile-title-visible');
+
+    if (typeof IntersectionObserver === 'undefined') {
+        reveal();
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            reveal();
+            observer.disconnect();
+        });
+    }, {
+        threshold: 0.35,
+        rootMargin: '0px 0px -12% 0px'
+    });
+
+    observer.observe(section);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     new ScrollInteractionEngine();
@@ -25,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new EditorialRevealEngine();
 
     // Choose Testimonial Engine based on device width
-    if (window.innerWidth <= 768) {
+    if (isMobile) {
         new TestimonialCardsMobile();
     } else {
         new TestimonialCards();
@@ -34,12 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
     new LabelSmokeEngine();
     new PortfolioTitleEngine();
     new HeroRevealEngine();
-    new BigTitleEngine();
-    new BigTitleScrollEngine();
-    new BigTitleCinematicEngine();
+
+    // Big Title: mobile is handled by static HTML/CSS; desktop keeps the cinematic morph.
+    if (!isMobile) {
+        new BigTitleEngine();
+        new BigTitleScrollEngine();
+        new BigTitleCinematicEngine();
+    } else {
+        initMobileBigTitleFade();
+    }
+
     new VisualConfidenceEngine();
 
-    if (window.innerWidth <= 768) {
+    if (isMobile) {
         new MobileCollabReveal();
     } else {
         new CollabRevealEngine();
