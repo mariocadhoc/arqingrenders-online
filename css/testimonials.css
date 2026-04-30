@@ -147,10 +147,10 @@ TESTIMONIALS 2x2 GRID REVEAL
         gap: 1.5rem;
     }
 
-    .testimonial-stack-card {
+    .testimonials-cards-col > .testimonial-stack-card {
         opacity: 1;
-        transform: none !important;
-        grid-area: auto !important;
+        transform: none;
+        grid-area: auto;
     }
 
     .testimonials-stack-title {

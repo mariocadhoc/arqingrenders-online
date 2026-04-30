@@ -319,14 +319,21 @@ button.method-icon-btn {
     }
 
     .connect-desc {
-        text-align: center !important;
+        text-align: center;
         white-space: normal;
         font-size: 0.85rem;
         letter-spacing: 0.06em;
     }
+
+    .method-left .connect-desc,
+    .method-right .connect-desc,
+    .earth-and-text-wrapper .connect-desc:first-child,
+    .earth-and-text-wrapper .connect-desc:last-child {
+        text-align: center;
+    }
     
     .connect-methods-wrapper {
-        display: none !important;
+        display: none;
     }
 
     .connect-methods-intro {

@@ -56,6 +56,9 @@ function renderCinemaThumbs(thumbsContainer, videos, activeIndex) {
         button.setAttribute('data-index', String(index));
         button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
 
+        const coverflowFrame = document.createElement('div');
+        coverflowFrame.className = 'thumb-coverflow';
+
         const media = document.createElement('div');
         media.className = 'thumb-media';
         const thumbImg = document.createElement('div');
@@ -66,8 +69,9 @@ function renderCinemaThumbs(thumbsContainer, videos, activeIndex) {
         title.className = 'thumb-title';
         title.textContent = video.title;
 
-        button.appendChild(media);
-        button.appendChild(title);
+        coverflowFrame.appendChild(media);
+        coverflowFrame.appendChild(title);
+        button.appendChild(coverflowFrame);
         thumbsContainer.appendChild(button);
     });
 }
@@ -340,12 +344,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    const mobileCoverFlowQuery = window.matchMedia('(max-width: 768px)');
+    let lastCoverFlowMode = null;
+
     function updateCoverFlow() {
         const containerCenter = thumbsContainer.offsetWidth / 2;
+        const useInnerCoverFlowTarget = mobileCoverFlowQuery.matches;
+
+        if (lastCoverFlowMode !== useInnerCoverFlowTarget) {
+            allThumbs.forEach((thumb) => {
+                const innerTarget = thumb.querySelector('.thumb-coverflow');
+                thumb.style.transform = '';
+                thumb.style.opacity = '';
+                if (innerTarget) {
+                    innerTarget.style.transform = '';
+                    innerTarget.style.opacity = '';
+                }
+            });
+            lastCoverFlowMode = useInnerCoverFlowTarget;
+        }
 
         allThumbs.forEach((thumb) => {
             const thumbCenter = (thumb.offsetLeft - thumbsContainer.scrollLeft) + (thumb.offsetWidth / 2);
             const distanceFromCenter = thumbCenter - containerCenter;
+            const coverFlowTarget = useInnerCoverFlowTarget
+                ? (thumb.querySelector('.thumb-coverflow') || thumb)
+                : thumb;
 
             let normalized = distanceFromCenter / (thumbsContainer.offsetWidth / 2);
             normalized = Math.max(-1.5, Math.min(1.5, normalized));
@@ -355,8 +379,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const scale = 1 - Math.abs(normalized) * 0.1;
             const xTranslate = -normalized * 80;
 
-            thumb.style.transform = `translate3d(${xTranslate}px, 0, ${zTranslate}px) rotateY(${angle}deg) scale(${scale})`;
-            thumb.style.opacity = `${Math.max(0.3, 1 - Math.abs(normalized) * 0.6)}`;
+            coverFlowTarget.style.transform = `translate3d(${xTranslate}px, 0, ${zTranslate}px) rotateY(${angle}deg) scale(${scale})`;
+            coverFlowTarget.style.opacity = `${Math.max(0.3, 1 - Math.abs(normalized) * 0.6)}`;
             thumb.style.zIndex = `${Math.round(100 - Math.abs(distanceFromCenter))}`;
         });
     }

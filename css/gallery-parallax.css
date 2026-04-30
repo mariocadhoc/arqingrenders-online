@@ -85,7 +85,7 @@ html.js-ready .gp-deferred-reveal.gp-is-visible {
 
 /* --- TITLE CARD --- */
 .gp-title-card {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -253,12 +253,14 @@ html.js-ready .gp-deferred-reveal.gp-is-visible {
 }
 
 .gp-card:not(.gp-hidden):hover {
-  transform: translateY(-6px) scale(1.025) !important;
+  transform: translateY(-6px) scale(1.025);
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   #gallery-parallax-section {
+    --gp-mobile-header-height: 72px;
+    --gp-mobile-filter-gallery-gap: clamp(3.5rem, 9vh, 5.5rem);
     padding: 10vh 5vw;
   }
 
@@ -269,13 +271,13 @@ html.js-ready .gp-deferred-reveal.gp-is-visible {
 
   .gp-layout {
     flex-direction: column-reverse;
-    gap: 32px;
+    gap: 70px;
     padding-right: 0;
   }
 
   #gp-filters-wrapper {
     position: sticky;
-    top: clamp(72px, 10vh, 88px);
+    top: var(--gp-mobile-header-height);
     transform: none;
     width: calc(100% + 10vw);
     margin-inline: -5vw;
@@ -303,6 +305,7 @@ html.js-ready .gp-deferred-reveal.gp-is-visible {
   
   #gp-scene {
     border-radius: 10px;
+    margin-top: var(--gp-mobile-filter-gallery-gap);
     width: 100%;
   }
 }

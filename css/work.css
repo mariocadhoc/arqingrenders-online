@@ -236,6 +236,8 @@
 
 .large-images {
     --work-gallery-width: 100%;
+    --work-selected-title-gap: clamp(1.25rem, 3vh, 2.5rem);
+    --work-zone-image-gap: clamp(1rem, 2.5vh, 1.75rem);
     width: calc(100% - 180px);
     min-width: 0;
     position: relative;
@@ -252,6 +254,19 @@
 
 .work-mobile-zone-title {
     display: none;
+}
+
+.work-selected-kicker {
+    position: relative;
+    z-index: 20;
+    margin: 0 0 var(--work-selected-title-gap);
+    color: rgba(255, 255, 255, 0.62);
+    font-family: var(--font-sans);
+    font-size: clamp(0.9rem, 1vw, 1.08rem);
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
 }
 
 .horizon-card .horizon-img {
@@ -284,7 +299,7 @@
     margin: 20px 0;
     flex-shrink: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background: transparent;
     border-radius: 0;
@@ -315,9 +330,9 @@
     top: 10px;
     margin: 10px 0;
     /* contenedor invisible: la img lleva el estilo */
-    background: transparent !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -554,9 +569,28 @@
         padding: 15vh 5vw 5vh;
     }
 
+    :is(.work-header, .stills-header, .animations-header, .gallery-header) {
+        position: relative;
+    }
+
+    :is(.work-title, .stills-title, .animations-title, .gallery-title) {
+        position: sticky;
+        z-index: 0;
+    }
+
     :is(.stills-title, .animations-title, .gallery-title) {
         font-size: clamp(3rem, 12vw, 4rem);
         text-align: left;
+    }
+
+    :is(.work-subtitle, .stills-subtitle, .animations-subtitle, .gallery-subtitle) {
+        position: relative;
+        z-index: 2;
+    }
+
+    :is(.section-work, .animations-cinema-section, .stills-showcase-section, #gallery-parallax-section, .vr-showcase-section, .stills-cross-nav, .sp-back-nav) {
+        position: relative;
+        z-index: 2;
     }
 
     :is(.stills-subtitle, .gallery-subtitle) {
@@ -600,6 +634,7 @@
     }
 
     .large-images {
+        --work-mobile-gallery-top: clamp(84px, 12vh, 112px);
         width: 100%;
     }
 
@@ -607,9 +642,14 @@
         display: none;
     }
 
+    .work-selected-kicker {
+        font-size: 0.9rem;
+        letter-spacing: 0.14em;
+    }
+
     .work-mobile-zone-title {
         display: block;
-        margin: 10vh 0 -14vh;
+        margin: 0;
         position: relative;
         z-index: 20;
         pointer-events: none;
@@ -629,6 +669,7 @@
     .horizontal-scroll-container {
         width: 100%;
         height: 100vh;
+        margin-top: calc(var(--work-zone-image-gap) - var(--work-mobile-gallery-top));
         display: flex;
         align-items: center;
         overflow: hidden;
@@ -642,12 +683,42 @@
         transform: none !important;
     }
 
+    .vertical-scroll-container {
+        padding-top: 0;
+        margin-top: calc(var(--work-zone-image-gap) - var(--work-mobile-gallery-top));
+    }
+
+    .stacked-scroll-trigger {
+        margin-top: calc(var(--work-zone-image-gap) - var(--work-mobile-gallery-top));
+    }
+
     .horizon {
         position: absolute;
-        top: 10px;
+        top: var(--work-mobile-gallery-top);
         left: 0;
         width: 100%;
-        height: calc(100vh - 20px);
+        height: calc(100vh - var(--work-mobile-gallery-top) - 20px);
         margin: 0;
+        align-items: flex-start;
+        /* Fix 2 — Promote to GPU compositing layer before scroll begins.
+           Prevents WebKit from creating the layer mid-scroll (1-frame flash).
+           Scoped to mobile only; no effect on desktop, Chrome, or Edge. */
+        will-change: transform;
+        transform: translateZ(0);
+    }
+
+    .large-image.vertical {
+        top: var(--work-mobile-gallery-top);
+        height: calc(100vh - var(--work-mobile-gallery-top) - 20px);
+        align-items: flex-start;
+        /* Fix 2 — Same GPU layer promotion as .horizon above. */
+        will-change: transform;
+        transform: translateZ(0);
+    }
+
+    .stacked-card {
+        inset: var(--work-mobile-gallery-top) 0 auto;
+        height: calc(100vh - var(--work-mobile-gallery-top) - 20px);
+        align-items: flex-start;
     }
 }

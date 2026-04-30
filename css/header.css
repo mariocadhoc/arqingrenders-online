@@ -345,6 +345,11 @@ header.site-header.menu-open {
     display: none;
 }
 
+.header-mobile-submenu .nav-link {
+    text-transform: lowercase;
+    color: #555555;
+}
+
 .header-mobile-parent {
     font-family: inherit;
 }

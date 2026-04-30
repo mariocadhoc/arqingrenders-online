@@ -64,7 +64,7 @@ export class TitleStackMobile {
         // Sticky position for mobile
         this.element.style.position = 'sticky';
         this.element.style.top = '10vh'; // Sticks near top
-        this.element.style.zIndex = '100';
+        this.element.style.zIndex = '0';
         this.element.style.width = 'fit-content';
         this.element.style.margin = '0'; // Align left
     }

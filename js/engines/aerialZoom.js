@@ -19,6 +19,9 @@ export default class AerialZoomEngine {
 
         if (!triggerWrap || cards.length === 0) return;
 
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const cardTop = isMobile ? 'var(--work-mobile-gallery-top)' : 0;
+
         // --- Initial state ---
         // All cards stacked, only the first one visible
         cards.forEach((card, i) => {
@@ -26,7 +29,7 @@ export default class AerialZoomEngine {
                 zIndex: cards.length - i,
                 x: 0,
                 y: 0,
-                top: 0,
+                top: cardTop,
                 left: 0,
                 scale: 1,
                 opacity: i === 0 ? 1 : 0   // only first card visible

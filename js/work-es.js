@@ -72,13 +72,23 @@ function initHorizontalGallery() {
 
     const wrap = document.querySelector('.horizontal-scroll-container');
     const content = document.querySelector('.horizontal-scroll-content');
+    const galleryColumn = document.querySelector('.large-images');
 
-    if (!wrap || !content) return;
+    if (!wrap || !content || !galleryColumn) return;
 
     const cards = content.querySelectorAll('.horizon');
     if (!cards.length) return;
 
+    function syncGalleryWidth() {
+        const width = galleryColumn.clientWidth || wrap.clientWidth;
+        if (width > 0) {
+            galleryColumn.style.setProperty('--work-gallery-width', `${width}px`);
+        }
+        return width;
+    }
+
     function getScrollAmount() {
+        syncGalleryWidth();
         // Exact geometry: to bring card N into view from card 1,
         // translate left by (N-1) × (cardWidth + gap).
         // This avoids any scrollWidth ambiguity.
@@ -86,6 +96,8 @@ function initHorizontalGallery() {
         const gap = parseFloat(getComputedStyle(content).columnGap) || 40;
         return (cards.length - 1) * (cardWidth + gap);
     }
+
+    syncGalleryWidth();
 
     horizontalTween = gsap.to(content, {
         x: () => -getScrollAmount(),
@@ -105,8 +117,21 @@ function initHorizontalGallery() {
             delay: 0.01,
             ease: "power1.inOut"
         },
+        onRefreshInit: syncGalleryWidth,
         invalidateOnRefresh: true
     });
+
+    let resizeFrame = null;
+    window.addEventListener('resize', () => {
+        if (resizeFrame) cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(() => {
+            resizeFrame = null;
+            syncGalleryWidth();
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
+        });
+    }, { passive: true });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

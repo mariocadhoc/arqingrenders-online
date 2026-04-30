@@ -699,8 +699,8 @@ a.collage-item:hover {
 
     .section-big-title {
         min-height: 88vh;
-        height: auto !important;
-        margin-top: 0 !important;
+        height: auto;
+        margin-top: 0;
         padding: 14vh 6vw 12vh;
         display: flex;
         align-items: center;
@@ -955,10 +955,7 @@ a.collage-item:hover {
         transform: none !important;
     }
 
-    .item-main,
-    .item-tr,
-    .item-bl,
-    .item-br {
+    .item-main {
         display: block;
         top: auto;
         bottom: auto;
@@ -966,6 +963,12 @@ a.collage-item:hover {
         right: auto;
         margin: 0;
         z-index: 1;
+    }
+
+    .item-tr,
+    .item-bl,
+    .item-br {
+        display: none;
     }
 
 }
@@ -988,10 +991,10 @@ section,
 .collab-img-sticky,
 .section-testimonials-stack,
 .section-highlight {
-  background: #000 !important;
-  background-color: #000 !important;
+  background: #000;
+  background-color: #000;
 }
 
 .collab-mobile-sticky-top::before {
-  background: #000 !important;
+  background: #000;
 }
