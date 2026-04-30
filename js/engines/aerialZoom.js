@@ -47,6 +47,8 @@ export default class AerialZoomEngine {
                 start: 'center center',
                 end: () => '+=' + totalScroll,
                 pin: true,
+                pinType: "transform",
+                anticipatePin: 1,
                 scrub: 1,
                 invalidateOnRefresh: true
             }

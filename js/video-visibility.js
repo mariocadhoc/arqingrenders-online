@@ -3,8 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!videos.length) return;
 
   const visibleVideos = new Set();
+  let playbackRetryQueued = false;
+
+  const syncAutoplayAttributes = (video) => {
+    if (video.hasAttribute('muted')) {
+      video.muted = true;
+      video.defaultMuted = true;
+    }
+
+    if (video.hasAttribute('autoplay')) {
+      video.autoplay = true;
+    }
+
+    if (video.hasAttribute('playsinline')) {
+      video.playsInline = true;
+    }
+  };
 
   const loadAndPlay = (video) => {
+    syncAutoplayAttributes(video);
+
     if (video.dataset.videoLoaded !== 'true') {
       video.preload = 'metadata';
       video.load();
@@ -13,10 +31,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playPromise = video.play();
     if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(() => {
-        // Ignore autoplay policy errors on browsers with stricter rules.
+      playPromise.catch((error) => {
+        if (error?.name === 'NotAllowedError') {
+          queuePlaybackRetry();
+        }
       });
     }
+  };
+
+  const retryVisibleVideos = () => {
+    playbackRetryQueued = false;
+    visibleVideos.forEach((video) => loadAndPlay(video));
+  };
+
+  const queuePlaybackRetry = () => {
+    if (playbackRetryQueued) return;
+    playbackRetryQueued = true;
+
+    ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach((eventName) => {
+      window.addEventListener(eventName, retryVisibleVideos, { once: true, passive: true });
+    });
+    window.addEventListener('pageshow', retryVisibleVideos, { once: true });
   };
 
   const pauseVideo = (video) => {

@@ -6,6 +6,7 @@ export default class HeroRevealEngine {
         this.delayMs = 700; // Reduced ~30% from 1000ms for faster UX
         this.timerId = null;
         this.startScale = 0.24;
+        this.hasQueuedPlaybackRetry = false;
 
         if (!this.heroContainer) return;
         this.init();
@@ -17,6 +18,8 @@ export default class HeroRevealEngine {
         // Set starting point to 7.5s for initial load
         const video = this.heroVideo;
         if (video) {
+            this.prepareVideoForAutoplay(video);
+
             const setStartTime = () => { video.currentTime = 7.5; };
             if (video.readyState >= 1) {
                 setStartTime();
@@ -51,17 +54,58 @@ export default class HeroRevealEngine {
         }
     }
 
+    prepareVideoForAutoplay(video) {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('autoplay', '');
+        video.setAttribute('playsinline', '');
+    }
+
+    playHeroVideo() {
+        const video = this.heroVideo;
+        if (!video || !video.paused) return;
+
+        this.prepareVideoForAutoplay(video);
+
+        const playPromise = video.play();
+        if (!playPromise || typeof playPromise.catch !== 'function') return;
+
+        playPromise.catch(err => {
+            if (err?.name !== 'NotAllowedError') {
+                console.warn("Hero video autoplay failed:", err);
+            }
+            this.queuePlaybackRetry();
+        });
+    }
+
+    queuePlaybackRetry() {
+        if (this.hasQueuedPlaybackRetry) return;
+        this.hasQueuedPlaybackRetry = true;
+
+        const retry = () => {
+            this.hasQueuedPlaybackRetry = false;
+            this.playHeroVideo();
+        };
+
+        ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach(eventName => {
+            window.addEventListener(eventName, retry, { once: true, passive: true });
+        });
+        window.addEventListener('pageshow', retry, { once: true });
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) retry();
+        }, { once: true });
+    }
+
     reveal() {
         this.heroContainer.classList.remove('hero-reveal-pending');
         this.heroContainer.classList.add('hero-reveal-active');
 
         // Ensure video plays when revealed
         const video = this.heroVideo;
-        if (video) {
-            video.play().catch(err => {
-                console.warn("Hero video autoplay blocked or failed:", err);
-            });
-        }
+        this.playHeroVideo();
 
         if (typeof gsap !== 'undefined') {
             gsap.killTweensOf(this.heroContainer);
