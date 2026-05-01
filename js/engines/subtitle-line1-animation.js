@@ -60,14 +60,14 @@ export class SubtitleLine1Animation {
         });
 
         this.wordBlocks.forEach((word, i) => {
-            const startTime = i * 0.15;
+            const startTime = i * 0.11;
 
             tl.to(
                 word,
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 0.6,
+                    duration: 0.45,
                     ease: 'power4.in'
                 },
                 startTime
@@ -77,7 +77,7 @@ export class SubtitleLine1Animation {
                 word,
                 {
                     y: -12,
-                    duration: 0.1,
+                    duration: 0.075,
                     ease: 'power2.out',
                     yoyo: true,
                     repeat: 1

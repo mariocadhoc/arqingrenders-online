@@ -51,6 +51,10 @@
   will-change: left, top, width, height;
   transform: translate3d(-50%, -50%, 0);
   backface-visibility: hidden;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .gp-lightbox-main-viewport.gp-can-zoom,
@@ -73,6 +77,8 @@
   position: relative;
   flex: 0 0 auto;
   transform-origin: center center;
+  touch-action: none;
+  -webkit-touch-callout: none;
 }
 
 .gp-lightbox-zoom-hint,
@@ -132,6 +138,7 @@
   -webkit-user-drag: none;
   pointer-events: none;
   will-change: opacity;
+  -webkit-touch-callout: none;
 }
 
 .gp-lightbox-close,

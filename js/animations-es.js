@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const { subtitleRevealPromise } = await initializeWorkPageIntro({
         titleSelector: '.animations-title',
         subtitleSelector: '.animations-subtitle',
-        fallbackDelayMobileMs: 1000,
-        fallbackDelayDesktopMs: 2400
+        fallbackDelayMobileMs: 750,
+        fallbackDelayDesktopMs: 1800
     });
 
     const thumbsContainer = document.getElementById('cinemaThumbnails');

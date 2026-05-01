@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const { subtitleRevealPromise } = await initializeWorkPageIntro({
         titleSelector: '.gallery-title',
         subtitleSelector: '.gallery-subtitle',
-        fallbackDelayMobileMs: 1000
+        fallbackDelayMobileMs: 750
     });
 
     const gallerySection = document.querySelector('.vr-showcase-section');

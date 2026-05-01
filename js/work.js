@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } else {
         window.addEventListener('workSectionsRevealComplete', initWorkGalleryInteractions, { once: true });
-        window.setTimeout(initWorkGalleryInteractions, 4200);
+        window.setTimeout(initWorkGalleryInteractions, 3150);
     }
 
     if (shouldDeferAllWorkNavigation) {
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             window.setTimeout(() => {
                 navigateToAllWork();
-            }, 3600);
+            }, 2700);
         }
     }
 

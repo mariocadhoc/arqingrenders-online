@@ -24,8 +24,6 @@ class TeamEngine {
     }
 
     init() {
-        document.body.classList.add('grain');
-
         this.splitHeroTitle();
         this.prepareBios();
         this.createObservers();
@@ -185,29 +183,8 @@ class TeamEngine {
                 return;
             }
 
-            const portraitColumn = profile.querySelector('.team-portrait-column');
-            const portraitShell = profile.querySelector('.team-portrait-shell');
-            const copyColumn = profile.querySelector('.team-copy-column');
-            const copyInner = profile.querySelector('.team-copy-inner');
-            const name = profile.querySelector('.team-name');
-            const rule = profile.querySelector('.team-rule');
-
-            if (!portraitColumn || !portraitShell || !copyColumn || !copyInner || !name || !rule) {
-                return;
-            }
-
-            profile.style.setProperty('--portrait-frame-y', '0px');
-
-            const targetTop = copyColumn.offsetTop + copyInner.offsetTop + name.offsetTop + name.offsetHeight;
-            const targetBottom = copyColumn.offsetTop + copyInner.offsetTop + rule.offsetTop + rule.offsetHeight;
-            const targetHeight = Math.max(240, targetBottom - targetTop - 4);
-
-            profile.style.setProperty('--portrait-frame-height', `${targetHeight}px`);
-
-            const portraitTop = portraitColumn.offsetTop + portraitShell.offsetTop;
-            const frameY = targetTop - portraitTop + 2;
-
-            profile.style.setProperty('--portrait-frame-y', `${Math.round(frameY)}px`);
+            profile.style.removeProperty('--portrait-frame-height');
+            profile.style.removeProperty('--portrait-frame-y');
         });
     }
 

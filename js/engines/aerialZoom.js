@@ -32,14 +32,15 @@ export default class AerialZoomEngine {
                 top: cardTop,
                 left: 0,
                 scale: 1,
+                transformOrigin: '50% 50%',
                 opacity: i === 0 ? 1 : 0   // only first card visible
             });
         });
 
         // --- Build sequential timeline ---
         // Scroll distance per transition (shorter = snappier)
-        const scrollPerCard = window.innerHeight * 0.8;
-        const totalScroll = scrollPerCard * cards.length + window.innerHeight * 0.3;
+        const scrollPerCard = window.innerHeight * 0.64;
+        const totalScroll = scrollPerCard * cards.length + window.innerHeight * 0.24;
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -61,6 +62,7 @@ export default class AerialZoomEngine {
             tl.to(card, {
                 scale: 2.5,
                 opacity: 0,
+                transformOrigin: '50% 50%',
                 ease: 'power1.in',
                 duration: 1
             });

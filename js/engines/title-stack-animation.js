@@ -98,8 +98,8 @@ export class TitleStackAnimation {
             opacity: 1,
             y: 0,
             scale: 1,
-            stagger: 0.05,
-            duration: 0.8,
+            stagger: 0.038,
+            duration: 0.6,
             ease: 'back.out(1.7)'
         });
 
@@ -122,9 +122,9 @@ export class TitleStackAnimation {
             top: i => this.stackedState[i].top,
             left: i => this.stackedState[i].left,
             fontSize: i => this.stackedState[i].fontSize,
-            duration: 1.2,
+            duration: 0.9,
             ease: 'expo.inOut',
-            stagger: 0.04,
+            stagger: 0.03,
             onComplete: () => {
                 this.element.classList.add('is-stacked');
             }
@@ -132,7 +132,7 @@ export class TitleStackAnimation {
 
         tl.add(() => {
             window.dispatchEvent(new CustomEvent('titleAnimationComplete'));
-        }, '-=0.75');
+        }, '-=0.56');
     }
 
     handleScroll() {

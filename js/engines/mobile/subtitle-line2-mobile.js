@@ -54,8 +54,8 @@ export class SubtitleLine2Mobile {
         gsap.to(chars, {
             opacity: 1,
             scale: 1,
-            duration: 0.6,
-            stagger: 0.02, // Very fast stagger
+            duration: 0.45,
+            stagger: 0.015, // Very fast stagger
             ease: "back.out(1.5)", // Reduced overshoot (was 3 or 1.7)
             onComplete: () => {
                 // Reveal Grid Section
@@ -64,8 +64,8 @@ export class SubtitleLine2Mobile {
                     {
                         opacity: 1,
                         y: 0,
-                        duration: 1.2,
-                        stagger: 0.2,
+                        duration: 0.9,
+                        stagger: 0.15,
                         ease: "power1.inOut",
                         clearProps: 'transform',
                         onComplete: () => {

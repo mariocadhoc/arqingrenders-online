@@ -78,8 +78,8 @@ export class TitleStackMobile {
         tl.to(this.chars, {
             opacity: 1,
             x: 0,
-            duration: 0.6,
-            stagger: 0.05,
+            duration: 0.45,
+            stagger: 0.038,
             ease: "power2.out",
             onComplete: () => {
                 // Trigger line 1

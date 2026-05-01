@@ -1,3 +1,6 @@
+import { initProjectMap } from './map-gps.js';
+import { openGalleryLightbox } from './gallery-modal-lightbox.js';
+
 async function loadProjectData() {
     if (window.projectData) return window.projectData;
 
@@ -137,610 +140,6 @@ function hydrateProjectMeta(data) {
     setText('[data-gallery-summary]', gallerySummary);
 }
 
-function createMapPin() {
-    if (typeof window.L === 'undefined') return null;
-
-    return window.L.divIcon({
-        className: 'sp-map-pin',
-        html: '<span></span>',
-        iconSize: [18, 18],
-        iconAnchor: [9, 9]
-    });
-}
-
-function createMapPointer(mapElement, isMobile) {
-    const pointer = document.createElement('button');
-    pointer.type = 'button';
-    pointer.className = 'sp-map-pointer';
-    pointer.setAttribute('aria-label', 'Center map on project');
-    pointer.innerHTML = `
-        <span class="sp-map-pointer-ring">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3L19 17H5L12 3Z"></path>
-            </svg>
-        </span>
-    `;
-
-    mapElement.appendChild(pointer);
-
-    if (isMobile) {
-        pointer.addEventListener('touchend', (event) => {
-            event.preventDefault();
-        }, { passive: false });
-    }
-
-    return pointer;
-}
-
-function initProjectMap(data) {
-    const mapElement = document.getElementById('selected-project-map');
-    const emptyState = document.querySelector('[data-map-empty]');
-    const mapData = data.map || {};
-
-    if (!mapElement) return;
-
-    if (!Number.isFinite(mapData.lat) || !Number.isFinite(mapData.lng) || typeof window.L === 'undefined') {
-        mapElement.classList.add('hidden');
-        emptyState?.classList.remove('hidden');
-        return;
-    }
-
-    emptyState?.classList.add('hidden');
-    mapElement.classList.remove('hidden');
-
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const initialZoom = Number.isFinite(mapData.initialZoom)
-        ? mapData.initialZoom
-        : Math.max(1, (mapData.zoom || 15) - (isMobile ? 2.8 : 4.2));
-    const finalZoom = Number.isFinite(mapData.finalZoom)
-        ? mapData.finalZoom
-        : (isMobile ? Math.min(mapData.zoom || 15, 16) : (mapData.zoom || 15));
-
-    const map = window.L.map(mapElement, {
-        attributionControl: false,
-        zoomControl: true,
-        zoomSnap: 0.1,
-        zoomDelta: 0.5,
-        scrollWheelZoom: false,
-        touchZoom: true,
-        tap: !window.L.Browser.mobile,
-        tapTolerance: 15,
-        dragging: true
-    }).setView([mapData.lat, mapData.lng], initialZoom);
-
-    window.L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20
-    }).addTo(map);
-
-    const marker = window.L.marker([mapData.lat, mapData.lng], {
-        icon: createMapPin()
-    }).addTo(map);
-
-    if (data.address || data.name) {
-        marker.bindTooltip(data.address || data.name, {
-            direction: 'top',
-            offset: [0, -12]
-        });
-    }
-
-    const pointer = createMapPointer(mapElement, isMobile);
-
-    const updatePointer = () => {
-        const markerLatLng = marker.getLatLng();
-        if (map.getBounds().contains(markerLatLng)) {
-            pointer.classList.remove('visible');
-            return;
-        }
-
-        pointer.classList.add('visible');
-
-        const mapSize = map.getSize();
-        const centerPoint = map.latLngToContainerPoint(map.getCenter());
-        const targetPoint = map.latLngToContainerPoint(markerLatLng);
-        const dx = targetPoint.x - centerPoint.x;
-        const dy = targetPoint.y - centerPoint.y;
-        const angle = Math.atan2(dy, dx);
-        const edgePadding = isMobile ? 28 : 22;
-        const radiusX = Math.max(24, (mapSize.x / 2) - edgePadding);
-        const radiusY = Math.max(24, (mapSize.y / 2) - edgePadding);
-
-        pointer.style.left = `${(radiusX * Math.cos(angle)) + (mapSize.x / 2)}px`;
-        pointer.style.top = `${(radiusY * Math.sin(angle)) + (mapSize.y / 2)}px`;
-        pointer.style.transform = `translate(-50%, -50%) rotate(${angle * (180 / Math.PI) + 90}deg)`;
-    };
-
-    map.on('move zoom resize', updatePointer);
-    pointer.addEventListener(isMobile ? 'touchend' : 'click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        map.panTo(marker.getLatLng(), { animate: true, duration: 0.5 });
-    });
-
-    marker.on(isMobile ? 'touchend' : 'click', () => {
-        map.panTo(marker.getLatLng(), { animate: true, duration: 0.5 });
-    });
-
-    const runIntroZoom = () => {
-        map.flyTo([mapData.lat, mapData.lng], finalZoom, {
-            animate: true,
-            duration: isMobile ? 1.5 : 2.4,
-            easeLinearity: 0.25
-        });
-    };
-
-    setTimeout(() => map.invalidateSize(), 220);
-    window.addEventListener('resize', () => map.invalidateSize(), { passive: true });
-
-    map.once('zoomend', updatePointer);
-    setTimeout(() => {
-        map.invalidateSize();
-        runIntroZoom();
-        updatePointer();
-    }, 1000);
-}
-
-class SelectedProjectLightbox {
-    constructor(items) {
-        this.items = items;
-        this.dom = {};
-        this.isOpen = false;
-        this.activeIndex = 0;
-        this.sourceRect = null;
-        this.zoom = {
-            scale: 1,
-            maxScale: 1,
-            baseWidth: 0,
-            baseHeight: 0,
-            panX: 0,
-            panY: 0,
-            startPanX: 0,
-            startPanY: 0,
-            startClientX: 0,
-            startClientY: 0,
-            isDragging: false,
-            pointerDown: false,
-            moved: false,
-            skipClick: false
-        };
-
-        this.handleResize = this.handleResize.bind(this);
-        this.handleKeydown = this.handleKeydown.bind(this);
-        this.handlePointerMove = this.handlePointerMove.bind(this);
-        this.handlePointerUp = this.handlePointerUp.bind(this);
-
-        this.buildDOM();
-        this.bindEvents();
-        this.renderThumbs();
-    }
-
-    getMagnifierIcon() {
-        return `
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
-                <path d="M16 16L21 21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                <path d="M11 8v6M8 11h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-            </svg>
-        `;
-    }
-
-    buildDOM() {
-        const root = document.createElement('div');
-        root.className = 'sp-lightbox';
-        root.innerHTML = `
-            <div class="sp-lightbox-bg"></div>
-            <button class="sp-lightbox-close" type="button" aria-label="Close lightbox">✕</button>
-            <div class="sp-lightbox-stage">
-                <div class="sp-lightbox-viewport">
-                    <div class="sp-lightbox-media">
-                        <img class="sp-lightbox-image" src="" alt="Project render">
-                    </div>
-                    <div class="sp-lightbox-zoom-hint" hidden>
-                        ${this.getMagnifierIcon()}
-                        <span>Click to zoom</span>
-                    </div>
-                </div>
-            </div>
-            <div class="sp-lightbox-sidebar"></div>
-        `;
-
-        document.body.appendChild(root);
-
-        this.dom.root = root;
-        this.dom.bg = root.querySelector('.sp-lightbox-bg');
-        this.dom.close = root.querySelector('.sp-lightbox-close');
-        this.dom.viewport = root.querySelector('.sp-lightbox-viewport');
-        this.dom.media = root.querySelector('.sp-lightbox-media');
-        this.dom.img = root.querySelector('.sp-lightbox-image');
-        this.dom.zoomHint = root.querySelector('.sp-lightbox-zoom-hint');
-        this.dom.zoomHintText = this.dom.zoomHint.querySelector('span');
-        this.dom.sidebar = root.querySelector('.sp-lightbox-sidebar');
-    }
-
-    bindEvents() {
-        this.dom.close.addEventListener('click', () => this.close());
-        this.dom.bg.addEventListener('click', () => this.close());
-        this.dom.viewport.addEventListener('pointerdown', (event) => this.handlePointerDown(event));
-        this.dom.viewport.addEventListener('pointermove', this.handlePointerMove);
-        this.dom.viewport.addEventListener('pointerup', this.handlePointerUp);
-        this.dom.viewport.addEventListener('pointercancel', this.handlePointerUp);
-        this.dom.viewport.addEventListener('pointerleave', this.handlePointerUp);
-        this.dom.viewport.addEventListener('click', (event) => this.handleViewportClick(event));
-        window.addEventListener('resize', this.handleResize, { passive: true });
-        document.addEventListener('keydown', this.handleKeydown);
-    }
-
-    renderThumbs() {
-        this.dom.sidebar.innerHTML = '';
-
-        this.items.forEach((item, index) => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'sp-lightbox-thumb';
-            button.setAttribute('aria-label', `Open ${item.caption || toFrameLabel(index)}`);
-            button.innerHTML = `<img src="${item.src}" alt="${item.alt || `${item.title || 'Project render'} ${index + 1}`}">`;
-            button.addEventListener('click', () => this.setImage(index));
-            this.dom.sidebar.appendChild(button);
-        });
-    }
-
-    getTargetViewportState() {
-        const compact = window.innerWidth <= 780;
-        const sidebarReserve = compact ? 0 : Math.min(182, window.innerWidth * 0.16);
-        const horizontalPadding = compact ? 18 : 56;
-        const verticalPadding = compact ? 168 : 120;
-        const width = Math.max(
-            260,
-            Math.min(window.innerWidth - sidebarReserve - (horizontalPadding * 2), window.innerWidth * (compact ? 0.92 : 0.68))
-        );
-        const height = Math.max(
-            180,
-            Math.min(window.innerHeight - verticalPadding, window.innerHeight * (compact ? 0.64 : 0.8))
-        );
-
-        return {
-            left: compact ? (window.innerWidth / 2) : ((window.innerWidth - sidebarReserve) / 2),
-            top: compact ? (window.innerHeight * 0.42) : (window.innerHeight / 2),
-            width,
-            height
-        };
-    }
-
-    getContainedMediaSize(viewportWidth, viewportHeight, naturalWidth, naturalHeight) {
-        const fitRatio = Math.min(viewportWidth / naturalWidth, viewportHeight / naturalHeight, 1);
-        return {
-            width: Math.max(1, Math.round(naturalWidth * fitRatio)),
-            height: Math.max(1, Math.round(naturalHeight * fitRatio)),
-            maxScale: fitRatio < 1 ? Math.max(1, Number((1 / fitRatio).toFixed(3))) : 1
-        };
-    }
-
-    setViewportToRect(rect) {
-        const safeRect = rect || {
-            left: window.innerWidth * 0.5,
-            top: window.innerHeight * 0.5,
-            width: Math.min(window.innerWidth * 0.4, 420),
-            height: Math.min(window.innerHeight * 0.4, 320)
-        };
-
-        const centerX = safeRect.left + (safeRect.width / 2);
-        const centerY = safeRect.top + (safeRect.height / 2);
-
-        gsap.set(this.dom.viewport, {
-            left: centerX,
-            top: centerY,
-            width: safeRect.width,
-            height: safeRect.height,
-            xPercent: -50,
-            yPercent: -50,
-            opacity: 1
-        });
-    }
-
-    setTargetViewport(animated = true) {
-        const target = this.getTargetViewportState();
-        const naturalWidth = this.dom.img.naturalWidth || this.dom.media.offsetWidth || target.width;
-        const naturalHeight = this.dom.img.naturalHeight || this.dom.media.offsetHeight || target.height;
-        const mediaTarget = this.getContainedMediaSize(target.width, target.height, naturalWidth, naturalHeight);
-
-        if (!animated) {
-            gsap.set(this.dom.viewport, target);
-            gsap.set(this.dom.media, { width: mediaTarget.width, height: mediaTarget.height });
-            this.measureMedia();
-            return;
-        }
-
-        gsap.to(this.dom.viewport, {
-            ...target,
-            duration: 0.56,
-            ease: 'expo.inOut',
-            onComplete: () => this.measureMedia()
-        });
-
-        gsap.to(this.dom.media, {
-            width: mediaTarget.width,
-            height: mediaTarget.height,
-            duration: 0.56,
-            ease: 'expo.inOut',
-            onComplete: () => this.measureMedia()
-        });
-    }
-
-    primeMediaDimensions(width, height) {
-        this.dom.media.style.width = `${Math.max(1, Math.round(width))}px`;
-        this.dom.media.style.height = `${Math.max(1, Math.round(height))}px`;
-    }
-
-    clamp(value, min, max) {
-        return Math.min(Math.max(value, min), max);
-    }
-
-    clampPan() {
-        const maxX = Math.max(0, ((this.zoom.baseWidth * this.zoom.scale) - this.dom.viewport.clientWidth) / 2);
-        const maxY = Math.max(0, ((this.zoom.baseHeight * this.zoom.scale) - this.dom.viewport.clientHeight) / 2);
-        this.zoom.panX = this.clamp(this.zoom.panX, -maxX, maxX);
-        this.zoom.panY = this.clamp(this.zoom.panY, -maxY, maxY);
-    }
-
-    updateZoomHint() {
-        const canZoom = this.zoom.maxScale > 1.02;
-        this.dom.viewport.classList.toggle('can-zoom', canZoom);
-        this.dom.zoomHint.hidden = !canZoom;
-        this.dom.zoomHintText.textContent = this.zoom.scale > 1.02 ? 'Click to fit' : 'Click to zoom';
-    }
-
-    applyZoom() {
-        this.clampPan();
-        this.dom.media.style.transform = `translate(${this.zoom.panX}px, ${this.zoom.panY}px) scale(${this.zoom.scale})`;
-        this.dom.viewport.classList.toggle('is-zoomed', this.zoom.scale > 1.02);
-        this.dom.viewport.classList.toggle('is-dragging', this.zoom.isDragging);
-        this.updateZoomHint();
-    }
-
-    resetZoom() {
-        this.zoom.scale = 1;
-        this.zoom.panX = 0;
-        this.zoom.panY = 0;
-        this.zoom.isDragging = false;
-        this.applyZoom();
-    }
-
-    zoomTo(scale, clientX, clientY) {
-        const nextScale = this.clamp(scale, 1, this.zoom.maxScale || 1);
-        if (Math.abs(nextScale - this.zoom.scale) < 0.001) return;
-
-        const previousScale = this.zoom.scale;
-        const viewportRect = this.dom.viewport.getBoundingClientRect();
-        const originX = Number.isFinite(clientX) ? clientX - viewportRect.left - (viewportRect.width / 2) : 0;
-        const originY = Number.isFinite(clientY) ? clientY - viewportRect.top - (viewportRect.height / 2) : 0;
-        const delta = nextScale / previousScale;
-
-        this.zoom.panX -= originX * (delta - 1);
-        this.zoom.panY -= originY * (delta - 1);
-        this.zoom.scale = nextScale;
-        this.applyZoom();
-    }
-
-    handlePointerDown(event) {
-        if (!this.isOpen || this.zoom.maxScale <= 1.02) return;
-        this.zoom.pointerDown = true;
-        this.zoom.moved = false;
-        this.zoom.skipClick = false;
-        this.zoom.startPanX = this.zoom.panX;
-        this.zoom.startPanY = this.zoom.panY;
-        this.zoom.startClientX = event.clientX;
-        this.zoom.startClientY = event.clientY;
-        this.zoom.isDragging = this.zoom.scale > 1.02;
-        if (this.zoom.isDragging) {
-            this.dom.viewport.setPointerCapture?.(event.pointerId);
-        }
-        this.applyZoom();
-    }
-
-    handlePointerMove(event) {
-        if (!this.zoom.pointerDown) return;
-        const deltaX = event.clientX - this.zoom.startClientX;
-        const deltaY = event.clientY - this.zoom.startClientY;
-        if (Math.abs(deltaX) > 4 || Math.abs(deltaY) > 4) {
-            this.zoom.moved = true;
-        }
-        if (!this.zoom.isDragging || !this.zoom.moved) return;
-        this.zoom.panX = this.zoom.startPanX + deltaX;
-        this.zoom.panY = this.zoom.startPanY + deltaY;
-        this.applyZoom();
-    }
-
-    handlePointerUp(event) {
-        if (!this.zoom.pointerDown) return;
-        this.zoom.pointerDown = false;
-        this.zoom.isDragging = false;
-        this.zoom.skipClick = this.zoom.moved;
-        this.dom.viewport.releasePointerCapture?.(event.pointerId);
-        this.applyZoom();
-        this.zoom.moved = false;
-    }
-
-    handleViewportClick(event) {
-        if (!this.isOpen || this.zoom.maxScale <= 1.02) return;
-        if (this.zoom.skipClick) {
-            this.zoom.skipClick = false;
-            return;
-        }
-        if (this.zoom.scale > 1.02) {
-            this.resetZoom();
-            return;
-        }
-        this.zoomTo(this.zoom.maxScale, event.clientX, event.clientY);
-    }
-
-    measureMedia() {
-        const viewportWidth = this.dom.viewport.clientWidth;
-        const viewportHeight = this.dom.viewport.clientHeight;
-        const naturalWidth = this.dom.img.naturalWidth || viewportWidth;
-        const naturalHeight = this.dom.img.naturalHeight || viewportHeight;
-
-        if (!viewportWidth || !viewportHeight || !naturalWidth || !naturalHeight) return;
-
-        const mediaSize = this.getContainedMediaSize(viewportWidth, viewportHeight, naturalWidth, naturalHeight);
-        this.zoom.baseWidth = mediaSize.width;
-        this.zoom.baseHeight = mediaSize.height;
-        this.zoom.maxScale = mediaSize.maxScale;
-
-        this.dom.media.style.width = `${this.zoom.baseWidth}px`;
-        this.dom.media.style.height = `${this.zoom.baseHeight}px`;
-        this.resetZoom();
-    }
-
-    syncThumbs() {
-        this.dom.sidebar.querySelectorAll('.sp-lightbox-thumb').forEach((button, index) => {
-            button.classList.toggle('is-active', index === this.activeIndex);
-        });
-    }
-
-    loadInitialImage(index) {
-        const item = this.items[index];
-        this.activeIndex = index;
-        this.syncThumbs();
-        this.dom.img.src = item.src;
-        this.dom.img.alt = item.alt || `${item.title || 'Project render'} ${index + 1}`;
-        this.dom.img.style.opacity = '1';
-
-        this.updateZoomHint();
-    }
-
-    setImage(index) {
-        if (!this.isOpen || index === this.activeIndex) return;
-
-        const item = this.items[index];
-        const previous = this.dom.img;
-        const next = previous.cloneNode(false);
-
-        this.activeIndex = index;
-        this.syncThumbs();
-
-        next.src = item.src;
-        next.alt = item.alt || `${item.title || 'Project render'} ${index + 1}`;
-        next.style.opacity = '0';
-        this.dom.media.appendChild(next);
-
-        const finalizeSwap = () => {
-            this.dom.img = next;
-            this.measureMedia();
-
-            gsap.to(previous, {
-                opacity: 0,
-                duration: 0.35,
-                ease: 'power2.inOut',
-                onComplete: () => previous.remove()
-            });
-
-            gsap.to(next, {
-                opacity: 1,
-                duration: 0.35,
-                ease: 'power2.inOut'
-            });
-        };
-
-        if (next.complete) {
-            finalizeSwap();
-        } else {
-            next.addEventListener('load', finalizeSwap, { once: true });
-            next.addEventListener('error', finalizeSwap, { once: true });
-        }
-    }
-
-    open(index, sourceRect) {
-        if (!this.items.length) return;
-
-        this.isOpen = true;
-        this.sourceRect = sourceRect;
-        document.body.style.overflow = 'hidden';
-        this.dom.root.classList.add('is-active');
-
-        this.setViewportToRect(sourceRect);
-        this.primeMediaDimensions(sourceRect?.width || 280, sourceRect?.height || 220);
-        this.loadInitialImage(index);
-
-        gsap.to(this.dom.bg, { opacity: 1, duration: 0.6, ease: 'power2.out' });
-        gsap.to(this.dom.close, { opacity: 1, duration: 0.6, delay: 0.28, ease: 'power2.out' });
-        if (this.dom.img.complete) {
-            this.setTargetViewport(true);
-        } else {
-            this.dom.img.addEventListener('load', () => this.setTargetViewport(true), { once: true });
-            this.dom.img.addEventListener('error', () => this.setTargetViewport(true), { once: true });
-        }
-
-        gsap.fromTo(
-            this.dom.sidebar.querySelectorAll('.sp-lightbox-thumb'),
-            { x: window.innerWidth <= 780 ? 0 : 26, y: window.innerWidth <= 780 ? 18 : 0, opacity: 0 },
-            { x: 0, y: 0, opacity: 1, duration: 0.55, stagger: 0.07, ease: 'power3.out', delay: 0.42 }
-        );
-    }
-
-    close() {
-        if (!this.isOpen) return;
-
-        document.body.style.overflow = '';
-        this.resetZoom();
-
-        gsap.to(this.dom.bg, { opacity: 0, duration: 0.45, ease: 'power2.out' });
-        gsap.to(this.dom.close, { opacity: 0, duration: 0.28 });
-        gsap.to(this.dom.sidebar.querySelectorAll('.sp-lightbox-thumb'), {
-            x: window.innerWidth <= 780 ? 0 : 22,
-            y: window.innerWidth <= 780 ? 14 : 0,
-            opacity: 0,
-            duration: 0.28,
-            stagger: -0.04,
-            ease: 'power2.in'
-        });
-
-        if (this.sourceRect) {
-            gsap.to(this.dom.viewport, {
-                left: this.sourceRect.left + (this.sourceRect.width / 2),
-                top: this.sourceRect.top + (this.sourceRect.height / 2),
-                width: this.sourceRect.width,
-                height: this.sourceRect.height,
-                duration: 0.82,
-                ease: 'power3.inOut',
-                onComplete: () => this.reset()
-            });
-            gsap.to(this.dom.media, {
-                width: this.sourceRect.width,
-                height: this.sourceRect.height,
-                duration: 0.82,
-                ease: 'power3.inOut'
-            });
-            return;
-        }
-
-        this.reset();
-    }
-
-    reset() {
-        this.dom.root.classList.remove('is-active');
-        this.isOpen = false;
-        this.sourceRect = null;
-    }
-
-    handleResize() {
-        if (!this.isOpen) return;
-        this.setTargetViewport(false);
-    }
-
-    handleKeydown(event) {
-        if (!this.isOpen) return;
-
-        if (event.key === 'Escape') {
-            this.close();
-        } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-            this.setImage((this.activeIndex + 1) % this.items.length);
-        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-            this.setImage((this.activeIndex - 1 + this.items.length) % this.items.length);
-        }
-    }
-}
-
 function classifyAspect(aspectRatio) {
     if (aspectRatio >= 1.42) return 'wide';
     if (aspectRatio >= 1.06) return 'landscape';
@@ -800,97 +199,36 @@ function getTilt(index, columns) {
     return [0, -0.8, 0.55, -0.45, 0.7, -0.62, 0.3, -0.24][index % 8];
 }
 
-function buildGallery(galleryItems) {
-    const gallery = document.getElementById('selected-project-gallery');
-    if (!gallery) return { items: [], lightbox: null };
+function getGalleryItemDataFromButton(button, index) {
+    const image = button.querySelector('.sp-gallery-image');
+    const caption = button.querySelector('.sp-gallery-caption strong')?.textContent?.trim();
+    const title = button.dataset.title || caption || toFrameLabel(index);
+    const src = image?.currentSrc || image?.getAttribute('src') || '';
 
-    if (!Array.isArray(galleryItems) || galleryItems.length === 0) {
-        gallery.innerHTML = '<p class="sp-section-copy">No renders have been assigned to this selected project yet.</p>';
-        return { items: [], lightbox: null };
-    }
+    return {
+        thumbSrc: button.dataset.thumbSrc || src,
+        fullSrc: button.dataset.fullSrc || src,
+        alt: image?.getAttribute('alt') || title,
+        caption: caption || toFrameLabel(index),
+        title
+    };
+}
 
-    const normalizedItems = galleryItems.map((item, index) => ({
-        src: item.src,
-        alt: item.alt || `${item.name || 'Project render'} ${index + 1}`,
-        caption: item.caption || toFrameLabel(index),
-        meta: item.meta || 'Selected Projects',
-        title: item.title || 'Project render'
-    })).filter((item) => item.src);
+function getLightboxUiText() {
+    const isSpanish = (document.documentElement.lang || '').toLowerCase().startsWith('es');
+    if (!isSpanish) return {};
 
-    const lightbox = new SelectedProjectLightbox(normalizedItems);
-    const fragment = document.createDocumentFragment();
+    return {
+        closeLightbox: 'Cerrar visor',
+        clickToZoom: 'Clic para acercar',
+        clickToFit: 'Clic para ajustar',
+        openImage: (index) => `Abrir imagen ${index + 1}`,
+        projectImage: 'Imagen del proyecto',
+        imageLabel: (label, index) => `${label} imagen ${index + 1}`
+    };
+}
 
-    normalizedItems.forEach((item, index) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'sp-gallery-item';
-        button.dataset.index = String(index);
-        button.dataset.aspect = '1.15';
-        button.setAttribute('aria-label', `Open ${item.caption}`);
-        button.innerHTML = `
-            <span class="sp-gallery-frame">
-                <img class="sp-gallery-image" src="${item.src}" alt="${item.alt}" ${index < 2 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-                <span class="sp-gallery-caption">
-                    <span>
-                        <strong>${item.caption}</strong>
-                        <span>${item.meta}</span>
-                    </span>
-                    <span class="sp-gallery-index">${String(index + 1).padStart(2, '0')}</span>
-                </span>
-            </span>
-        `;
-
-        const image = button.querySelector('.sp-gallery-image');
-        
-        if (!image.complete) {
-            image.style.opacity = '0';
-            image.style.transition = 'opacity 0.8s ease, transform 0.9s var(--transition-smooth), filter 0.7s ease';
-        }
-
-        const updateAspect = () => {
-            const naturalWidth = image.naturalWidth || image.width || 1;
-            const naturalHeight = image.naturalHeight || image.height || 1;
-            button.dataset.aspect = String(naturalWidth / naturalHeight);
-            
-            if (image.style.opacity === '0') {
-                image.style.opacity = '1';
-            }
-            
-            queueGalleryLayout();
-        };
-
-        if (image.complete) {
-            updateAspect();
-        } else {
-            image.addEventListener('load', updateAspect, { once: true });
-            image.addEventListener('error', updateAspect, { once: true });
-        }
-
-        button.addEventListener('pointermove', (event) => {
-            const rect = button.getBoundingClientRect();
-            const x = ((event.clientX - rect.left) / rect.width) * 100;
-            const y = ((event.clientY - rect.top) / rect.height) * 100;
-            button.style.setProperty('--mx', `${x}%`);
-            button.style.setProperty('--my', `${y}%`);
-        });
-
-        button.addEventListener('pointerleave', () => {
-            button.style.removeProperty('--mx');
-            button.style.removeProperty('--my');
-        });
-
-        button.addEventListener('click', () => {
-            const rect = button.getBoundingClientRect();
-            lightbox.open(index, rect);
-        });
-
-        fragment.appendChild(button);
-    });
-
-    gallery.innerHTML = '';
-    gallery.appendChild(fragment);
-
-    const items = Array.from(gallery.querySelectorAll('.sp-gallery-item'));
+function connectGalleryItems(gallery, items, mediaItems) {
     let layoutFrame = null;
 
     function applyGalleryLayout() {
@@ -925,10 +263,151 @@ function buildGallery(galleryItems) {
         });
     }
 
+    const revealObserver = 'IntersectionObserver' in window
+        ? new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                entry.target.classList.add('is-gallery-visible');
+
+                if (entry.target.classList.contains('is-image-ready')) {
+                    entry.target.classList.add('is-image-loaded');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 })
+        : null;
+
+    items.forEach((button, index) => {
+        const image = button.querySelector('.sp-gallery-image');
+        if (!image) return;
+
+        const markImageReady = () => {
+            button.classList.remove('is-image-loading');
+            button.classList.add('is-image-ready');
+
+            if (button.classList.contains('is-gallery-visible')) {
+                button.classList.add('is-image-loaded');
+                revealObserver?.unobserve(button);
+            }
+        };
+
+        button.classList.add('is-image-loading');
+
+        if (revealObserver) {
+            revealObserver.observe(button);
+        } else {
+            button.classList.add('is-gallery-visible');
+        }
+
+        const updateAspect = () => {
+            const naturalWidth = image.naturalWidth || image.width || 1;
+            const naturalHeight = image.naturalHeight || image.height || 1;
+            button.dataset.aspect = String(naturalWidth / naturalHeight);
+
+            markImageReady();
+            queueGalleryLayout();
+        };
+
+        if (image.complete) {
+            updateAspect();
+        } else {
+            image.addEventListener('load', updateAspect, { once: true });
+            image.addEventListener('error', updateAspect, { once: true });
+        }
+
+        button.addEventListener('pointermove', (event) => {
+            const rect = button.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            button.style.setProperty('--mx', `${x}%`);
+            button.style.setProperty('--my', `${y}%`);
+        });
+
+        button.addEventListener('pointerleave', () => {
+            button.style.removeProperty('--mx');
+        });
+
+        button.addEventListener('pointerleave', () => {
+            button.style.removeProperty('--my');
+        });
+
+        button.addEventListener('click', () => {
+            const rect = button.getBoundingClientRect();
+            openGalleryLightbox({
+                mediaItems,
+                sourceRect: rect,
+                initialIndex: index,
+                uiText: getLightboxUiText()
+            });
+        });
+    });
+
     queueGalleryLayout();
     window.addEventListener('resize', queueGalleryLayout, { passive: true });
+}
 
-    return { items, lightbox };
+function buildGallery(galleryItems) {
+    const gallery = document.getElementById('selected-project-gallery');
+    if (!gallery) return { items: [], lightbox: null };
+
+    const existingItems = Array.from(gallery.querySelectorAll('.sp-gallery-item'));
+    if (existingItems.length) {
+        const normalizedItems = existingItems.map(getGalleryItemDataFromButton).filter((item) => item.fullSrc);
+
+        if (normalizedItems.length) {
+            connectGalleryItems(gallery, existingItems, normalizedItems);
+        }
+
+        return { items: existingItems, lightbox: null };
+    }
+
+    if (!Array.isArray(galleryItems) || galleryItems.length === 0) {
+        gallery.innerHTML = '<p class="sp-section-copy">No renders have been assigned to this selected project yet.</p>';
+        return { items: [], lightbox: null };
+    }
+
+    const normalizedItems = galleryItems.map((item, index) => ({
+        thumbSrc: item.thumbSrc || item.thumb || item.src,
+        fullSrc: item.fullSrc || item.full || item.src,
+        alt: item.alt || `${item.name || 'Project render'} ${index + 1}`,
+        caption: item.caption || toFrameLabel(index),
+        meta: item.meta || 'Selected Projects',
+        title: item.title || 'Project render'
+    })).filter((item) => item.fullSrc);
+
+    const fragment = document.createDocumentFragment();
+
+    normalizedItems.forEach((item, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'sp-gallery-item';
+        button.dataset.index = String(index);
+        button.dataset.aspect = '1.15';
+        button.setAttribute('aria-label', `Open ${item.caption}`);
+        button.innerHTML = `
+            <span class="sp-gallery-frame">
+                <img class="sp-gallery-image" src="${item.thumbSrc || item.fullSrc}" alt="${item.alt}" ${index < 2 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+                <span class="sp-gallery-caption">
+                    <span>
+                        <strong>${item.caption}</strong>
+                        <span>${item.meta}</span>
+                    </span>
+                    <span class="sp-gallery-index">${String(index + 1).padStart(2, '0')}</span>
+                </span>
+            </span>
+        `;
+
+        fragment.appendChild(button);
+    });
+
+    gallery.innerHTML = '';
+    gallery.appendChild(fragment);
+
+    const items = Array.from(gallery.querySelectorAll('.sp-gallery-item'));
+    connectGalleryItems(gallery, items, normalizedItems);
+
+    return { items, lightbox: null };
 }
 
 function initAnimations(items) {
@@ -1034,13 +513,15 @@ function initAnimations(items) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const data = await loadProjectData();
-    if (!data) return;
 
-    hydrateProjectMeta(data);
+    if (data) {
+        hydrateProjectMeta(data);
+    }
+
     prepareHeroTitleAnimation();
     prepareBackLinkHover();
-    initProjectMap(data);
+    initProjectMap(data || {});
 
-    const { items } = buildGallery(data.gallery || []);
+    const { items } = buildGallery(data?.gallery || []);
     initAnimations(items);
 });

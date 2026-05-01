@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const { isMobile, subtitleRevealPromise } = await initializeWorkPageIntro({
         titleSelector: '.stills-title',
         subtitleSelector: '.stills-subtitle',
-        fallbackDelayMobileMs: 1000
+        fallbackDelayMobileMs: 750
     });
 
     // Let sibling engines (gallery, etc.) respect the landing reveal order.

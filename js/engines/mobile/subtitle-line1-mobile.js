@@ -58,8 +58,8 @@ export class SubtitleLine1Mobile {
         gsap.to(words, {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.1, // Fast sequential
+            duration: 0.6,
+            stagger: 0.075, // Fast sequential
             ease: "power2.out",
             onComplete: () => {
                 window.dispatchEvent(new CustomEvent('line1Complete'));

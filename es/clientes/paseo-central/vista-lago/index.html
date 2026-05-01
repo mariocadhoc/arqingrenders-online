@@ -33,16 +33,18 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/selected-project.css">
+    <link rel="stylesheet" href="/css/map-gps.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="/css/ClientProjects.css">
 </head>
 
 <body>
 
     <div id="header"></div>
 
-    <main id="main" class="selected-project-page" data-selected-project-slug="vista-lago">
+    <main id="main" class="selected-project-page">
         <div class="sp-shell">
 
             <section class="sp-hero" data-js-reveal>
@@ -73,7 +75,7 @@
                         </div>
 
                         <div class="sp-map-shell">
-                            <div id="selected-project-map" class="sp-map hidden"></div>
+                            <div id="selected-project-map" class="sp-map hidden" data-map-lat="28.62112260404074" data-map-lng="-106.12748849930648" data-map-initial-zoom="9.6" data-map-zoom="15"></div>
                             <div class="sp-map-empty" data-map-empty>
                                 <div>
                                     <span>Coordenadas Pendientes</span>
@@ -86,28 +88,106 @@
             </section>
 
             <section class="sp-gallery-section">
+
+                <div class="sp-download-divider"></div>
+                
                 <div class="sp-section-head">
-                    <span class="sp-kicker">Galería</span>
                     <div>
                         <h2 class="sp-section-title">Renders</h2>
                     </div>
                 </div>
 
                 <div id="selected-project-gallery" class="sp-gallery" aria-live="polite">
-                    <!-- Espacio reservado para las imágenes de la galería -->
+                    <button type="button" class="sp-gallery-item" data-index="0" data-aspect="1.15" aria-label="Abrir 01">
+                        <span class="sp-gallery-frame">
+                            <img class="sp-gallery-image" src="/es/clientes/paseo-central/vista-lago/assets/Deck_Vista.webp" alt="Deck Vista" fetchpriority="high" decoding="async">
+                            <span class="sp-gallery-caption">
+                                <span>
+                                    <strong>01</strong>
+                                    <span>Vista Lago Residencial</span>
+                                </span>
+                                <span class="sp-gallery-index">01</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="sp-gallery-item" data-index="1" data-aspect="1.15" aria-label="Abrir 02">
+                        <span class="sp-gallery-frame">
+                            <img class="sp-gallery-image" src="/es/clientes/paseo-central/vista-lago/assets/Deck_Yoga-v3.webp" alt="Deck Yoga" fetchpriority="high" decoding="async">
+                            <span class="sp-gallery-caption">
+                                <span>
+                                    <strong>02</strong>
+                                    <span>Vista Lago Residencial</span>
+                                </span>
+                                <span class="sp-gallery-index">02</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="sp-gallery-item" data-index="2" data-aspect="1.15" aria-label="Abrir 03">
+                        <span class="sp-gallery-frame">
+                            <img class="sp-gallery-image" src="/es/clientes/paseo-central/vista-lago/assets/Areas_verdes_.webp" alt="Áreas Verdes" loading="lazy" decoding="async">
+                            <span class="sp-gallery-caption">
+                                <span>
+                                    <strong>03</strong>
+                                    <span>Vista Lago Residencial</span>
+                                </span>
+                                <span class="sp-gallery-index">03</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="sp-gallery-item" data-index="3" data-aspect="1.15" aria-label="Abrir 04">
+                        <span class="sp-gallery-frame">
+                            <img class="sp-gallery-image" src="/es/clientes/paseo-central/vista-lago/assets/Playground_.webp" alt="Playground" loading="lazy" decoding="async">
+                            <span class="sp-gallery-caption">
+                                <span>
+                                    <strong>04</strong>
+                                    <span>Vista Lago Residencial</span>
+                                </span>
+                                <span class="sp-gallery-index">04</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="sp-gallery-item" data-index="4" data-aspect="1.15" aria-label="Abrir 05">
+                        <span class="sp-gallery-frame">
+                            <img class="sp-gallery-image" src="/es/clientes/paseo-central/vista-lago/assets/Padel_1_.webp" alt="Cancha de Pádel" loading="lazy" decoding="async">
+                            <span class="sp-gallery-caption">
+                                <span>
+                                    <strong>05</strong>
+                                    <span>Vista Lago Residencial</span>
+                                </span>
+                                <span class="sp-gallery-index">05</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="sp-gallery-item" data-index="5" data-aspect="1.15" aria-label="Abrir 06">
+                        <span class="sp-gallery-frame">
+                            <img class="sp-gallery-image" src="/es/clientes/paseo-central/vista-lago/assets/Padel_Personas.webp" alt="Pádel - Personas" loading="lazy" decoding="async">
+                            <span class="sp-gallery-caption">
+                                <span>
+                                    <strong>06</strong>
+                                    <span>Vista Lago Residencial</span>
+                                </span>
+                                <span class="sp-gallery-index">06</span>
+                            </span>
+                        </span>
+                    </button>
                 </div>
 
-                <div style="width: 100%; height: 1px; background: #e8d5b0; margin: 100px 0 80px; opacity: 0.8; transform-origin: left center;"></div>
+                <div class="sp-download-divider"></div>
 
-                <div class="sp-section-head" style="margin-bottom: 40px;">
+                <div class="sp-section-head sp-download-head">
                     <div>
                         <h2 class="sp-section-title">Descargas</h2>
                         <p class="sp-section-copy">Descarga el material del proyecto:</p>
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
-                    <a href="https://drive.google.com/drive/folders/1mi47iuLuNRrJPJigPeKtON7qASLgrIEw?usp=drive_link" target="_blank" rel="noopener noreferrer" class="sp-back-link" aria-label="Descargar Imágenes y Videos" style="margin: 0; flex: 1; min-width: min(100%, 360px);">
+                <div class="sp-download-actions">
+                    <a href="https://drive.google.com/drive/folders/1mi47iuLuNRrJPJigPeKtON7qASLgrIEw?usp=drive_link" target="_blank" rel="noopener noreferrer" class="sp-back-link sp-download-link" aria-label="Descargar Imágenes y Videos">
                         <span class="sp-back-link-main">
                             <span class="sp-back-link-label">Acceder a la nube</span>
                         </span>
@@ -127,56 +207,6 @@
     <script defer src="/js/burger.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    
-    <script>
-        window.projectData = {
-            skipHydration: true,
-            map: {
-                lat: 28.62112260404074,
-                lng: -106.12748849930648,
-                initialZoom: 9.6,
-                zoom: 15
-            },
-            gallery: [
-                {
-                    src: '/es/clientes/paseo-central/vista-lago/assets/Deck_Vista.webp',
-                    alt: 'Deck Vista',
-                    caption: '01',
-                    meta: 'Vista Lago Residencial'
-                },
-                {
-                    src: '/es/clientes/paseo-central/vista-lago/assets/Deck_Yoga-v3.webp',
-                    alt: 'Deck Yoga',
-                    caption: '02',
-                    meta: 'Vista Lago Residencial'
-                },
-                {
-                    src: '/es/clientes/paseo-central/vista-lago/assets/Areas_verdes_.webp',
-                    alt: 'Áreas Verdes',
-                    caption: '03',
-                    meta: 'Vista Lago Residencial'
-                },
-                {
-                    src: '/es/clientes/paseo-central/vista-lago/assets/Playground_.webp',
-                    alt: 'Playground',
-                    caption: '04',
-                    meta: 'Vista Lago Residencial'
-                },
-                {
-                    src: '/es/clientes/paseo-central/vista-lago/assets/Padel_1_.webp',
-                    alt: 'Cancha de Pádel',
-                    caption: '05',
-                    meta: 'Vista Lago Residencial'
-                },
-                {
-                    src: '/es/clientes/paseo-central/vista-lago/assets/Padel_Personas.webp',
-                    alt: 'Pádel - Personas',
-                    caption: '06',
-                    meta: 'Vista Lago Residencial'
-                }
-            ]
-        };
-    </script>
     <script type="module" src="/js/engines/selected-project-page.js"></script>
     <script defer src="/js/boot-ready.js"></script>
 </body>

@@ -54,8 +54,8 @@ export class SubtitleLine2Animation {
             opacity: 1,
             scale: 1,
             rotation: 0,
-            duration: 0.9,
-            stagger: 0.03,
+            duration: 0.675,
+            stagger: 0.02,
             ease: 'back.out(3)',
             onComplete: () => {
                 gsap.fromTo('.section-work',
@@ -63,8 +63,8 @@ export class SubtitleLine2Animation {
                     {
                         opacity: 1,
                         y: 0,
-                        duration: 1.5,
-                        stagger: 0.2,
+                        duration: 1.125,
+                        stagger: 0.15,
                         ease: 'power1.inOut',
                         clearProps: 'transform',
                         onComplete: () => {

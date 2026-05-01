@@ -12,10 +12,10 @@ function revealWithoutGsap(lines) {
 export async function initializeWorkPageIntro({
     titleSelector,
     subtitleSelector,
-    fallbackDelayMobileMs = 1000,
+    fallbackDelayMobileMs = 750,
     fallbackDelayDesktopMs = null,
     subtitleFrom = { opacity: 0, y: 30 },
-    subtitleTo = { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: 'power3.out' },
+    subtitleTo = { opacity: 1, y: 0, duration: 0.75, stagger: 0.15, ease: 'power3.out' },
     onSubtitleRevealStart,
     onSubtitleRevealComplete
 } = {}) {

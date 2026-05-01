@@ -1,0 +1,69 @@
+.selected-project-page .sp-gallery-section .sp-section-head {
+    justify-items: start;
+    text-align: left;
+}
+
+@keyframes vista-lago-gallery-fade {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.selected-project-page #selected-project-gallery.sp-gallery > .sp-gallery-item:not(.is-image-loaded) .sp-gallery-frame {
+    opacity: 0;
+}
+
+.selected-project-page #selected-project-gallery.sp-gallery > .sp-gallery-item.is-image-loaded .sp-gallery-frame {
+    animation: vista-lago-gallery-fade 520ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .selected-project-page #selected-project-gallery.sp-gallery > .sp-gallery-item.is-image-loaded .sp-gallery-frame {
+        opacity: 1;
+        animation: none;
+    }
+}
+
+.sp-download-divider {
+    width: 100%;
+    height: 1px;
+    margin: 100px 0 80px;
+    background: #e8d5b0;
+    opacity: 0.8;
+    transform-origin: left center;
+}
+
+.sp-download-head {
+    margin-bottom: 40px;
+}
+
+.sp-download-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.sp-download-link {
+    flex: 1;
+    min-width: min(100%, 360px);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .sp-download-link {
+        text-align: center;
+    }
+
+    .sp-download-link .sp-back-link-main,
+    .sp-download-link .sp-back-link-label {
+        justify-content: center;
+        text-align: center;
+    }
+}
