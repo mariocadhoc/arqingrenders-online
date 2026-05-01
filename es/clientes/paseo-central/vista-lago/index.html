@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es-MX">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT485BXPK0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HT485BXPK0');
+    </script>
+    <script src="/js/engines/boot-ready-init.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Vista Lago Residencial | Paseo Central Inmobiliaria | Arqing</title>
+    <meta name="description"
+        content="Landing de proyecto Vista Lago Residencial en Chihuahua para Paseo Central Inmobiliaria.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://www.arqingrenders.com/es/clientes/paseo-central/vista-lago/">
+    <meta name="language" content="es-MX">
+    <meta name="author" content="Arqing">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/resources/favicon/Favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/resources/favicon/Favicon_16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/resources/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/selected-project.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <main id="main" class="selected-project-page" data-selected-project-slug="vista-lago">
+        <div class="sp-shell">
+
+            <section class="sp-hero" data-js-reveal>
+                <div class="sp-hero-inner">
+                    <div class="sp-copy">
+                        <span class="sp-kicker" data-project-eyebrow>Proyecto</span>
+                        <h1 class="sp-title" data-project-name>Vista Lago Residencial</h1>
+                        <p class="sp-intro" data-project-description>Fraccionamiento residencial con lotes elevados sobre un valle natural, con un diseño orgánico que dialoga con la naturaleza.</p>
+
+                        <div class="sp-meta-grid">
+                            <article class="sp-meta-card">
+                                <span class="sp-meta-label">Locación</span>
+                                <p data-project-location>Chihuahua, Chih.</p>
+                            </article>
+
+                            <article class="sp-meta-card">
+                                <span class="sp-meta-label">Cliente</span>
+                                <p data-project-client>Paseo Central Inmobiliaria</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <aside class="sp-map-card">
+                        <div class="sp-map-header">
+                            <div>
+                                <span class="sp-map-heading">Mapa</span>
+                            </div>
+                        </div>
+
+                        <div class="sp-map-shell">
+                            <div id="selected-project-map" class="sp-map hidden"></div>
+                            <div class="sp-map-empty" data-map-empty>
+                                <div>
+                                    <span>Coordenadas Pendientes</span>
+                                    <p>Agrega la latitud y longitud en el módulo de datos del proyecto para activar el pin del mapa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="sp-gallery-section">
+                <div class="sp-section-head">
+                    <span class="sp-kicker">Galería</span>
+                    <div>
+                        <h2 class="sp-section-title">Renders</h2>
+                    </div>
+                </div>
+
+                <div id="selected-project-gallery" class="sp-gallery" aria-live="polite">
+                    <!-- Espacio reservado para las imágenes de la galería -->
+                </div>
+
+                <div style="width: 100%; height: 1px; background: #e8d5b0; margin: 100px 0 80px; opacity: 0.8; transform-origin: left center;"></div>
+
+                <div class="sp-section-head" style="margin-bottom: 40px;">
+                    <div>
+                        <h2 class="sp-section-title">Descargas</h2>
+                        <p class="sp-section-copy">Descarga el material del proyecto:</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
+                    <a href="https://drive.google.com/drive/folders/1mi47iuLuNRrJPJigPeKtON7qASLgrIEw?usp=drive_link" target="_blank" rel="noopener noreferrer" class="sp-back-link" aria-label="Descargar Imágenes y Videos" style="margin: 0; flex: 1; min-width: min(100%, 360px);">
+                        <span class="sp-back-link-main">
+                            <span class="sp-back-link-label">Acceder a la nube</span>
+                        </span>
+                    </a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script defer src="/js/load-components.js"></script>
+    <script defer src="/js/burger.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script>
+        window.projectData = {
+            skipHydration: true,
+            map: {
+                lat: 28.62112260404074,
+                lng: -106.12748849930648,
+                initialZoom: 9.6,
+                zoom: 15
+            },
+            gallery: [
+                {
+                    src: '/es/clientes/paseo-central/vista-lago/assets/Deck_Vista.webp',
+                    alt: 'Deck Vista',
+                    caption: '01',
+                    meta: 'Vista Lago Residencial'
+                },
+                {
+                    src: '/es/clientes/paseo-central/vista-lago/assets/Deck_Yoga-v3.webp',
+                    alt: 'Deck Yoga',
+                    caption: '02',
+                    meta: 'Vista Lago Residencial'
+                },
+                {
+                    src: '/es/clientes/paseo-central/vista-lago/assets/Areas_verdes_.webp',
+                    alt: 'Áreas Verdes',
+                    caption: '03',
+                    meta: 'Vista Lago Residencial'
+                },
+                {
+                    src: '/es/clientes/paseo-central/vista-lago/assets/Playground_.webp',
+                    alt: 'Playground',
+                    caption: '04',
+                    meta: 'Vista Lago Residencial'
+                },
+                {
+                    src: '/es/clientes/paseo-central/vista-lago/assets/Padel_1_.webp',
+                    alt: 'Cancha de Pádel',
+                    caption: '05',
+                    meta: 'Vista Lago Residencial'
+                },
+                {
+                    src: '/es/clientes/paseo-central/vista-lago/assets/Padel_Personas.webp',
+                    alt: 'Pádel - Personas',
+                    caption: '06',
+                    meta: 'Vista Lago Residencial'
+                }
+            ]
+        };
+    </script>
+    <script type="module" src="/js/engines/selected-project-page.js"></script>
+    <script defer src="/js/boot-ready.js"></script>
+</body>
+
+</html>

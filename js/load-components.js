@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const isEsPath = window.location.pathname.startsWith("/es/") || window.location.pathname === "/es";
   const includes = [
-    { id: "header", url: "/components/header.html", event: "header-loaded" },
-    { id: "footer", url: "/components/footer.html", event: "footer-loaded" }
+    { id: "header", url: isEsPath ? "/components/header-es.html" : "/components/header.html", event: "header-loaded" },
+    { id: "footer", url: isEsPath ? "/components/footer-es.html" : "/components/footer.html", event: "footer-loaded" }
   ];
 
   const hydrateLanguageLinks = (root) => {
@@ -59,11 +60,25 @@ document.addEventListener("header-loaded", () => {
   navLinks.forEach(link => {
     const linkPath = link.getAttribute("href");
 
-    // Exact match for root, or starts with for subpages (e.g. /work/stills active on /work/)
-    if (linkPath === "/" && currentPath === "/") {
+    if ((linkPath === "/" && currentPath === "/") || (linkPath === "/es/" && currentPath === "/es/")) {
       link.classList.add("active");
-    } else if (linkPath !== "/" && currentPath.startsWith(linkPath)) {
+    } else if (linkPath !== "/" && linkPath !== "/es/" && currentPath.startsWith(linkPath)) {
       link.classList.add("active");
+    }
+  });
+
+  // Highlight active language
+  const isEs = currentPath.startsWith("/es/") || currentPath === "/es";
+  const langLinks = document.querySelectorAll(".lang-link");
+  
+  langLinks.forEach(link => {
+    const lang = link.getAttribute("data-lang-link");
+    if ((lang === "es" && isEs) || (lang === "en" && !isEs)) {
+      link.classList.add("is-active");
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.classList.remove("is-active");
+      link.removeAttribute("aria-current");
     }
   });
 });

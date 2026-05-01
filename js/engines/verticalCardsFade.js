@@ -71,12 +71,12 @@ export function initVerticalCardsFade() {
                 start: "top top",
                 end: () => `+=${totalScroll}`,
                 pin: true,
-                // Fix 1 — Use transform-based pinning instead of position:fixed.
+                // Fix 1 — Use transform-based pinning instead of position:fixed for mobile only.
                 // position:fixed is processed on a separate WebKit compositor thread,
                 // causing a ~1-frame desync with touch scroll on Safari iOS.
-                // pinType:"transform" keeps pinning on the same thread as all other
-                // GSAP tweens, eliminating the stutter without affecting desktop browsers.
-                pinType: "transform",
+                // However, on desktop, "transform" causes jitter with smooth mouse wheel scroll,
+                // so we fallback to the default "fixed" pinning on desktop.
+                pinType: isMobile ? "transform" : "fixed",
                 scrub: true,
                 invalidateOnRefresh: true
             }

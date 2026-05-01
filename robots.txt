@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Private client folders
+Disallow: /clientes/
+Disallow: /es/clientes/
+Disallow: /clients/
+
+# HTML component fragments (prevent indexing standalone headers/footers)
+Disallow: /components/
+
+# Dev/config files
+Disallow: /.vscode/
+Disallow: /*.json$
+Disallow: /*.md$
+
+Sitemap: https://www.arqingrenders.com/sitemap.xml

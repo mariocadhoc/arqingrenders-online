@@ -104,6 +104,8 @@
     white-space: nowrap;
     overflow: hidden;
     vertical-align: top;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
 }
 
 .sp-title-char {
@@ -493,14 +495,58 @@
 
     .sp-hero-inner {
         grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .sp-copy {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sp-kicker {
+        justify-content: center;
+        font-size: 0.65rem;
+    }
+
+    .sp-kicker::before {
+        display: none;
     }
 
     .sp-title {
-        font-size: clamp(3.6rem, 17vw, 5.8rem);
+        font-size: clamp(2.8rem, 13vw, 4.2rem);
+        padding-bottom: 0;
+    }
+
+    .sp-intro {
+        font-size: clamp(0.95rem, 4vw, 1.15rem);
+        margin: 1.2rem auto 0;
     }
 
     .sp-meta-grid {
         grid-template-columns: 1fr;
+        gap: 0.8rem;
+        margin-top: 2rem;
+    }
+
+    .sp-meta-card {
+        min-height: 110px;
+        padding: 1.2rem;
+        text-align: center;
+    }
+
+    .sp-meta-card::before {
+        inset: auto auto -40% -20%;
+    }
+
+    .sp-meta-label {
+        font-size: 0.65rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .sp-meta-card p {
+        font-size: clamp(1rem, 3.5vw, 1.15rem);
     }
 
     .sp-map-card {
@@ -510,8 +556,8 @@
 
     .sp-map-shell,
     .sp-map {
-        min-height: 320px;
-        height: 320px;
+        min-height: 280px;
+        height: 280px;
     }
 
     .sp-gallery-section {
@@ -520,16 +566,28 @@
 
     .sp-section-head {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.5rem;
+        text-align: center;
+        justify-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .sp-section-title {
+        font-size: clamp(2.2rem, 9vw, 3rem);
+    }
+
+    .sp-section-copy {
+        font-size: 0.95rem;
+        margin: 0.5rem auto 0;
     }
 
     .sp-gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 20vw;
     }
 
     .sp-gallery-frame {
-        border-radius: 22px;
+        border-radius: 20px;
     }
+
 
 }

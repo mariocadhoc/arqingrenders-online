@@ -73,9 +73,6 @@
   position: relative;
   flex: 0 0 auto;
   transform-origin: center center;
-  transform: translateZ(0);
-  will-change: transform, width, height;
-  backface-visibility: hidden;
 }
 
 .gp-lightbox-zoom-hint,
@@ -135,8 +132,6 @@
   -webkit-user-drag: none;
   pointer-events: none;
   will-change: opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .gp-lightbox-close,

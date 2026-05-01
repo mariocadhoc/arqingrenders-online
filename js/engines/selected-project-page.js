@@ -1,4 +1,6 @@
 async function loadProjectData() {
+    if (window.projectData) return window.projectData;
+
     const pageRoot = document.querySelector('[data-selected-project-slug]');
     const projectSlug = pageRoot?.dataset.selectedProjectSlug;
     if (!projectSlug) return null;
@@ -113,6 +115,8 @@ function toFrameLabel(index) {
 }
 
 function hydrateProjectMeta(data) {
+    if (data.skipHydration) return;
+
     const galleryCount = Array.isArray(data.gallery) ? data.gallery.length : 0;
     const fallbackDescription = `${data.name} is presented through a curated still sequence for ${data.client}.`;
     const description = data.description || fallbackDescription;
@@ -837,10 +841,21 @@ function buildGallery(galleryItems) {
         `;
 
         const image = button.querySelector('.sp-gallery-image');
+        
+        if (!image.complete) {
+            image.style.opacity = '0';
+            image.style.transition = 'opacity 0.8s ease, transform 0.9s var(--transition-smooth), filter 0.7s ease';
+        }
+
         const updateAspect = () => {
             const naturalWidth = image.naturalWidth || image.width || 1;
             const naturalHeight = image.naturalHeight || image.height || 1;
             button.dataset.aspect = String(naturalWidth / naturalHeight);
+            
+            if (image.style.opacity === '0') {
+                image.style.opacity = '1';
+            }
+            
             queueGalleryLayout();
         };
 
@@ -902,7 +917,12 @@ function buildGallery(galleryItems) {
 
     function queueGalleryLayout() {
         if (layoutFrame) cancelAnimationFrame(layoutFrame);
-        layoutFrame = requestAnimationFrame(applyGalleryLayout);
+        layoutFrame = requestAnimationFrame(() => {
+            applyGalleryLayout();
+            if (typeof window.ScrollTrigger !== 'undefined') {
+                window.ScrollTrigger.refresh();
+            }
+        });
     }
 
     queueGalleryLayout();

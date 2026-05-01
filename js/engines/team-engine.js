@@ -41,12 +41,18 @@ class TeamEngine {
 
         window.addEventListener('load', () => this.syncPortraitFrames(), { once: true });
 
-        requestAnimationFrame(() => {
-            this.hero?.classList.add('is-ready');
+        // Safari Fix: Force a layout reflow so WebKit registers the DOM mutation (split text) 
+        // before we apply the .is-ready class.
+        void this.title.offsetWidth;
 
-            window.setTimeout(() => {
-                this.hero?.classList.add('show-scroll-cue');
-            }, 1200);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                this.hero?.classList.add('is-ready');
+
+                window.setTimeout(() => {
+                    this.hero?.classList.add('show-scroll-cue');
+                }, 1200);
+            });
         });
     }
 

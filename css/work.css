@@ -102,8 +102,7 @@
     will-change: transform;
 }
 
-.work-title,
-:is(.stills-title, .animations-title, .gallery-title) {
+.work-title {
     opacity: 0;
 }
 
