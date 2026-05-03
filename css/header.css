@@ -136,28 +136,34 @@ header.site-header.menu-open {
     will-change: transform, opacity;
 }
 
-.header-submenu:hover .header-submenu-panel .nav-link {
+.header-submenu:hover .header-submenu-panel .nav-link,
+.header-submenu:focus-within .header-submenu-panel .nav-link {
     opacity: 0.5;
     transform: translateY(0) scale(1);
 }
 
-.header-submenu:hover .header-submenu-panel .nav-link:nth-child(1) {
+.header-submenu:hover .header-submenu-panel .nav-link:nth-child(1),
+.header-submenu:focus-within .header-submenu-panel .nav-link:nth-child(1) {
     transition-delay: 0.05s;
 }
 
-.header-submenu:hover .header-submenu-panel .nav-link:nth-child(2) {
+.header-submenu:hover .header-submenu-panel .nav-link:nth-child(2),
+.header-submenu:focus-within .header-submenu-panel .nav-link:nth-child(2) {
     transition-delay: 0.1s;
 }
 
-.header-submenu:hover .header-submenu-panel .nav-link:nth-child(3) {
+.header-submenu:hover .header-submenu-panel .nav-link:nth-child(3),
+.header-submenu:focus-within .header-submenu-panel .nav-link:nth-child(3) {
     transition-delay: 0.15s;
 }
 
-.header-submenu:hover .header-submenu-panel .nav-link:nth-child(4) {
+.header-submenu:hover .header-submenu-panel .nav-link:nth-child(4),
+.header-submenu:focus-within .header-submenu-panel .nav-link:nth-child(4) {
     transition-delay: 0.2s;
 }
 
-.header-submenu:hover .header-submenu-panel .nav-link:hover {
+.header-submenu:hover .header-submenu-panel .nav-link:hover,
+.header-submenu:focus-within .header-submenu-panel .nav-link:focus {
     opacity: 1;
     color: #ffffff;
     transform: scale(1.03);
@@ -325,6 +331,35 @@ header.site-header.menu-open {
     letter-spacing: -0.02em;
 }
 
+.header-mobile-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.header-mobile-child-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding-left: 1.25rem;
+    border-left: 1px solid rgba(26, 26, 26, 0.18);
+}
+
+.header-mobile-inner .header-mobile-child-links .nav-link {
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    opacity: 0.62;
+    text-transform: uppercase;
+}
+
+.header-mobile-inner .header-mobile-child-links .nav-link:hover,
+.header-mobile-inner .header-mobile-child-links .nav-link:focus {
+    opacity: 1;
+}
+
 .header-mobile-inner .header-lang-switch {
     justify-content: center;
     color: #1a1a1a;
@@ -346,8 +381,17 @@ header.site-header.menu-open {
 }
 
 .header-mobile-submenu .nav-link {
-    text-transform: lowercase;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.62;
     color: #555555;
+}
+
+.header-mobile-submenu .nav-link:hover,
+.header-mobile-submenu .nav-link:focus {
+    opacity: 1;
 }
 
 .header-mobile-parent {

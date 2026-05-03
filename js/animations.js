@@ -330,6 +330,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         thumbsContainer.scrollTo({ left, behavior });
     }
 
+    function scrollMainPlayerIntoView() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        mainPlayer.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'center',
+            inline: 'nearest'
+        });
+    }
+
     function activateThumb(index, { autoplay = false, center = true, centerBehavior = 'smooth' } = {}) {
         allThumbs.forEach((thumb, thumbIndex) => {
             const isActive = thumbIndex === index;
@@ -530,6 +540,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             activateThumb(index, { autoplay: false });
+            scrollMainPlayerIntoView();
         });
     });
 

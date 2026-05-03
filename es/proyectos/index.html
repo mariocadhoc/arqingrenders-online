@@ -202,18 +202,19 @@
             <h2 class="all-work-title">Proyectos</h2>
             <div class="work-grid">
                 <!-- Stills -->
-                <a href="/es/proyectos/renders/" class="work-item">
+                <a href="/es/proyectos/renders/" class="work-item" data-cursor-label="Ver renders">
                     <div class="work-mask">
                         <img src="/assets/img/work/Chachalacas.avif" alt="Vista previa del portafolio de visualización arquitectónica" class="work-img" loading="lazy" decoding="async" width="2752" height="1536">
                     </div>
                     <div class="work-info">
-                        <span>Momentos</span>
                         <h3>Renders</h3>
+                        <p class="work-description">Imágenes fotorrealistas para interiores, exteriores y vistas aéreas.</p>
+                        <span class="work-cta">Ver renders →</span>
                     </div>
                 </a>
 
                 <!-- Animations -->
-                <a href="/es/proyectos/animaciones/" class="work-item alt">
+                <a href="/es/proyectos/animaciones/" class="work-item alt" data-cursor-label="Ver animaciones">
                     <div class="work-mask" style="aspect-ratio: 21 / 9;">
                         <video class="work-img"
                                autoplay loop muted playsinline
@@ -227,13 +228,14 @@
                         </video>
                     </div>
                     <div class="work-info">
-                        <span>Movimiento</span>
                         <h3>Animaciones</h3>
+                        <p class="work-description">Videos arquitectónicos para presentar espacios con atmósfera y claridad.</p>
+                        <span class="work-cta">Ver animaciones →</span>
                     </div>
                 </a>
 
                 <!-- 360 Tours -->
-                <a href="/es/proyectos/360/" class="work-item">
+                <a href="/es/proyectos/360/" class="work-item" data-cursor-label="Abrir tour 360°">
                     <div class="work-mask">
                         <video class="work-img"
                                autoplay loop muted playsinline
@@ -247,14 +249,19 @@
                         </video>
                     </div>
                     <div class="work-info">
-                        <span>Inmersión</span>
-                        <h3>Tours 360°</h3>
+                        <h3>Tours 360</h3>
+                        <p class="work-description">Experiencias interactivas para explorar espacios desde cada ángulo.</p>
+                        <span class="work-cta">Explorar tours 360 →</span>
                     </div>
                 </a>
             </div>
         </section>
 
     </main>
+
+    <div id="work-card-cursor-wrapper" aria-hidden="true">
+        <div id="work-card-cursor"></div>
+    </div>
 
     <div id="footer"></div>
 

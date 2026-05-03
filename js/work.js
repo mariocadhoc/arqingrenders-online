@@ -154,7 +154,48 @@ function initWorkGalleryInteractions() {
     }
 }
 
+function initWorkCardCursor() {
+    const cursorWrapper = document.getElementById('work-card-cursor-wrapper');
+    const cursor = document.getElementById('work-card-cursor');
+    const links = document.querySelectorAll('.section-work#all-work .work-item[data-cursor-label]');
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    if (isTouch || !cursorWrapper || !cursor || !links.length) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+
+    document.addEventListener('mousemove', (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+    }, { passive: true });
+
+    const renderCursor = () => {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursorWrapper.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        requestAnimationFrame(renderCursor);
+    };
+
+    requestAnimationFrame(renderCursor);
+
+    links.forEach((link) => {
+        link.addEventListener('mouseenter', () => {
+            cursor.textContent = link.dataset.cursorLabel || '';
+            cursor.classList.add('is-active');
+        });
+
+        link.addEventListener('mouseleave', () => {
+            cursor.classList.remove('is-active');
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+    initWorkCardCursor();
+
     // Register GSAP Plugins
     if (typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);

@@ -202,18 +202,19 @@
             <h2 class="all-work-title">All Work</h2>
             <div class="work-grid">
                 <!-- Stills -->
-                <a href="/work/stills/" class="work-item">
+                <a href="/work/stills/" class="work-item" data-cursor-label="View Stills">
                     <div class="work-mask">
                         <img src="/assets/img/work/Chachalacas.avif" alt="Architectural visualization portfolio preview" class="work-img" loading="lazy" decoding="async" width="2752" height="1536">
                     </div>
                     <div class="work-info">
-                        <span>Imagery</span>
                         <h3>Stills</h3>
+                        <p class="work-description">Photoreal images for interiors, exteriors, and aerial views.</p>
+                        <span class="work-cta">View stills →</span>
                     </div>
                 </a>
 
                 <!-- Animations -->
-                <a href="/work/animations/" class="work-item alt">
+                <a href="/work/animations/" class="work-item alt" data-cursor-label="View Animations">
                     <div class="work-mask" style="aspect-ratio: 21 / 9;">
                         <video class="work-img"
                                autoplay loop muted playsinline
@@ -227,13 +228,14 @@
                         </video>
                     </div>
                     <div class="work-info">
-                        <span>Motion</span>
                         <h3>Animations</h3>
+                        <p class="work-description">Cinematic films for architecture, real estate, and visual storytelling.</p>
+                        <span class="work-cta">Watch animations →</span>
                     </div>
                 </a>
 
                 <!-- 360 Tours -->
-                <a href="/work/360/" class="work-item">
+                <a href="/work/360/" class="work-item" data-cursor-label="Open 360 Tour">
                     <div class="work-mask">
                         <video class="work-img"
                                autoplay loop muted playsinline
@@ -247,14 +249,19 @@
                         </video>
                     </div>
                     <div class="work-info">
-                        <span>Immersive</span>
                         <h3>360 Tours</h3>
+                        <p class="work-description">Interactive tours to explore spaces from every angle.</p>
+                        <span class="work-cta">Explore 360 tours →</span>
                     </div>
                 </a>
             </div>
         </section>
 
     </main>
+
+    <div id="work-card-cursor-wrapper" aria-hidden="true">
+        <div id="work-card-cursor"></div>
+    </div>
 
     <div id="footer"></div>
 

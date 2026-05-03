@@ -12,7 +12,7 @@
       "type": "project",
       "category": "Commercial",
       "slug": "1-kent",
-      "label": "Kent",
+      "label": "1 Kent Ave, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "1-kent-arqing-2.avif",
@@ -55,7 +55,7 @@
       "type": "project",
       "category": "Commercial",
       "slug": "29-wythe",
-      "label": "Wythe",
+      "label": "29 Wythe Ave, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "29-wythe-jan-2025-front.avif",
@@ -114,7 +114,7 @@
       "type": "project",
       "category": "Mixed-Use",
       "slug": "35-13-steinway",
-      "label": "13 Steinway",
+      "label": "13 Steinway St, Queens, NY",
       "parent": {
         "role": "parent",
         "name": "35-13-steinway.avif",
@@ -205,7 +205,7 @@
       "type": "project",
       "category": "Residential",
       "slug": "64-11-queens-blvd",
-      "label": "11 Queens Blvd",
+      "label": "64-11 Queens Blvd, Queens, NY",
       "parent": {
         "role": "parent",
         "name": "64-11-queens-blvd-cam-2-gfrc.avif",
@@ -270,7 +270,7 @@
       "type": "project",
       "category": "Mixed-Use",
       "slug": "83-wythe-2025",
-      "label": "Wythe 2025",
+      "label": "83 Wythe Ave, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "83-wythe-life-time-3.avif",
@@ -361,7 +361,7 @@
       "type": "project",
       "category": "Mixed-Use",
       "slug": "83-wythe-2026",
-      "label": "Wythe 2026",
+      "label": "83 Wythe Ave, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "83-wythe.avif",
@@ -420,7 +420,7 @@
       "type": "project",
       "category": "Commercial",
       "slug": "135-kent",
-      "label": "Kent",
+      "label": "135 Kent Ave, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "135-kent-chase.avif",
@@ -463,7 +463,7 @@
       "type": "project",
       "category": "Hospitality",
       "slug": "caesars-palace-las-vegas",
-      "label": "Caesars Palace Las Vegas",
+      "label": "Caesars Palace, Las Vegas, NV",
       "parent": {
         "role": "parent",
         "name": "caesars-palace-cam-1.avif",
@@ -522,7 +522,7 @@
       "type": "project",
       "category": "Hospitality",
       "slug": "hacienda-sacnicte",
-      "label": "Hacienda Sacnicte",
+      "label": "Hacienda Sacnicte, Yucatán, MX",
       "parent": {
         "role": "parent",
         "name": "hacienda-sacnicte-1.avif",
@@ -565,7 +565,7 @@
       "type": "project",
       "category": "Residential",
       "slug": "kauai",
-      "label": "Kauai",
+      "label": "Residence, Kauai, HI",
       "parent": {
         "role": "parent",
         "name": "kauai-2.avif",
