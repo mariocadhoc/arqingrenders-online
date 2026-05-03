@@ -17,7 +17,7 @@ TESTIMONIALS 2x2 GRID REVEAL
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 5vh 5vw;
+    padding: 5vh 5vw 10vh;
 }
 
 .testimonials-stack-title {

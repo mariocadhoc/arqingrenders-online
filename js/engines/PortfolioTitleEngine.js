@@ -21,8 +21,10 @@ export default class PortfolioTitleEngine {
     }
 
     splitText() {
-        const text = (this.title.textContent || '').trim();
-        this.title.innerHTML = '';
+        const titleLink = this.title.querySelector('a');
+        const text = ((titleLink || this.title).textContent || '').trim();
+        const textTarget = titleLink || this.title;
+        textTarget.textContent = '';
         this.title.style.opacity = '1';
 
         const frag = document.createDocumentFragment();
@@ -34,7 +36,7 @@ export default class PortfolioTitleEngine {
             frag.appendChild(span);
         }
 
-        this.title.appendChild(frag);
+        textTarget.appendChild(frag);
     }
 
     createObserver() {

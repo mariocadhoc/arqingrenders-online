@@ -748,17 +748,38 @@ document.addEventListener('DOMContentLoaded', () => {
     gp_ticking = false;
   }
 
+  function gp_scrollGalleryTitleIntoView() {
+    const target = gp_sectionTitle || gp_section;
+    if (!target) return;
+
+    const header = document.querySelector('header.site-header');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    const isCompact = window.matchMedia('(max-width: 768px)').matches;
+    const topPadding = headerHeight + (isCompact ? 14 : 24);
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - topPadding;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  }
+
   gp_filtersEl.addEventListener('click', (e) => {
     const btn = e.target.closest('.gp-filter-btn');
     if (!btn) return;
 
     const category = btn.getAttribute('data-category');
-    if (category === gp_activeCategory) return;
+    if (category === gp_activeCategory) {
+      gp_scrollGalleryTitleIntoView();
+      return;
+    }
 
     gp_activeCategory = category;
     gp_filtersEl.querySelectorAll('.gp-filter-btn').forEach((button) => button.classList.remove('gp-active'));
     btn.classList.add('gp-active');
     gp_layoutCards({ applyParallax: false });
+    requestAnimationFrame(gp_scrollGalleryTitleIntoView);
   });
 
   gp_canvas.addEventListener('click', (e) => {

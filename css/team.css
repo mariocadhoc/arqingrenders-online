@@ -638,9 +638,7 @@ html:not(.js-pending):not(.js-ready) .profile-mario .team-copy-column {
     }
 
     .team-reel-transition {
-        min-height: 24vh;
-        padding-top: 1rem;
-        padding-bottom: 2rem;
+        display: none;
     }
 
     .team-cta {

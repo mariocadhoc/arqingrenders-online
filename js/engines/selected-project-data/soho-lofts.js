@@ -16,30 +16,40 @@ const projectData = {
         {
             src: '/assets/img/work/NJ_GF_LOUNGE_2.avif',
             alt: 'SoHo Loft render 01',
+            width: 2000,
+            height: 2000,
             caption: '01',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/Tulum-bedroom.avif',
             alt: 'SoHo Loft render 02',
+            width: 2000,
+            height: 1334,
             caption: '02',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/Tulum-1_.avif',
             alt: 'SoHo Loft render 03',
+            width: 1920,
+            height: 1476,
             caption: '03',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/429-W-37th.avif',
             alt: 'SoHo Loft render 04',
+            width: 1200,
+            height: 1500,
             caption: '04',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/83 Wythe.avif',
             alt: 'SoHo Loft render 05',
+            width: 2500,
+            height: 2500,
             caption: '05',
             meta: 'Selected Project'
         }

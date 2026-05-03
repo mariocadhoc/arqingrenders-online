@@ -5,6 +5,8 @@
  * slides up and covers about 65% of it, un-fading when scrolling up.
  */
 export function initVerticalCardsFade() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
     // Fix 3 — Resolve the CSS custom property to a concrete px value at init time.
@@ -25,64 +27,94 @@ export function initVerticalCardsFade() {
         return resolved;
     }
 
+    function createStickyStage(wrap, stageClassName) {
+        let stage = wrap.querySelector(`:scope > .${stageClassName}`);
+
+        if (!stage) {
+            stage = document.createElement('div');
+            stage.className = `${stageClassName} work-scroll-sticky-stage`;
+
+            while (wrap.firstChild) {
+                stage.appendChild(wrap.firstChild);
+            }
+
+            wrap.appendChild(stage);
+        }
+
+        return stage;
+    }
+
+    function configureStickyScrollArea(wrap, stage, totalScroll) {
+        wrap.style.position = 'relative';
+        wrap.style.height = `${window.innerHeight + totalScroll}px`;
+        wrap.style.overflow = 'visible';
+        wrap.style.paddingTop = '0';
+        wrap.style.paddingBottom = '0';
+
+        stage.style.position = 'sticky';
+        stage.style.top = '0px';
+        stage.style.width = '100%';
+        stage.style.height = '100vh';
+        stage.style.overflow = 'hidden';
+        stage.style.zIndex = '1';
+    }
+
     const mobileTopOffset = isMobile ? resolveGalleryTop() : 10;
+    const verticalWrap = document.querySelector('.vertical-scroll-container');
     const groups = [
         {
-            wrap: document.querySelector('.vertical-scroll-container'),
-            cards: gsap.utils.toArray('.vertical-scroll-container .large-image.vertical')
+            wrap: verticalWrap,
+            stage: verticalWrap ? createStickyStage(verticalWrap, 'vertical-cards-sticky-stage') : null,
+            cardsSelector: '.large-image.vertical'
         }
     ];
 
     if (isMobile) {
+        const horizontalWrap = document.querySelector('.horizontal-scroll-container');
         groups.unshift({
-            wrap: document.querySelector('.horizontal-scroll-container'),
-            cards: gsap.utils.toArray('.horizontal-scroll-container .large-image.horizon')
+            wrap: horizontalWrap,
+            stage: horizontalWrap ? horizontalWrap.querySelector('.horizontal-scroll-content') : null,
+            cardsSelector: '.large-image.horizon'
         });
     }
 
-    groups.forEach(({ wrap, cards }) => {
+    groups.forEach(({ wrap, stage, cardsSelector }) => {
+        const cards = stage ? gsap.utils.toArray(stage.querySelectorAll(cardsSelector)) : [];
         if (!wrap || cards.length === 0) return;
 
-        // Remove sticky behavior and switch to absolute stacking for the pin
+        const scrollPerCard = window.innerHeight * 0.67;
+        const totalScroll = scrollPerCard * (cards.length - 1);
+
+        configureStickyScrollArea(wrap, stage, totalScroll);
+
+        if (wrap.classList.contains('vertical-scroll-container') && !isMobile) {
+            wrap.style.marginTop = '5vh';
+            wrap.style.marginBottom = '20vh';
+        }
+
         cards.forEach((card, i) => {
             gsap.set(card, {
                 position: 'absolute',
+                left: 0,
                 top: mobileTopOffset,
-                y: i === 0 ? 0 : window.innerHeight, // place off-screen
+                y: i === 0 ? 0 : window.innerHeight,
                 zIndex: i,
-                margin: 0 // remove CSS margins to prevent offset bugs
+                margin: 0,
+                force3D: true
             });
         });
-
-        gsap.set(wrap, {
-            position: 'relative',
-            height: '100vh',
-            background: 'transparent'
-        });
-
-        // 33% reduction in scroll down distance
-        // Original equivalent scroll distance per card was 100vh. Now it's 67vh.
-        const scrollPerCard = window.innerHeight * 0.67;
-        const totalScroll = scrollPerCard * (cards.length - 1);
 
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: wrap,
                 start: "top top",
                 end: () => `+=${totalScroll}`,
-                pin: true,
-                // Fix 1 — Use transform-based pinning instead of position:fixed for mobile only.
-                // position:fixed is processed on a separate WebKit compositor thread,
-                // causing a ~1-frame desync with touch scroll on Safari iOS.
-                // However, on desktop, "transform" causes jitter with smooth mouse wheel scroll,
-                // so we fallback to the default "fixed" pinning on desktop.
-                pinType: isMobile ? "transform" : "fixed",
                 scrub: true,
+                onRefreshInit: () => configureStickyScrollArea(wrap, stage, totalScroll),
                 invalidateOnRefresh: true
             }
         });
 
-        // Animate the cards upwards natively mimicking the sticky behavior
         cards.forEach((card, index) => {
             if (index > 0) {
                 const startTime = index - 1;
@@ -91,22 +123,16 @@ export function initVerticalCardsFade() {
                     y: 0,
                     ease: "none",
                     duration: 1,
-                    // Fix 4 — Prevent GSAP from dropping the 3D matrix mid-animation.
-                    // Without force3D:true GSAP may revert to a 2D matrix when it decides
-                    // the 3D promotion is no longer needed, which causes WebKit to demote
-                    // the GPU compositing layer and repaint — visible as a 1-frame flash.
                     force3D: true
                 }, startTime);
 
-                // Replicate original fade effect when a card approaches the top
                 const prevCard = cards[index - 1];
                 if (prevCard) {
-                    // Starts fading when the incoming card is at 35% from the top (i.e. has completed 65% of its 1-second journey)
                     tl.to(prevCard, {
                         opacity: 0.05,
                         ease: "none",
                         duration: 0.35,
-                        force3D: true // Fix 4 — keep GPU layer alive during opacity fade
+                        force3D: true
                     }, startTime + 0.65);
                 }
 
@@ -116,7 +142,7 @@ export function initVerticalCardsFade() {
                         opacity: 0,
                         ease: "none",
                         duration: 0.35,
-                        force3D: true // Fix 4 — keep GPU layer alive during opacity fade
+                        force3D: true
                     }, startTime + 0.65);
                 }
             }

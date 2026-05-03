@@ -15,12 +15,32 @@ export default class AerialZoomEngine {
 
     init() {
         const triggerWrap = document.querySelector('.stacked-scroll-trigger');
-        const cards = gsap.utils.toArray('.stacked-card');
+        const stage = triggerWrap ? triggerWrap.querySelector('.stacked-scroll-cards') : null;
+        const cards = stage ? gsap.utils.toArray(stage.querySelectorAll('.stacked-card')) : [];
 
-        if (!triggerWrap || cards.length === 0) return;
+        if (!triggerWrap || !stage || cards.length === 0) return;
 
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
         const cardTop = isMobile ? 'var(--work-mobile-gallery-top)' : 0;
+        const getTotalScroll = () => (window.innerHeight * 0.64 * cards.length) + (window.innerHeight * 0.24);
+
+        function configureStickyStage() {
+            const totalScroll = getTotalScroll();
+
+            triggerWrap.style.position = 'relative';
+            triggerWrap.style.height = `${window.innerHeight + totalScroll}px`;
+            triggerWrap.style.overflow = 'visible';
+
+            stage.style.position = 'sticky';
+            stage.style.top = '0px';
+            stage.style.width = '100%';
+            stage.style.height = '100vh';
+            stage.style.overflow = 'hidden';
+
+            return totalScroll;
+        }
+
+        configureStickyStage();
 
         // --- Initial state ---
         // All cards stacked, only the first one visible
@@ -38,19 +58,13 @@ export default class AerialZoomEngine {
         });
 
         // --- Build sequential timeline ---
-        // Scroll distance per transition (shorter = snappier)
-        const scrollPerCard = window.innerHeight * 0.64;
-        const totalScroll = scrollPerCard * cards.length + window.innerHeight * 0.24;
-
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: triggerWrap,
-                start: 'center center',
-                end: () => '+=' + totalScroll,
-                pin: true,
-                pinType: "transform",
-                anticipatePin: 1,
+                start: 'top top',
+                end: () => '+=' + configureStickyStage(),
                 scrub: 1,
+                onRefreshInit: configureStickyStage,
                 invalidateOnRefresh: true
             }
         });

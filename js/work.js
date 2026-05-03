@@ -100,27 +100,47 @@ function initHorizontalGallery() {
 
     syncGalleryWidth();
 
+    function syncHorizontalScrollStage() {
+        const scrollDistance = getScrollAmount() * 0.7;
+
+        wrap.style.position = 'relative';
+        wrap.style.display = 'block';
+        wrap.style.height = `${window.innerHeight + scrollDistance}px`;
+        wrap.style.overflow = 'visible';
+
+        content.style.position = 'sticky';
+        content.style.top = '0px';
+        content.style.height = '100vh';
+        content.style.willChange = 'transform';
+
+        return scrollDistance;
+    }
+
+    syncHorizontalScrollStage();
+
     horizontalTween = gsap.to(content, {
         x: () => -getScrollAmount(),
         ease: "none"
     });
 
+    // Horizontal gallery snap is temporarily disabled for debugging.
+    // Reactivate by changing this flag to true.
+    const ENABLE_HORIZONTAL_SCROLL_SNAP = false;
+    const horizontalScrollSnapConfig = {
+        snapTo: 1 / (cards.length > 1 ? cards.length - 1 : 1),
+        duration: { min: 0.2, max: 0.5 },
+        delay: 0.01,
+        ease: "power1.inOut"
+    };
+
     ScrollTrigger.create({
         trigger: wrap,
         start: "top top",
-        end: () => `+=${getScrollAmount() * 0.7}`,
-        pin: true,
-        pinType: "transform",
-        anticipatePin: 1,
+        end: () => `+=${syncHorizontalScrollStage()}`,
         animation: horizontalTween,
         scrub: 1,
-        snap: {
-            snapTo: 1 / (cards.length > 1 ? cards.length - 1 : 1),
-            duration: { min: 0.2, max: 0.5 },
-            delay: 0.01,
-            ease: "power1.inOut"
-        },
-        onRefreshInit: syncGalleryWidth,
+        ...(ENABLE_HORIZONTAL_SCROLL_SNAP ? { snap: horizontalScrollSnapConfig } : {}),
+        onRefreshInit: syncHorizontalScrollStage,
         invalidateOnRefresh: true
     });
 
@@ -129,7 +149,7 @@ function initHorizontalGallery() {
         if (resizeFrame) cancelAnimationFrame(resizeFrame);
         resizeFrame = requestAnimationFrame(() => {
             resizeFrame = null;
-            syncGalleryWidth();
+            syncHorizontalScrollStage();
             if (typeof ScrollTrigger !== 'undefined') {
                 ScrollTrigger.refresh();
             }
@@ -239,6 +259,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
     } else {
+        requestAnimationFrame(initWorkGalleryInteractions);
         window.addEventListener('workSectionsRevealComplete', initWorkGalleryInteractions, { once: true });
         window.setTimeout(initWorkGalleryInteractions, 3150);
     }

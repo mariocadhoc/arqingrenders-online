@@ -16,30 +16,40 @@ const projectData = {
         {
             src: '/assets/img/work/Williamsburg.avif',
             alt: '135 Kent render 01',
+            width: 1500,
+            height: 745,
             caption: '01',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/83 Wythe.avif',
             alt: '135 Kent render 02',
+            width: 2500,
+            height: 2500,
             caption: '02',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/429-W-37th.avif',
             alt: '135 Kent render 03',
+            width: 1200,
+            height: 1500,
             caption: '03',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/34-49 Steinway St.avif',
             alt: '135 Kent render 04',
+            width: 2040,
+            height: 2550,
             caption: '04',
             meta: 'Selected Project'
         },
         {
             src: '/assets/img/work/34-49 Steinway St-Aerial.avif',
             alt: '135 Kent render 05',
+            width: 2295,
+            height: 1836,
             caption: '05',
             meta: 'Selected Project'
         }

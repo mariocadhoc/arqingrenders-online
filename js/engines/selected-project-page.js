@@ -373,7 +373,9 @@ function buildGallery(galleryItems) {
         alt: item.alt || `${item.name || 'Project render'} ${index + 1}`,
         caption: item.caption || toFrameLabel(index),
         meta: item.meta || 'Selected Projects',
-        title: item.title || 'Project render'
+        title: item.title || 'Project render',
+        width: item.width,
+        height: item.height
     })).filter((item) => item.fullSrc);
 
     const fragment = document.createDocumentFragment();
@@ -385,9 +387,10 @@ function buildGallery(galleryItems) {
         button.dataset.index = String(index);
         button.dataset.aspect = '1.15';
         button.setAttribute('aria-label', `Open ${item.caption}`);
+        const sizeAttrs = item.width && item.height ? ` width="${item.width}" height="${item.height}"` : '';
         button.innerHTML = `
             <span class="sp-gallery-frame">
-                <img class="sp-gallery-image" src="${item.thumbSrc || item.fullSrc}" alt="${item.alt}" ${index < 2 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+                <img class="sp-gallery-image" src="${item.thumbSrc || item.fullSrc}" alt="${item.alt}" ${index < 2 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"${sizeAttrs}>
                 <span class="sp-gallery-caption">
                     <span>
                         <strong>${item.caption}</strong>

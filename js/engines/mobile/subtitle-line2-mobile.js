@@ -60,14 +60,12 @@ export class SubtitleLine2Mobile {
             onComplete: () => {
                 // Reveal Grid Section
                 gsap.fromTo('.section-work',
-                    { opacity: 0, y: 30 },
+                    { opacity: 0 },
                     {
                         opacity: 1,
-                        y: 0,
                         duration: 0.9,
                         stagger: 0.15,
                         ease: "power1.inOut",
-                        clearProps: 'transform',
                         onComplete: () => {
                             if (typeof ScrollTrigger !== 'undefined') {
                                 ScrollTrigger.refresh();
