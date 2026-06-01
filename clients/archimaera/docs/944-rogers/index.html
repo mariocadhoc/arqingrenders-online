@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>944 Rogers - Payment Summary</title>
+  <!-- CSS Base -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>Project 944 Rogers</h1>
+        <div class="subtitle">Payment History Received</div>
+      </div>
+      <div class="total-amount">
+        <div class="amount">$<span id="totalAmount">23,534</span></div>
+        <div class="label">Total Received</div>
+      </div>
+    </div>
+
+    <div class="stats-grid" id="yearlyStats"></div>
+
+    <div class="payments-section">
+      <h2>📊 Payment Details</h2>
+      <div class="payments-list" id="paymentsList"></div>
+    </div>
+
+    <div class="summary-stats">
+      <div class="summary-card">
+        <div class="label">Total Payments</div>
+        <div class="value" id="totalPayments"></div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Average Payment</div>
+        <div class="value">$<span id="avgPayment"></span></div>
+      </div>
+      <div class="summary-card">
+        <div class="label">Active Years</div>
+        <div class="value" id="activeYears"></div>
+      </div>
+    </div>
+
+  </div>
+<div id="footer"></div>
+  <!-- JS Base -->
+  <script src="/js/load-components.js" defer></script>
+  <script defer src="/js/burger.js"></script>
+  <script defer src="script.js"></script>
+</body>
+</html>

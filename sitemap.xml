@@ -1,104 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- HOME -->
+  <!-- HOME (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/" />
   </url>
+  <!-- HOME (ES) -->
   <url>
     <loc>https://www.arqingrenders.com/es/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/" />
   </url>
 
-  <!-- WORK / PROYECTOS -->
+  <!-- WORK (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/work/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/" />
   </url>
-  <url>
-    <loc>https://www.arqingrenders.com/es/proyectos/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/" />
-  </url>
-
-  <!-- STILLS / RENDERS -->
   <url>
     <loc>https://www.arqingrenders.com/work/stills/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/stills/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/renders/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/stills/" />
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/work/animations/</loc>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/work/360/</loc>
+  </url>
+
+  <!-- PROYECTOS (ES) -->
+  <url>
+    <loc>https://www.arqingrenders.com/es/proyectos/</loc>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/es/proyectos/renders/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/stills/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/renders/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/stills/" />
-  </url>
-
-  <!-- ANIMATIONS / ANIMACIONES -->
-  <url>
-    <loc>https://www.arqingrenders.com/work/animations/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/animations/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/animaciones/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/animations/" />
   </url>
   <url>
     <loc>https://www.arqingrenders.com/es/proyectos/animaciones/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/animations/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/animaciones/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/animations/" />
-  </url>
-
-  <!-- 360 -->
-  <url>
-    <loc>https://www.arqingrenders.com/work/360/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/360/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/360/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/360/" />
   </url>
   <url>
     <loc>https://www.arqingrenders.com/es/proyectos/360/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/360/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/360/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/360/" />
   </url>
 
-  <!-- TEAM / NOSOTROS -->
+  <!-- STUDIO (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/studio/team/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/team/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/nosotros/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/team/" />
   </url>
+
+  <!-- ESTUDIO (ES) -->
   <url>
     <loc>https://www.arqingrenders.com/es/estudio/nosotros/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/team/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/nosotros/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/team/" />
   </url>
 
-  <!-- CONNECT / CONTACTO -->
+  <!-- CONTACT (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/connect/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/connect/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/contacto/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/connect/" />
-  </url>
-  <url>
-    <loc>https://www.arqingrenders.com/es/contacto/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/connect/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/contacto/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/connect/" />
   </url>
 
+  <!-- CONTACTO (ES) -->
+  <url>
+    <loc>https://www.arqingrenders.com/es/contacto/</loc>
+  </url>
 
 </urlset>
