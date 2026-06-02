@@ -2,8 +2,11 @@ User-agent: *
 Allow: /
 
 # Private client folders
+Disallow: /clientes
 Disallow: /clientes/
+Disallow: /es/clientes
 Disallow: /es/clientes/
+Disallow: /clients
 Disallow: /clients/
 
 # HTML component fragments (prevent indexing standalone headers/footers)
