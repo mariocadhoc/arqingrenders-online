@@ -107,3 +107,27 @@ document.addEventListener("footer-loaded", async () => {
     console.error("Footer CTA engine failed to load:", error);
   }
 });
+
+/* Global Media Protection (Right-click & Drag Prevention) */
+(function () {
+  const isMediaElement = (el) => {
+    if (!el || !(el instanceof HTMLElement)) return false;
+    const tagName = el.tagName.toLowerCase();
+    if (['img', 'picture', 'video', 'canvas', 'svg'].includes(tagName)) return true;
+    if (el.closest('picture, figure, .gp-card, .gp-lightbox, .stills-project-images')) return true;
+    return false;
+  };
+
+  document.addEventListener('contextmenu', (e) => {
+    if (isMediaElement(e.target)) {
+      e.preventDefault();
+    }
+  }, { capture: true });
+
+  document.addEventListener('dragstart', (e) => {
+    if (isMediaElement(e.target)) {
+      e.preventDefault();
+    }
+  }, { capture: true });
+})();
+

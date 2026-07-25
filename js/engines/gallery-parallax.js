@@ -386,8 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ? layoutConfig.rowGap * (0.22 + Math.min(sameColRun, 2) * 0.18)
           : 0;
         const countPenalty = state.cardCount * layoutConfig.rowGap * 0.08;
-        const noise = (gp_stableNoise(key, `col-${c}`) - 0.5) * layoutConfig.rowGap * 0.16;
-        const score = colBottoms[c] + aspectPenalty + sameColumnPenalty + countPenalty + (imbalance * 0.32) + noise;
+        const score = colBottoms[c] + aspectPenalty + sameColumnPenalty + countPenalty + (imbalance * 0.32);
 
         if (score < bestScore) {
           bestScore = score;

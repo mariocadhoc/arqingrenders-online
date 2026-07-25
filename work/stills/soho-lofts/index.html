@@ -15,11 +15,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SoHo Residential Loft | Selected Projects | Arqing</title>
+    <title>SoHo Lofts — Case Study | Arqing</title>
     <meta name="description"
-        content="A selected project focused on a refined SoHo residential loft, presented through an immersive stills sequence, editorial map, and cinematic gallery rhythm.">
+        content="A residential loft concept framed around soft daylight, refined materials, and the calm pace of downtown Manhattan living.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://www.arqingrenders.com/work/stills/soho-lofts/">
+    <link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/stills/soho-lofts/">
+    <link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/renders/soho-lofts/">
+    <link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/stills/soho-lofts/">
+    <script src="/js/lang-redirect.js"></script>
     <meta name="language" content="en-US">
     <meta name="author" content="Arqing">
 
@@ -27,55 +31,61 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/resources/favicon/Favicon_16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/resources/favicon/Favicon_apple-touch-icon.png">
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/utilities.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/selected-project.css">
+    <link rel="stylesheet" href="/css/work.css">
+    <link rel="stylesheet" href="/css/case-study-135-kent.css">
+    <link rel="stylesheet" href="/css/gallery-lightbox.css">
     <link rel="stylesheet" href="/css/map-gps.css">
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 
 <body>
 
-    <div id="header"></div>
+    <div id="header" data-lang-en="/work/stills/soho-lofts/" data-lang-es="/es/proyectos/renders/soho-lofts/"></div>
 
-    <main id="main" class="selected-project-page" data-selected-project-slug="soho-lofts">
-        <div class="sp-shell">
-
-            <section class="sp-hero" data-js-reveal>
-                <div class="sp-hero-inner">
-                    <div class="sp-copy">
-                        <span class="sp-kicker" data-project-eyebrow>Selected Projects</span>
-                        <h1 class="sp-title" data-project-name>Selected Project</h1>
-                        <p class="sp-intro" data-project-description></p>
-
-                        <div class="sp-meta-grid">
-                            <article class="sp-meta-card">
-                                <span class="sp-meta-label">Location</span>
-                                <p data-project-location>Location</p>
-                            </article>
-
-                            <article class="sp-meta-card">
-                                <span class="sp-meta-label">Client</span>
-                                <p data-project-client>Client</p>
-                            </article>
-                        </div>
+    <main id="main" class="arq-cs" data-selected-project-slug="soho-lofts">
+        
+        <!-- SECTION 2: HERO -->
+        <section class="arq-cs-hero" data-js-reveal>
+            <div class="arq-cs-hero-grid">
+                <div class="arq-cs-copy">
+                    <span class="arq-cs-kicker">Selected Case Study</span>
+                    <h1 class="arq-cs-title">SoHo Lofts</h1>
+                    <p class="arq-cs-intro">
+                        A residential loft concept framed around soft daylight, refined materials, and the calm pace of downtown interior living in SoHo. Our job was to capture the silent luxury of cast-iron architecture, recreating the specific way light passes through the classic high loft windows.
+                    </p>
+                    <div class="arq-cs-meta-grid">
+                        <article class="arq-cs-meta-card">
+                            <span class="arq-cs-meta-label">Location</span>
+                            <p class="arq-cs-meta-value">SoHo, Manhattan</p>
+                        </article>
+                        <article class="arq-cs-meta-card">
+                            <span class="arq-cs-meta-label">Client</span>
+                            <p class="arq-cs-meta-value">Private Residence</p>
+                        </article>
+                        <article class="arq-cs-meta-card">
+                            <span class="arq-cs-meta-label">Service</span>
+                            <p class="arq-cs-meta-value">Stills — Interiors</p>
+                        </article>
+                        <article class="arq-cs-meta-card">
+                            <span class="arq-cs-meta-label">Used for</span>
+                            <p class="arq-cs-meta-value">Sales gallery, portfolio</p>
+                        </article>
                     </div>
+                </div>
 
-                    <aside class="sp-map-card">
-                        <div class="sp-map-header">
-                            <div>
-                                <span class="sp-map-heading">Map</span>
-                                <p class="sp-map-address" data-project-address>Project address</p>
-                            </div>
-                        </div>
-
-                        <div class="sp-map-shell">
-                            <div id="selected-project-map" class="sp-map"></div>
+                <aside class="arq-cs-site-card">
+                    <div class="arq-cs-site-glass-card">
+                        <span class="arq-cs-meta-label">Site</span>
+                        <p class="arq-cs-site-address">West Broadway, SoHo, New York, NY</p>
+                        <div class="sp-map-shell" style="height: 220px; border-radius: 20px; overflow: hidden; position: relative;">
+                            <div id="selected-project-map" class="sp-map" style="height: 100%; width: 100%;"></div>
                             <div class="sp-map-empty hidden" data-map-empty>
                                 <div>
                                     <span>Coordinates Pending</span>
@@ -83,43 +93,212 @@
                                 </div>
                             </div>
                         </div>
-                    </aside>
-                </div>
-            </section>
-
-            <section class="sp-gallery-section">
-                <div class="sp-section-head">
-                    <span class="sp-kicker">Gallery</span>
-                    <div>
-                        <h2 class="sp-section-title">Shots</h2>
-                        <p class="sp-section-copy" data-gallery-summary></p>
                     </div>
-                </div>
+                </aside>
+            </div>
+        </section>
 
-                <div id="selected-project-gallery" class="sp-gallery" aria-live="polite"></div>
+        <!-- SECTION 3: FULL-BLEED FEATURE IMAGE -->
+        <section class="arq-cs-feature">
+            <img src="/assets/img/work/NJ_GF_LOUNGE_2.avif" alt="SoHo Loft — primary interior visualization showing natural lighting">
+        </section>
 
-                <div class="sp-back-nav">
-                    <a href="/work/stills/" class="sp-back-link" aria-label="Back to Stills">
-                        <span class="sp-back-link-main">
-                            <span class="sp-back-link-arrow" aria-hidden="true">←</span>
-                            <span class="sp-back-link-label">back to Stills</span>
-                        </span>
-                    </a>
+        <!-- SECTION 4: PRESS-STYLE FEATURES -->
+        <section class="arq-cs-press">
+            <!-- Block 1: Image Left, Text Right -->
+            <article class="arq-cs-press-row">
+                <div class="arq-cs-press-img">
+                    <img src="/assets/img/work/CPR-Bedroom.avif" alt="SoHo Loft interior master suite view">
                 </div>
-            </section>
+                <div class="arq-cs-press-copy">
+                    <span class="arq-cs-kicker">Chasing the light</span>
+                    <h3>Capturing the soft morning sun</h3>
+                    <p>In a SoHo loft, light is everything. We modeled the tall, historic cast-iron windows and the buildings across the street to simulate exactly how the light falls in during different hours of the day. The result is a series of stills that show the home at its quietest, most inviting moment.</p>
+                </div>
+            </article>
+
+            <!-- Block 2: Text Left, Image Right -->
+            <article class="arq-cs-press-row reverse">
+                <div class="arq-cs-press-img">
+                    <img src="/assets/img/work/Tulum-bedroom.avif" alt="Close up render highlighting bedroom textures">
+                </div>
+                <div class="arq-cs-press-copy">
+                    <span class="arq-cs-kicker">Materiality first</span>
+                    <h3>Honest textures, rendered with absolute precision</h3>
+                    <p>From the soft grain of the timber floors to the textured plaster walls, every finish was selected to create a sense of tactile warmth. We spend hours refining our material maps so that when you look at a rendering, you don't just see a room — you feel it.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECTION 5: GALLERY ("Shots") -->
+        <section class="arq-cs-gallery">
+            <div class="arq-cs-section-head">
+                <span class="arq-cs-kicker">Gallery</span>
+                <h2>Shots</h2>
+                <p class="arq-cs-gallery-summary">Every frame is designed to tell a story of light, space, and downtown living.</p>
+            </div>
+            <div class="arq-cs-gallery-grid">
+                <!-- Shot 1: Spans 2 cols, 16:9 -->
+                <button type="button" class="arq-cs-gallery-item" aria-label="Open Living Area visual">
+                    <img src="/assets/img/work/NJ_GF_LOUNGE_2.avif" alt="Open plan layout showing the main lounge and kitchen connection">
+                    <span class="arq-cs-figcaption">
+                        <span class="arq-cs-gallery-meta">01 — Living Area</span>
+                        <span class="arq-cs-gallery-caption">Open plan layout showing the main lounge and kitchen connection</span>
+                    </span>
+                </button>
+
+                <!-- Shot 2: 1 col, 4:3 -->
+                <button type="button" class="arq-cs-gallery-item" aria-label="Open Bedroom visual">
+                    <img src="/assets/img/work/Tulum-bedroom.avif" alt="Quiet bedroom view highlighting raw wood finishes">
+                    <span class="arq-cs-figcaption">
+                        <span class="arq-cs-gallery-meta">02 — Bedroom</span>
+                        <span class="arq-cs-gallery-caption">Quiet bedroom view highlighting raw wood finishes</span>
+                    </span>
+                </button>
+
+                <!-- Shot 3: 1 col, 4:3 -->
+                <button type="button" class="arq-cs-gallery-item" aria-label="Open Master Suite visual">
+                    <img src="/assets/img/work/CPR-Bedroom.avif" alt="Morning sun hitting the plaster walls and soft linen bedding">
+                    <span class="arq-cs-figcaption">
+                        <span class="arq-cs-gallery-meta">03 — Master Suite</span>
+                        <span class="arq-cs-gallery-caption">Morning sun hitting the plaster walls and soft linen bedding</span>
+                    </span>
+                </button>
+
+                <!-- Shot 4: 1 col, 4:3 -->
+                <button type="button" class="arq-cs-gallery-item" aria-label="Open Living Detail visual">
+                    <img src="/assets/img/work/LIC_small.avif" alt="Close-up render showing custom millwork and concrete columns">
+                    <span class="arq-cs-figcaption">
+                        <span class="arq-cs-gallery-meta">04 — Living Detail</span>
+                        <span class="arq-cs-gallery-caption">Close-up render showing custom millwork and concrete columns</span>
+                    </span>
+                </button>
+
+                <!-- Shot 5: 1 col, 4:3 -->
+                <button type="button" class="arq-cs-gallery-item" aria-label="Open Outer Context visual">
+                    <img src="/assets/img/work/Williamsburg.avif" alt="Dusk perspective of the street below the loft windows">
+                    <span class="arq-cs-figcaption">
+                        <span class="arq-cs-gallery-meta">05 — Outer Context</span>
+                        <span class="arq-cs-gallery-caption">Dusk perspective of the street below the loft windows</span>
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CTA BAND -->
+        <section class="arq-cs-cta">
+            <h2>Ready to put your next project on the map?</h2>
+            <p>Whether it's a single hero still or a full day-to-night set, we'll find the angle that closes the deal.</p>
+            <a href="/connect/" class="stills-cross-link final-cta-btn" aria-label="Let's talk">
+                <span class="final-cta-text">Let's talk</span>
+            </a>
+        </section>
+
+        <!-- SECTION 7: RELATED WORK -->
+        <section class="arq-cs-related">
+            <div class="arq-cs-section-head">
+                <span class="arq-cs-kicker">Continue Exploring</span>
+                <h2>More case studies</h2>
+            </div>
+            
+            <div class="arq-cs-related-grid">
+                <!-- 135 Kent -->
+                <a href="/work/stills/135-kent/" class="arq-cs-related-card" data-cursor-label="View 135 Kent">
+                    <div class="arq-cs-related-img">
+                        <img src="/assets/img/stills/135-kent/135-kent-chase.avif" alt="135 Kent Case Study render preview" loading="lazy" decoding="async">
+                    </div>
+                    <div class="arq-cs-related-info">
+                        <h3>135 Kent</h3>
+                        <p>A commercial building on one of Williamsburg's most visible waterfront corners — where the renders had to do the selling.</p>
+                        <span class="arq-cs-related-cta">Explore Case Study →</span>
+                    </div>
+                </a>
+
+                <!-- Williamsburg -->
+                <a href="/work/stills/williamsburg/" class="arq-cs-related-card" data-cursor-label="View Williamsburg">
+                    <div class="arq-cs-related-img">
+                        <img src="/assets/img/work/Williamsburg.avif" alt="Williamsburg pedestrian view render preview" loading="lazy" decoding="async">
+                    </div>
+                    <div class="arq-cs-related-info">
+                        <h3>Williamsburg</h3>
+                        <p>A modern residential concept situated on a historic Brooklyn street, capturing industrial brick details, warm sunlight, and waterfront views.</p>
+                        <span class="arq-cs-related-cta">Explore Case Study →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 8: RELATED PORTFOLIO -->
+        <section class="arq-cs-portfolio">
+            <div class="arq-cs-section-head">
+                <span class="arq-cs-kicker">Explore Categories</span>
+                <h2>More of our work</h2>
+            </div>
+            
+            <div class="arq-cs-portfolio-grid">
+                <!-- Stills -->
+                <a href="/work/stills/" class="work-item" data-cursor-label="View Stills">
+                    <div class="work-mask">
+                        <img src="/assets/img/work/Chachalacas.avif" alt="Architectural CGI stills portfolio" class="work-img" loading="lazy" decoding="async" width="2752" height="1536">
+                    </div>
+                    <div class="work-info">
+                        <h3>Stills</h3>
+                        <p class="work-description">Photoreal images for interiors, exteriors, and aerial views.</p>
+                        <span class="work-cta">View stills →</span>
+                    </div>
+                </a>
+
+                <!-- Animations (Alt alignment) -->
+                <a href="/work/animations/" class="work-item alt" data-cursor-label="View Animations">
+                    <div class="work-mask">
+                        <img src="/assets/vid/vid_queensblvd_poster.avif" alt="Architectural visualization films" class="work-img" loading="lazy" decoding="async" width="1376" height="768">
+                    </div>
+                    <div class="work-info">
+                        <h3>Animations</h3>
+                        <p class="work-description">Cinematic films for architecture, real estate, and visual storytelling.</p>
+                        <span class="work-cta">Watch animations →</span>
+                    </div>
+                </a>
+
+                <!-- 360 Tours -->
+                <a href="/work/360/" class="work-item" data-cursor-label="Open 360 Tour">
+                    <div class="work-mask">
+                        <img src="/assets/vid/vid_360_poster.avif" alt="Interactive 360 virtual tours" class="work-img" loading="lazy" decoding="async" width="1080" height="1080">
+                    </div>
+                    <div class="work-info">
+                        <h3>360 Tours</h3>
+                        <p class="work-description">Interactive tours to explore spaces from every angle.</p>
+                        <span class="work-cta">Explore 360 tours →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- BACK NAVIGATION -->
+        <div class="sp-back-nav">
+            <a href="/work/stills/" class="sp-back-link" aria-label="Back to Stills">
+                <span class="sp-back-link-main">
+                    <span class="sp-back-link-arrow" aria-hidden="true">←</span>
+                    <span class="sp-back-link-label">back to Stills</span>
+                </span>
+            </a>
         </div>
+
     </main>
 
     <div id="footer"></div>
 
+    <!-- Scripts -->
+    <!-- 1. GSAP core + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+    <!-- 2. Site components & Page logic -->
     <script defer src="/js/load-components.js"></script>
     <script defer src="/js/burger.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script type="module" src="/js/engines/selected-project-page.js"></script>
+    <script type="module" src="/js/case-study-135-kent.js"></script>
     <script defer src="/js/boot-ready.js"></script>
 </body>
 

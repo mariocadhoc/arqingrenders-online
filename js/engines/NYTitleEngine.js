@@ -81,20 +81,20 @@ export class NYTitleEngine {
 
         const tl = gsap.timeline();
 
+        // Mirrors the /studio/team H1 entrance: masked per-letter rise,
+        // 0.9s cubic-bezier(0.215, 0.61, 0.355, 1), 120ms lead + 60ms/letter stagger.
         gsap.set(this.chars, {
             opacity: 0,
-            y: 50,
-            scale: 0.8,
-            rotation: 0
+            yPercent: 98
         });
 
         tl.to(this.chars, {
             opacity: 1,
-            y: 0,
-            scale: 1,
-            stagger: 0.05,
-            duration: 0.8,
-            ease: 'back.out(1.7)',
+            yPercent: 0,
+            stagger: 0.06,
+            duration: 0.9,
+            delay: 0.12,
+            ease: 'power2.out',
             onComplete: () => {
                 window.dispatchEvent(new CustomEvent('titleAnimationComplete'));
                 if (this.heartChar) {

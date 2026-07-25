@@ -10,13 +10,56 @@
   "cards": [
     {
       "type": "project",
+      "category": "Mixed-Use",
+      "slug": "queens-blvd",
+      "label": "Queens Blvd, Queens, NY",
+      "parent": {
+        "role": "parent",
+        "name": "queens-blvd-1.avif",
+        "alt": "Architectural rendering of Queens Blvd mixed-use development in Queens, NY",
+        "displayWidth": 255,
+        "displayHeight": 178,
+        "full": {
+          "name": "queens-blvd-1.avif",
+          "src": "/assets/img/stills/queens-blvd/queens-blvd-1.avif",
+          "width": 2000,
+          "height": 1400
+        },
+        "card": {
+          "name": "queens-blvd-1-thumb.avif",
+          "src": "/assets/img/stills/queens-blvd/queens-blvd-1-thumb.avif",
+          "width": 1000,
+          "height": 700
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "queens-blvd-2.avif",
+          "full": {
+            "name": "queens-blvd-2.avif",
+            "src": "/assets/img/stills/queens-blvd/children/queens-blvd-2.avif",
+            "width": 2000,
+            "height": 1400
+          },
+          "thumb": {
+            "name": "queens-blvd-2-thumb.avif",
+            "src": "/assets/img/stills/queens-blvd/children/queens-blvd-2-thumb.avif",
+            "width": 500,
+            "height": 350
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
       "category": "Commercial",
       "slug": "1-kent",
-      "label": "1 Kent Ave, Brooklyn, NY",
+      "label": "Kent Ave, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "1-kent-arqing-2.avif",
-        "alt": "Kent",
+        "alt": "High-end 3D architectural still rendering of Kent Ave project in Brooklyn, NY",
         "displayWidth": 255,
         "displayHeight": 140,
         "full": {
@@ -53,13 +96,147 @@
     },
     {
       "type": "project",
+      "category": "Mixed-Use",
+      "slug": "119th-st",
+      "label": "119th St, New York, NY",
+      "parent": {
+        "role": "parent",
+        "name": "119th-st-1.avif",
+        "alt": "Exterior architectural visualization of 119th St residential development in New York, NY",
+        "displayWidth": 255,
+        "displayHeight": 220,
+        "full": {
+          "name": "119th-st-1.avif",
+          "src": "/assets/img/stills/119th-st/119th-st-1.avif",
+          "width": 2365,
+          "height": 2043
+        },
+        "card": {
+          "name": "119th-st-1-thumb.avif",
+          "src": "/assets/img/stills/119th-st/119th-st-1-thumb.avif",
+          "width": 295,
+          "height": 255
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "119th-st-2.avif",
+          "full": {
+            "name": "119th-st-2.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-2.avif",
+            "width": 2294,
+            "height": 1214
+          },
+          "thumb": {
+            "name": "119th-st-2-thumb.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-2-thumb.avif",
+            "width": 286,
+            "height": 151
+          }
+        },
+        {
+          "role": "child",
+          "name": "119th-st-3.avif",
+          "full": {
+            "name": "119th-st-3.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-3.avif",
+            "width": 1536,
+            "height": 2730
+          },
+          "thumb": {
+            "name": "119th-st-3-thumb.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-3-thumb.avif",
+            "width": 384,
+            "height": 682
+          }
+        },
+        {
+          "role": "child",
+          "name": "119th-st-4.avif",
+          "full": {
+            "name": "119th-st-4.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-4.avif",
+            "width": 1672,
+            "height": 941
+          },
+          "thumb": {
+            "name": "119th-st-4-thumb.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-4-thumb.avif",
+            "width": 418,
+            "height": 235
+          }
+        },
+        {
+          "role": "child",
+          "name": "119th-st-5.avif",
+          "full": {
+            "name": "119th-st-5.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-5.avif",
+            "width": 941,
+            "height": 1465
+          },
+          "thumb": {
+            "name": "119th-st-5-thumb.avif",
+            "src": "/assets/img/stills/119th-st/children/119th-st-5-thumb.avif",
+            "width": 470,
+            "height": 732
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "category": "Hospitality",
+      "slug": "hacienda-sacnicte",
+      "label": "Hacienda Sacnicte, Yucatán, MX",
+      "parent": {
+        "role": "parent",
+        "name": "hacienda-sacnicte-1.avif",
+        "alt": "Hospitality architectural rendering of Hacienda Sacnicte in Yucatán, MX",
+        "displayWidth": 255,
+        "displayHeight": 170,
+        "full": {
+          "name": "hacienda-sacnicte-1.avif",
+          "src": "/assets/img/stills/hacienda-sacnicte/hacienda-sacnicte-1.avif",
+          "width": 2528,
+          "height": 1684
+        },
+        "card": {
+          "name": "hacienda-sacnicte-1-card.avif",
+          "src": "/assets/img/stills/hacienda-sacnicte/hacienda-sacnicte-1-card.avif",
+          "width": 1200,
+          "height": 799
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "hacienda-sacnicte-3.avif",
+          "full": {
+            "name": "hacienda-sacnicte-3.avif",
+            "src": "/assets/img/stills/hacienda-sacnicte/children/hacienda-sacnicte-3.avif",
+            "width": 2352,
+            "height": 1518
+          },
+          "thumb": {
+            "name": "hacienda-sacnicte-3-thumb.avif",
+            "src": "/assets/img/stills/hacienda-sacnicte/children/hacienda-sacnicte-3-thumb.avif",
+            "width": 320,
+            "height": 207
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
       "category": "Commercial",
       "slug": "29-wythe",
-      "label": "29 Wythe Ave, Brooklyn, NY",
+      "label": "Wythe Ave - A, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "29-wythe-jan-2025-front.avif",
-        "alt": "Wythe",
+        "alt": "Commercial architectural rendering of Wythe Ave in Brooklyn, NY",
         "displayWidth": 255,
         "displayHeight": 140,
         "full": {
@@ -114,11 +291,11 @@
       "type": "project",
       "category": "Mixed-Use",
       "slug": "35-13-steinway",
-      "label": "13 Steinway St, Queens, NY",
+      "label": "Steinway St, Queens, NY",
       "parent": {
         "role": "parent",
         "name": "35-13-steinway.avif",
-        "alt": "13 Steinway",
+        "alt": "Mixed-use 3D architectural rendering of Steinway St building in Queens, NY",
         "displayWidth": 255,
         "displayHeight": 170,
         "full": {
@@ -149,6 +326,22 @@
             "src": "/assets/img/stills/35-13-steinway/children/11-brown-thumb.avif",
             "width": 320,
             "height": 213
+          }
+        },
+        {
+          "role": "child",
+          "name": "steinway-aerial.avif",
+          "full": {
+            "name": "steinway-aerial.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/steinway-aerial.avif",
+            "width": 2400,
+            "height": 1792
+          },
+          "thumb": {
+            "name": "steinway-aerial-thumb.avif",
+            "src": "/assets/img/stills/35-13-steinway/children/steinway-aerial-thumb.avif",
+            "width": 300,
+            "height": 224
           }
         },
         {
@@ -209,7 +402,7 @@
       "parent": {
         "role": "parent",
         "name": "64-11-queens-blvd-cam-2-gfrc.avif",
-        "alt": "11 Queens Blvd",
+        "alt": "Residential building architectural render on Queens Blvd, Queens, NY",
         "displayWidth": 255,
         "displayHeight": 189,
         "full": {
@@ -270,11 +463,11 @@
       "type": "project",
       "category": "Mixed-Use",
       "slug": "83-wythe-2025",
-      "label": "83 Wythe Ave, Brooklyn, NY",
+      "label": "Wythe Ave - B, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "83-wythe-life-time-3.avif",
-        "alt": "Wythe 2025",
+        "alt": "Architectural visualization of 83 Wythe Ave development in Brooklyn, NY",
         "displayWidth": 234,
         "displayHeight": 275,
         "full": {
@@ -361,11 +554,11 @@
       "type": "project",
       "category": "Mixed-Use",
       "slug": "83-wythe-2026",
-      "label": "83 Wythe Ave, Brooklyn, NY",
+      "label": "Wythe Ave - B, Brooklyn, NY",
       "parent": {
         "role": "parent",
         "name": "83-wythe.avif",
-        "alt": "Wythe 2026",
+        "alt": "Modern architectural render of 83 Wythe Ave project in Brooklyn, NY",
         "displayWidth": 236,
         "displayHeight": 275,
         "full": {
@@ -424,7 +617,7 @@
       "parent": {
         "role": "parent",
         "name": "135-kent-chase.avif",
-        "alt": "Kent",
+        "alt": "Commercial 3D rendering of 135 Kent Ave in Williamsburg, Brooklyn, NY",
         "displayWidth": 179,
         "displayHeight": 275,
         "full": {
@@ -461,13 +654,56 @@
     },
     {
       "type": "project",
+      "category": "Mixed-Use",
+      "slug": "greenpoint-ave",
+      "label": "Greenpoint Ave, Queens, NY",
+      "parent": {
+        "role": "parent",
+        "name": "Greenpoint_1.avif",
+        "alt": "Commercial architectural rendering of Greenpoint Ave development in Queens, NY",
+        "displayWidth": 255,
+        "displayHeight": 178,
+        "full": {
+          "name": "Greenpoint_1.avif",
+          "src": "/assets/img/stills/greenpoint-ave/Greenpoint_1.avif",
+          "width": 1921,
+          "height": 1342
+        },
+        "card": {
+          "name": "Greenpoint_1-thumb.avif",
+          "src": "/assets/img/stills/greenpoint-ave/Greenpoint_1-thumb.avif",
+          "width": 480,
+          "height": 335
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "Detail-1.avif",
+          "full": {
+            "name": "Detail-1.avif",
+            "src": "/assets/img/stills/greenpoint-ave/children/Detail-1.avif",
+            "width": 1122,
+            "height": 1402
+          },
+          "thumb": {
+            "name": "Detail-1-thumb.avif",
+            "src": "/assets/img/stills/greenpoint-ave/children/Detail-1-thumb.avif",
+            "width": 561,
+            "height": 701
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
       "category": "Hospitality",
       "slug": "caesars-palace-las-vegas",
       "label": "Caesars Palace, Las Vegas, NV",
       "parent": {
         "role": "parent",
         "name": "caesars-palace-cam-1.avif",
-        "alt": "Caesars Palace Las Vegas",
+        "alt": "Hospitality architectural visualization of Caesars Palace in Las Vegas, NV",
         "displayWidth": 255,
         "displayHeight": 170,
         "full": {
@@ -520,56 +756,13 @@
     },
     {
       "type": "project",
-      "category": "Hospitality",
-      "slug": "hacienda-sacnicte",
-      "label": "Hacienda Sacnicte, Yucatán, MX",
-      "parent": {
-        "role": "parent",
-        "name": "hacienda-sacnicte-1.avif",
-        "alt": "Hacienda Sacnicte",
-        "displayWidth": 255,
-        "displayHeight": 170,
-        "full": {
-          "name": "hacienda-sacnicte-1.avif",
-          "src": "/assets/img/stills/hacienda-sacnicte/hacienda-sacnicte-1.avif",
-          "width": 2528,
-          "height": 1684
-        },
-        "card": {
-          "name": "hacienda-sacnicte-1-card.avif",
-          "src": "/assets/img/stills/hacienda-sacnicte/hacienda-sacnicte-1-card.avif",
-          "width": 1200,
-          "height": 799
-        }
-      },
-      "children": [
-        {
-          "role": "child",
-          "name": "hacienda-sacnicte-3.avif",
-          "full": {
-            "name": "hacienda-sacnicte-3.avif",
-            "src": "/assets/img/stills/hacienda-sacnicte/children/hacienda-sacnicte-3.avif",
-            "width": 2352,
-            "height": 1518
-          },
-          "thumb": {
-            "name": "hacienda-sacnicte-3-thumb.avif",
-            "src": "/assets/img/stills/hacienda-sacnicte/children/hacienda-sacnicte-3-thumb.avif",
-            "width": 320,
-            "height": 207
-          }
-        }
-      ]
-    },
-    {
-      "type": "project",
       "category": "Residential",
       "slug": "kauai",
       "label": "Residence, Kauai, HI",
       "parent": {
         "role": "parent",
         "name": "kauai-2.avif",
-        "alt": "Kauai",
+        "alt": "Luxury residential architectural rendering in Kauai, HI",
         "displayWidth": 255,
         "displayHeight": 170,
         "full": {

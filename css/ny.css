@@ -3,6 +3,18 @@
    Styles for the /studio/ny/ landing page
    ========================================= */
 
+/* ─── Page Frame ─── */
+.ny-main {
+    position: relative;
+    padding-top: 15vh;
+}
+
+/* ─── H1: "i ♡ ny" ─── */
+.ny-main .ny-sticky-title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
 /* H1 Heart Styling */
 /* "I ♡ NY" -> The heart is the 3rd character, but now we apply .ny-heart to it */
 .ny-sticky-title .ny-heart {
@@ -10,36 +22,6 @@
     /* Reverted to white (inherit form H1) */
     font-family: system-ui, -apple-system, sans-serif;
     vertical-align: middle;
-}
-
-/* Map Section */
-#nyc-map {
-    width: 100%;
-    height: 60vh;
-    min-height: 420px;
-    border-radius: 12px;
-    margin-top: 2rem;
-    z-index: 1;
-    /* Ensure map sits correctly */
-}
-
-.leaflet-container {
-    font: 14px/1.3 system-ui, Segoe UI, Roboto, Arial, sans-serif !important;
-}
-
-/* NY Page Layout Adjustments */
-/* Override work.css subtitle margin to fit intro text */
-.work-header .work-subtitle {
-    margin-bottom: 2rem;
-}
-
-.ny-intro-text {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 4rem;
-    /* Spacing before map */
-    opacity: 0.8;
-    font-family: var(--font-sans);
 }
 
 /* Sticky Title */
@@ -50,12 +32,18 @@
     pointer-events: none;
     text-align: center;
 }
+
 .ny-sticky-title .title-char {
     display: inline-block;
     pointer-events: auto;
 }
 
-/* ─── NY Subtitle (Cipher Decode) ─── */
+/* ─── Hero / H2 ─── */
+.ny-header {
+    padding-top: 0;
+    margin-top: 5vh;
+}
+
 .ny-subtitle {
     display: flex;
     flex-direction: column;
@@ -63,11 +51,12 @@
     gap: 0.8rem;
     text-align: center;
     max-width: 900px;
-    margin: 0 auto 6rem;
+    margin: 0 auto 2.5rem;
     padding: 0 5vw;
     box-sizing: border-box;
 }
 
+/* H2 entrance — values replicated from /studio/team's .team-name reveal */
 .cipher-line {
     display: block;
     font-size: clamp(28px, 4.5vw, 56px);
@@ -75,44 +64,983 @@
     font-weight: 300;
     white-space: nowrap;
     overflow: visible;
+    opacity: 0;
+    transform: translate3d(68px, 0, 0) rotate(-2deg);
+    transition:
+        transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0.6s ease;
+    will-change: transform, opacity;
 }
 
+.cipher-line:nth-child(2) {
+    transform: translate3d(-68px, 0, 0) rotate(2deg);
+    transition-delay: 0.18s;
+    font-weight: 400;
+}
+
+.ny-subtitle.is-visible .cipher-line {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+/* ─── Map Section ─── */
+.ny-map-section {
+    padding: 0 0 18vh;
+    opacity: 0;
+    transform: translate3d(0, 42px, 0);
+    transition:
+        transform 0.85s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0.65s ease;
+    will-change: transform, opacity;
+}
+
+.ny-map-section.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.ny-intro-text {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3.5rem;
+    opacity: 0.8;
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    color: var(--gray-1);
+    padding: 0 5vw;
+    box-sizing: border-box;
+}
+
+.ny-map-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    box-sizing: border-box;
+}
+
+#nyc-map {
+    width: 100%;
+    height: 60vh;
+    min-height: 420px;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    z-index: 1;
+    border: 1px solid var(--border);
+    /* Ensure map sits correctly */
+}
+
+.leaflet-container {
+    font: 14px/1.3 system-ui, Segoe UI, Roboto, Arial, sans-serif !important;
+    background: var(--bg-alt) !important;
+}
+
+/* ─── Borough Filter Bar ─── */
+.ny-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.ny-filter-btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--gray-1);
+    font-family: var(--font-josefin);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.62rem 1.25rem 0.5rem;
+    cursor: pointer;
+    transition:
+        color 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform;
+}
+
+.ny-filter-btn:hover,
+.ny-filter-btn:focus-visible {
+    color: var(--text);
+    border-color: rgba(232, 229, 240, 0.35);
+    transform: translate3d(0, -2px, 0);
+}
+
+.ny-filter-btn.is-active {
+    color: var(--bg);
+    background: var(--text);
+    border-color: var(--text);
+    transform: translate3d(0, 0, 0);
+}
+
+/* ─── Popup Card ─── */
+.ny-popup .leaflet-popup-content-wrapper {
+    background: var(--bg-alt);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+    padding: 0;
+}
+
+.ny-popup .leaflet-popup-content {
+    margin: 0;
+    width: auto !important;
+}
+
+.ny-popup .leaflet-popup-tip {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+
+.ny-popup .leaflet-popup-close-button {
+    color: var(--gray-1);
+    padding: 8px 8px 0 0;
+}
+
+.ny-popup .leaflet-popup-close-button:hover {
+    color: var(--text);
+}
+
+.ny-popup-card {
+    padding: 1.1rem 1.3rem 1.2rem;
+    min-width: 200px;
+    max-width: 260px;
+}
+
+.ny-popup-name {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-raleway);
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text);
+}
+
+.ny-popup-meta {
+    margin: 0;
+    font-family: var(--font-josefin);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.ny-popup-dot {
+    margin: 0 0.4em;
+    opacity: 0.6;
+}
+
+.ny-popup-status {
+    margin: 0.55rem 0 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--gray-1);
+}
+
+.ny-popup-description {
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--gray-1);
+}
+
+.ny-popup-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: var(--font-josefin);
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.15rem;
+    transition: border-color 0.35s ease, opacity 0.35s ease;
+}
+
+.ny-popup-link:hover,
+.ny-popup-link:focus-visible {
+    border-color: var(--text);
+    opacity: 0.85;
+}
+
+/* ─── Hero ─── */
+.ny-eyebrow {
+    margin: 0 0 1.2rem;
+    text-align: center;
+    font-family: var(--font-josefin);
+    font-size: 0.82rem;
+    letter-spacing: 0.52em;
+    text-transform: uppercase;
+    color: var(--gray-1);
+}
+
+.ny-hero-body {
+    display: grid;
+    justify-items: center;
+    gap: 2.2rem;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto clamp(6rem, 12vh, 9rem);
+    padding: 0 5vw;
+    box-sizing: border-box;
+}
+
+.ny-hero-subline {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--gray-1);
+}
+
+/* ─── CTA Button (mirrors /studio/team's CTA pattern, base tokens) ─── */
+.ny-cta-button {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18rem;
+    padding: 1.15rem 2rem 1rem;
+    border: 1px solid rgba(232, 229, 240, 0.55);
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.85rem;
+    font-family: var(--font-josefin);
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), color 0.35s ease;
+    will-change: transform;
+}
+
+.ny-cta-button:hover,
+.ny-cta-button:focus-visible {
+    transform: translate3d(0, -4px, 0);
+    color: var(--bg);
+}
+
+.ny-cta-button-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--text);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+}
+
+.ny-cta-button:hover .ny-cta-button-fill,
+.ny-cta-button:focus-visible .ny-cta-button-fill {
+    transform: scaleX(1);
+}
+
+.ny-cta-button-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Proof Strip ─── */
+.ny-proof {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: clamp(3.5rem, 7vh, 5.5rem) 5vw;
+    margin-bottom: clamp(6rem, 14vh, 10rem);
+}
+
+.ny-proof-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(2rem, 4vw, 4rem);
+}
+
+.ny-stat {
+    display: grid;
+    gap: 0.7rem;
+    align-content: start;
+    text-align: center;
+}
+
+.ny-stat-value {
+    font-family: var(--font-raleway);
+    font-size: clamp(2.4rem, 3.4vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--text);
+}
+
+.ny-stat-label {
+    font-family: var(--font-josefin);
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    color: var(--gray-1);
+}
+
+/* ─── Proof stat tooltip ─── */
+.ny-stat {
+    position: relative;
+    cursor: default;
+    border-radius: 6px;
+    outline: none;
+}
+
+.ny-stat-tip {
+    position: absolute;
+    bottom: calc(100% + 0.9rem);
+    left: 50%;
+    transform: translate3d(-50%, 6px, 0);
+    width: min(280px, 70vw);
+    padding: 1.1rem 1.3rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    z-index: 5;
+}
+
+.ny-stat-tip p {
+    margin: 0;
+    font-family: var(--font-josefin);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--gray-1);
+}
+
+.ny-stat-tip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    rotate: 45deg;
+    margin-top: -5px;
+}
+
+.ny-stat:hover .ny-stat-tip,
+.ny-stat:focus-within .ny-stat-tip,
+.ny-stat:focus-visible .ny-stat-tip {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(-50%, 0, 0);
+}
+
+.ny-proof-grid .ny-stat:first-child .ny-stat-tip {
+    left: 0;
+    transform: translate3d(0, 6px, 0);
+}
+
+.ny-proof-grid .ny-stat:first-child .ny-stat-tip::after {
+    left: 1.4rem;
+}
+
+.ny-proof-grid .ny-stat:first-child:hover .ny-stat-tip,
+.ny-proof-grid .ny-stat:first-child:focus-within .ny-stat-tip {
+    transform: translate3d(0, 0, 0);
+}
+
+.ny-proof-grid .ny-stat:last-child .ny-stat-tip {
+    left: auto;
+    right: 0;
+    transform: translate3d(0, 6px, 0);
+}
+
+.ny-proof-grid .ny-stat:last-child .ny-stat-tip::after {
+    left: auto;
+    right: 1.4rem;
+    transform: none;
+}
+
+.ny-proof-grid .ny-stat:last-child:hover .ny-stat-tip,
+.ny-proof-grid .ny-stat:last-child:focus-within .ny-stat-tip {
+    transform: translate3d(0, 0, 0);
+}
+
+/* ─── Positioning ─── */
+.ny-positioning {
+    padding: 0 5vw;
+    margin-bottom: clamp(7rem, 16vh, 12rem);
+}
+
+.ny-positioning-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(2.5rem, 4vw, 4rem);
+}
+
+.ny-positioning-col {
+    border-top: 1px solid;
+    border-image: linear-gradient(90deg, rgba(232, 229, 240, 0.45), rgba(232, 229, 240, 0.05)) 1;
+    padding-top: 1.8rem;
+}
+
+.ny-positioning-title {
+    margin: 0 0 1rem;
+    font-family: var(--font-raleway);
+    font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.35;
+    color: var(--text);
+}
+
+.ny-positioning-body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.85;
+    color: var(--gray-1);
+}
+
+/* ─── Map Section Headline ─── */
+.ny-map-title {
+    margin: 0 auto 1.4rem;
+    max-width: 900px;
+    padding: 0 5vw;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: var(--font-raleway);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--text);
+}
+
+.ny-map-hint {
+    margin: -2rem auto 3rem;
+    max-width: 600px;
+    padding: 0 5vw;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: var(--font-josefin);
+    font-size: 0.76rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* ─── Closing CTA ─── */
+.ny-closing {
+    padding: 0 5vw clamp(8rem, 18vh, 14rem);
+}
+
+.ny-closing-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    justify-items: center;
+    gap: 1.6rem;
+    text-align: center;
+}
+
+.ny-closing-title {
+    margin: 0;
+    font-family: var(--font-raleway);
+    font-size: clamp(2rem, 3.6vw, 3.4rem);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+.ny-closing-subline {
+    margin: 0 0 0.8rem;
+    max-width: 560px;
+    font-family: var(--font-sans);
+    font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+    line-height: 1.85;
+    color: var(--gray-1);
+}
+
+/* =========================================
+   SCROLL & HOVER POLISH
+   Section entrances ride the existing ny.js
+   IntersectionObserver (.is-visible). Child
+   choreography uses keyframes with backwards
+   fill so hover transitions stay snappy.
+   ========================================= */
+
+/* 0. Hero sequence — subline & CTA wait for H1 entrance + first heartbeat.
+   Hidden state scoped to html.js-ready so no-JS visitors see them at once.
+   Reveal uses backwards-fill keyframes so the CTA hover transition stays free. */
+html.js-ready .ny-hero-body:not(.is-revealed) .ny-hero-subline,
+html.js-ready .ny-hero-body:not(.is-revealed) .ny-cta-button {
+    opacity: 0;
+}
+
+@keyframes ny-hero-rise {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 16px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+html.js-ready .ny-hero-body.is-revealed .ny-hero-subline {
+    animation: ny-hero-rise 0.7s ease-out backwards;
+}
+
+html.js-ready .ny-hero-body.is-revealed .ny-cta-button {
+    animation: ny-hero-rise 0.7s ease-out 0.12s backwards;
+}
+
+/* 1. Section entrances (hidden only when JS is running) */
+html.js-ready .ny-proof,
+html.js-ready .ny-positioning,
+html.js-ready .ny-closing {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+    transition:
+        transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform, opacity;
+}
+
+html.js-ready .ny-proof.is-visible,
+html.js-ready .ny-positioning.is-visible,
+html.js-ready .ny-closing.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes ny-rise {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 24px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ny-rule-draw {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes ny-pill-in {
+    from {
+        opacity: 0;
+        transform: translate3d(-8px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ny-cta-rise {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 32px, 0) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+/* 3. Positioning columns — staggered entrance + drawn-in top rule.
+   With JS the static border is swapped for a ::before that can scale. */
+html.js-ready .ny-positioning-col {
+    position: relative;
+    border-top: 0;
+    border-image: none;
+    transition: transform 0.35s ease-out;
+}
+
+html.js-ready .ny-positioning-col::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(232, 229, 240, 0.45), rgba(232, 229, 240, 0.05));
+    opacity: 0.6;
+    transform-origin: left center;
+    transition: opacity 0.35s ease;
+}
+
+html.js-ready .ny-positioning.is-visible .ny-positioning-col {
+    animation: ny-rise 0.75s cubic-bezier(0.19, 1, 0.22, 1) backwards;
+}
+
+html.js-ready .ny-positioning.is-visible .ny-positioning-col::before {
+    animation: ny-rule-draw 0.6s cubic-bezier(0.19, 1, 0.22, 1) backwards;
+}
+
+html.js-ready .ny-positioning.is-visible .ny-positioning-col:nth-child(2),
+html.js-ready .ny-positioning.is-visible .ny-positioning-col:nth-child(2)::before {
+    animation-delay: 0.1s;
+}
+
+html.js-ready .ny-positioning.is-visible .ny-positioning-col:nth-child(3),
+html.js-ready .ny-positioning.is-visible .ny-positioning-col:nth-child(3)::before {
+    animation-delay: 0.2s;
+}
+
+/* Column hover — subtle lift, rule brightens */
+html.js-ready .ny-positioning-col:hover {
+    transform: translateY(-4px);
+}
+
+html.js-ready .ny-positioning-col:hover::before {
+    opacity: 1;
+}
+
+/* 4. Borough filter pills — staggered slide-in once the map section reveals */
+html.js-ready .ny-map-section.is-visible .ny-filter-btn {
+    animation: ny-pill-in 0.4s cubic-bezier(0.19, 1, 0.22, 1) backwards;
+}
+
+html.js-ready .ny-map-section.is-visible .ny-filter-btn:nth-child(2) { animation-delay: 0.04s; }
+html.js-ready .ny-map-section.is-visible .ny-filter-btn:nth-child(3) { animation-delay: 0.08s; }
+html.js-ready .ny-map-section.is-visible .ny-filter-btn:nth-child(4) { animation-delay: 0.12s; }
+html.js-ready .ny-map-section.is-visible .ny-filter-btn:nth-child(5) { animation-delay: 0.16s; }
+html.js-ready .ny-map-section.is-visible .ny-filter-btn:nth-child(6) { animation-delay: 0.2s; }
+html.js-ready .ny-map-section.is-visible .ny-filter-btn:nth-child(7) { animation-delay: 0.24s; }
+
+/* Pills: explicit color/background timing per spec */
+.ny-filter-btn {
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 5. Closing CTA cascade */
+html.js-ready .ny-closing.is-visible .ny-closing-title {
+    animation: ny-rise 0.9s cubic-bezier(0.19, 1, 0.22, 1) backwards;
+}
+
+html.js-ready .ny-closing.is-visible .ny-closing-subline {
+    animation: ny-rise 0.9s cubic-bezier(0.19, 1, 0.22, 1) 0.08s backwards;
+}
+
+html.js-ready .ny-closing.is-visible .ny-cta-button {
+    animation: ny-cta-rise 0.9s cubic-bezier(0.19, 1, 0.22, 1) 0.16s backwards;
+}
+
+/* 6. Proof strip stat hover — typography only */
+.ny-stat-value {
+    transition: letter-spacing 0.3s ease;
+}
+
+.ny-stat:hover .ny-stat-value {
+    letter-spacing: 0.06em;
+}
+
+/* ─── Reduced motion: everything lands instantly ─── */
+@media (prefers-reduced-motion: reduce) {
+
+    html.js-ready .ny-hero-body:not(.is-revealed) .ny-hero-subline,
+    html.js-ready .ny-hero-body:not(.is-revealed) .ny-cta-button {
+        opacity: 1;
+    }
+
+    html.js-ready .ny-hero-body.is-revealed .ny-hero-subline,
+    html.js-ready .ny-hero-body.is-revealed .ny-cta-button {
+        animation: none;
+    }
+
+    html.js-ready .ny-proof,
+    html.js-ready .ny-positioning,
+    html.js-ready .ny-closing,
+    .ny-map-section,
+    .cipher-line {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    html.js-ready .ny-positioning.is-visible .ny-positioning-col,
+    html.js-ready .ny-positioning.is-visible .ny-positioning-col::before,
+    html.js-ready .ny-map-section.is-visible .ny-filter-btn,
+    html.js-ready .ny-closing.is-visible .ny-closing-title,
+    html.js-ready .ny-closing.is-visible .ny-closing-subline,
+    html.js-ready .ny-closing.is-visible .ny-cta-button {
+        animation: none;
+    }
+
+    .ny-positioning-col,
+    .ny-filter-btn,
+    .ny-stat-value,
+    .ny-cta-button,
+    .ny-cta-button-fill,
+    .ny-popup-link {
+        transition: none;
+    }
+
+    html.js-ready .ny-positioning-col:hover {
+        transform: none;
+    }
+
+    .ny-cta-button:hover,
+    .ny-cta-button:focus-visible {
+        transform: none;
+    }
+}
+
+/* ─── No-JS fallback (same pattern as /studio/team) ─── */
+html:not(.js-pending):not(.js-ready) .cipher-line,
+html:not(.js-pending):not(.js-ready) .ny-map-section {
+    opacity: 1;
+    transform: none;
+}
+
+/* ─── 1920px+ (large desktop) ─── */
 @media (min-width: 1920px) {
     #nyc-map {
         height: 64vh;
         min-height: 520px;
     }
 
+    .ny-map-shell {
+        max-width: 1400px;
+    }
+
     .ny-intro-text {
         max-width: 720px;
+        margin-bottom: 4rem;
     }
 
     .ny-subtitle {
-        margin-bottom: 7rem;
+        max-width: 1100px;
+        margin-bottom: 3rem;
+    }
+
+    .ny-filter-btn {
+        font-size: 0.82rem;
+        padding: 0.7rem 1.5rem 0.58rem;
+    }
+
+    .ny-hero-body {
+        max-width: 820px;
+        margin-top: 4.5rem;
+        gap: 2.6rem;
+    }
+
+    .ny-proof-grid,
+    .ny-positioning-grid {
+        max-width: 1400px;
+    }
+
+    .ny-proof {
+        padding-top: 6.5rem;
+        padding-bottom: 6.5rem;
+    }
+
+    .ny-closing-inner {
+        max-width: 1040px;
+        gap: 2rem;
     }
 }
 
+/* ─── 768px and below (mobile) ─── */
 @media (max-width: 768px) {
+    .ny-main {
+        padding-top: 12vh;
+    }
+
     #nyc-map {
         height: 50vh;
         min-height: 320px;
+        border-radius: 10px;
+        margin-top: 1.1rem;
     }
 
     .ny-intro-text {
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     .ny-sticky-title {
         top: 12vh;
+        /* work.css caps .work-title at clamp(2rem, 8vw, 4rem) on mobile,
+           leaving the H1 barely larger than the cipher lines. The H1 owns
+           the screen here. */
+        font-size: clamp(3.6rem, 17vw, 5.5rem);
     }
 
     .ny-subtitle {
         gap: 0.65rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
 
     .cipher-line {
-        font-size: clamp(22px, 7vw, 36px);
+        font-size: clamp(17px, 5.5vw, 26px);
         white-space: normal;
+    }
+
+    .ny-map-section {
+        padding-bottom: 12vh;
+    }
+
+    /* Filter bar scrolls horizontally instead of wrapping awkwardly */
+    .ny-filters {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 0.4rem;
+        margin: 0 -5vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    .ny-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ny-filter-btn {
+        flex: 0 0 auto;
+        font-size: 0.72rem;
+        padding: 0.55rem 1rem 0.45rem;
+    }
+
+    .ny-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.42em;
+    }
+
+    .ny-hero-body {
+        margin-top: 2.5rem;
+        gap: 1.8rem;
+    }
+
+    .ny-cta-button {
+        min-width: 100%;
+        letter-spacing: 0.22em;
+        font-size: 0.78rem;
+    }
+
+    .ny-proof {
+        padding: 3rem 5vw;
+        margin-bottom: 5rem;
+    }
+
+    /* 2×2 grid on mobile */
+    .ny-proof-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.2rem 1.4rem;
+    }
+
+    .ny-stat-value {
+        font-size: clamp(1.9rem, 9vw, 2.6rem);
+    }
+
+    .ny-stat-label {
+        font-size: 0.66rem;
+    }
+
+    /* Tooltips: align to column edge instead of centering, so they
+       don't overflow the viewport in the 2×2 mobile layout */
+    .ny-stat-tip {
+        width: min(230px, 78vw);
+    }
+
+    .ny-proof-grid .ny-stat:nth-child(odd) .ny-stat-tip {
+        left: 0;
+        right: auto;
+        transform: translate3d(0, 6px, 0);
+    }
+
+    .ny-proof-grid .ny-stat:nth-child(odd) .ny-stat-tip::after {
+        left: 1.4rem;
+        right: auto;
+        transform: none;
+    }
+
+    .ny-proof-grid .ny-stat:nth-child(odd):hover .ny-stat-tip,
+    .ny-proof-grid .ny-stat:nth-child(odd):focus-within .ny-stat-tip {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .ny-proof-grid .ny-stat:nth-child(even) .ny-stat-tip {
+        left: auto;
+        right: 0;
+        transform: translate3d(0, 6px, 0);
+    }
+
+    .ny-proof-grid .ny-stat:nth-child(even) .ny-stat-tip::after {
+        left: auto;
+        right: 1.4rem;
+        transform: none;
+    }
+
+    .ny-proof-grid .ny-stat:nth-child(even):hover .ny-stat-tip,
+    .ny-proof-grid .ny-stat:nth-child(even):focus-within .ny-stat-tip {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .ny-positioning {
+        margin-bottom: 6rem;
+    }
+
+    .ny-positioning-grid {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+    }
+
+    .ny-map-hint {
+        margin-top: -1.4rem;
+        margin-bottom: 2.2rem;
+    }
+
+    .ny-closing {
+        padding-bottom: 7rem;
+    }
+
+    .ny-closing-inner .ny-cta-button {
+        width: 100%;
+    }
+
+    /* Popup must not overflow small viewports */
+    .ny-popup-card {
+        min-width: 168px;
+        max-width: min(240px, 74vw);
+        padding: 0.95rem 1.05rem 1rem;
     }
 }
