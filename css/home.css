@@ -434,11 +434,15 @@
 
 /* --- HEADLINE REEL (Slot-Machine Second Line) --- */
 .headline-reel-window {
-    display: block;
+    display: inline-block;
     overflow: hidden;
     height: 1.05em;
     line-height: 1.05;
     position: relative;
+    vertical-align: top;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: initial;
 }
 
 .headline-reel {
@@ -449,10 +453,14 @@
 }
 
 .headline-reel-phrase {
-    display: block;
+    display: flex;
+    align-items: center;
     height: 1.05em;
-    line-height: .85;
+    line-height: 1.05;
+    flex-shrink: 0;
     white-space: nowrap;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
     -webkit-text-fill-color: initial;
     color: var(--text, #fff);
 }
@@ -500,6 +508,14 @@
     transform: translateY(0) rotateX(0deg);
     background-position: 0% center;
     filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
+}
+
+.visual-confidence-title .vc-line-inner.vc-line-reel {
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: initial;
+    filter: none;
 }
 
 /* Animate the gradient sweep */

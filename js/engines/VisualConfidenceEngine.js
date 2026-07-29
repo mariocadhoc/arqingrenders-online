@@ -31,6 +31,7 @@ export default class VisualConfidenceEngine {
 
         for (const node of childNodes) {
             if (node === reelWindow) break;
+            if (node.nodeName === 'BR') continue;
             firstLineNodes.push(node);
         }
 
@@ -47,7 +48,7 @@ export default class VisualConfidenceEngine {
         const line2 = document.createElement('div');
         line2.className = 'vc-line';
         const inner2 = document.createElement('span');
-        inner2.className = 'vc-line-inner';
+        inner2.className = 'vc-line-inner vc-line-reel';
         inner2.appendChild(reelWindow);
         line2.appendChild(inner2);
 
