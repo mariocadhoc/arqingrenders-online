@@ -19,3 +19,6 @@ Disallow: /*.json$
 Disallow: /*.md$
 
 Sitemap: https://www.arqingrenders.com/sitemap.xml
+
+# LLM-readable site summary
+# https://www.arqingrenders.com/llms.txt

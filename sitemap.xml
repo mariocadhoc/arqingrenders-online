@@ -5,6 +5,7 @@
   <!-- HOME (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/"/>
@@ -12,6 +13,7 @@
   <!-- HOME (ES) -->
   <url>
     <loc>https://www.arqingrenders.com/es/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/"/>
@@ -20,24 +22,28 @@
   <!-- WORK (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/work/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/work/stills/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/stills/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/renders/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/stills/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/work/animations/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/animations/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/animaciones/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/animations/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/work/360/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/360/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/360/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/360/"/>
@@ -46,24 +52,28 @@
   <!-- PROYECTOS (ES) -->
   <url>
     <loc>https://www.arqingrenders.com/es/proyectos/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/es/proyectos/renders/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/stills/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/renders/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/stills/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/es/proyectos/animaciones/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/animations/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/animaciones/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/animations/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/es/proyectos/360/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/work/360/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/proyectos/360/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/work/360/"/>
@@ -72,12 +82,14 @@
   <!-- STUDIO (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/studio/ny/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/ny/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/ny/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/ny/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/studio/team/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/team/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/nosotros/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/team/"/>
@@ -86,12 +98,14 @@
   <!-- ESTUDIO (ES) -->
   <url>
     <loc>https://www.arqingrenders.com/es/estudio/ny/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/ny/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/ny/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/ny/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/es/estudio/nosotros/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/team/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/nosotros/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/team/"/>
@@ -100,6 +114,7 @@
   <!-- CONTACT (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/connect/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/connect/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/contacto/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/connect/"/>
@@ -108,6 +123,7 @@
   <!-- CONTACTO (ES) -->
   <url>
     <loc>https://www.arqingrenders.com/es/contacto/</loc>
+    <lastmod>2026-08-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/connect/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/contacto/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/connect/"/>

@@ -38,8 +38,8 @@ const projectData = {
             meta: 'Selected Project'
         },
         {
-            src: '/assets/img/work/429-W-37th.avif',
-            alt: 'SoHo Loft render 04',
+            src: '/assets/img/stills/430-west-37th-st/429-w-37th.avif',
+            alt: '430 West 37th Street architectural render',
             width: 1200,
             height: 1500,
             caption: '04',

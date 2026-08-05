@@ -611,6 +611,81 @@
     },
     {
       "type": "project",
+      "category": "Mixed-Use",
+      "slug": "430-west-37th-st",
+      "label": "430 W 37th St, Manhattan, NY",
+      "parent": {
+        "role": "parent",
+        "name": "429-w-37th.avif",
+        "alt": "Mixed-Use architectural renderings of 430 W 37th St in Manhattan, NY",
+        "displayWidth": 255,
+        "displayHeight": 318,
+        "full": {
+          "name": "429-w-37th.avif",
+          "src": "/assets/img/stills/430-west-37th-st/429-w-37th.avif",
+          "width": 1200,
+          "height": 1500
+        },
+        "card": {
+          "name": "429-w-37th-thumb.avif",
+          "src": "/assets/img/stills/430-west-37th-st/429-w-37th-thumb.avif",
+          "width": 600,
+          "height": 750
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "429-w-37th-1.avif",
+          "full": {
+            "name": "429-w-37th-1.avif",
+            "src": "/assets/img/stills/430-west-37th-st/children/429-w-37th-1.avif",
+            "width": 3000,
+            "height": 2991
+          },
+          "thumb": {
+            "name": "429-w-37th-1-thumb.avif",
+            "src": "/assets/img/stills/430-west-37th-st/children/429-w-37th-1-thumb.avif",
+            "width": 750,
+            "height": 747
+          }
+        },
+        {
+          "role": "child",
+          "name": "429-w-37th-2.avif",
+          "full": {
+            "name": "429-w-37th-2.avif",
+            "src": "/assets/img/stills/430-west-37th-st/children/429-w-37th-2.avif",
+            "width": 3000,
+            "height": 3000
+          },
+          "thumb": {
+            "name": "429-w-37th-2-thumb.avif",
+            "src": "/assets/img/stills/430-west-37th-st/children/429-w-37th-2-thumb.avif",
+            "width": 750,
+            "height": 750
+          }
+        },
+        {
+          "role": "child",
+          "name": "429-w-37th-3.avif",
+          "full": {
+            "name": "429-w-37th-3.avif",
+            "src": "/assets/img/stills/430-west-37th-st/children/429-w-37th-3.avif",
+            "width": 3000,
+            "height": 2009
+          },
+          "thumb": {
+            "name": "429-w-37th-3-thumb.avif",
+            "src": "/assets/img/stills/430-west-37th-st/children/429-w-37th-3-thumb.avif",
+            "width": 750,
+            "height": 502
+          }
+        }
+      ]
+    },
+    {
+      "type": "project",
       "category": "Commercial",
       "slug": "135-kent",
       "label": "135 Kent Ave, Brooklyn, NY",

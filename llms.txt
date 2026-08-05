@@ -1,0 +1,33 @@
+# Arqing Renders
+
+> Arqing Renders is a premium architectural visualization studio founded in 2011 and based in New York City, with 15+ years of experience creating photorealistic CGI stills, animations, and 360° virtual tours for architects, real estate developers, and investors. The studio has delivered 40+ projects across New York City and Jersey City, and over $1 billion in real estate has been visualized for pre-sales, financing, and entitlement approvals.
+
+Arqing Renders (also referred to as "Arqing") serves architecture firms, real estate developers, and investors who need high-fidelity visuals to secure approvals, financing, and pre-sales. Core services: photorealistic CGI still renders, architectural animation/video, and 360° virtual tours. The studio covers all five boroughs of New York City plus the Jersey City waterfront, and works across residential, hospitality, and mixed-use typologies.
+
+The site is bilingual: English is the primary/default version, with a complete Spanish twin under `/es/` (same structure, content, and imagery, translated copy).
+
+## Key pages
+
+- [Home (English)](https://www.arqingrenders.com/): Studio overview, services, and showreel.
+- [Home (Español)](https://www.arqingrenders.com/es/): Versión en español del sitio.
+- [New York studio page](https://www.arqingrenders.com/studio/ny/): Track record and stats for NYC-area projects (40+ projects, $1B+ visualized, 5 boroughs, 3 typologies).
+- [Página de Nueva York (Español)](https://www.arqingrenders.com/es/estudio/ny/): Versión en español de la página de Nueva York.
+- [Team / About](https://www.arqingrenders.com/studio/team/): Studio background, founded 2011, 15+ years of experience.
+- [Equipo (Español)](https://www.arqingrenders.com/es/estudio/nosotros/): Versión en español de la página del equipo.
+- [Work — Stills](https://www.arqingrenders.com/work/stills/): Portfolio of photorealistic CGI still renders, including case studies.
+- [Work — Animations](https://www.arqingrenders.com/work/animations/): Architectural animation and video portfolio.
+- [Work — 360° Tours](https://www.arqingrenders.com/work/360/): Interactive 360° virtual tour portfolio.
+- [Proyectos (Español)](https://www.arqingrenders.com/es/proyectos/): Versión en español del portafolio.
+- [Connect / Contact](https://www.arqingrenders.com/connect/): Get in touch via WhatsApp or email.
+- [Contacto (Español)](https://www.arqingrenders.com/es/contacto/): Versión en español de la página de contacto.
+
+## Facts
+
+- Founded: 2011 (New York, NY, USA)
+- Experience: 15+ years
+- Projects delivered in NYC/Jersey City area: 40+
+- Real estate value visualized: $1B+
+- Coverage: Manhattan, Brooklyn, Queens, the Bronx, Staten Island, Jersey City waterfront
+- Services: architectural CGI stills, architectural animation, 360° virtual tours
+- Clients served: architecture firms, real estate developers, investors
+- Languages: English (default), Spanish (/es/)

@@ -14,10 +14,10 @@ const projectData = {
     },
     gallery: [
         {
-            src: '/assets/img/work/Williamsburg.avif',
-            alt: 'Williamsburg render 01',
-            width: 1500,
-            height: 745,
+            src: '/assets/img/work/queens-blvd-2.avif',
+            alt: 'Queens Blvd architectural rendering',
+            width: 2000,
+            height: 1400,
             caption: '01',
             meta: 'Selected Project'
         },
@@ -30,8 +30,8 @@ const projectData = {
             meta: 'Selected Project'
         },
         {
-            src: '/assets/img/work/429-W-37th.avif',
-            alt: 'Williamsburg render 03',
+            src: '/assets/img/stills/430-west-37th-st/429-w-37th.avif',
+            alt: '430 West 37th Street architectural render',
             width: 1200,
             height: 1500,
             caption: '03',
@@ -46,10 +46,10 @@ const projectData = {
             meta: 'Selected Project'
         },
         {
-            src: '/assets/img/work/34-49 Steinway St-Aerial.avif',
-            alt: 'Williamsburg render 05',
-            width: 2295,
-            height: 1836,
+            src: '/assets/img/work/1-kent-arqing-2.avif',
+            alt: '1 Kent Ave architectural rendering',
+            width: 2960,
+            height: 1440,
             caption: '05',
             meta: 'Selected Project'
         }
