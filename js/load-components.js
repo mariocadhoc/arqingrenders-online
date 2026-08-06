@@ -109,8 +109,16 @@ document.addEventListener("footer-loaded", async () => {
 });
 
 /* Global Media Protection (Right-click & Drag Prevention) */
-const mediaProtectScript = document.createElement('script');
-mediaProtectScript.src = '/js/engines/media-protect.js';
-mediaProtectScript.defer = true;
-document.head.appendChild(mediaProtectScript);
+// TEMP TEST (mobile perf debug, /work/stills only): skipped on mobile viewports
+// on this one page while diagnosing slow mobile image loads. Revert by removing
+// the isStillsMobileTest check and restoring the unconditional injection below.
+const isStillsMobileTest = window.location.pathname.startsWith('/work/stills') &&
+  window.matchMedia('(max-width: 768px)').matches;
+
+if (!isStillsMobileTest) {
+  const mediaProtectScript = document.createElement('script');
+  mediaProtectScript.src = '/js/engines/media-protect.js';
+  mediaProtectScript.defer = true;
+  document.head.appendChild(mediaProtectScript);
+}
 
