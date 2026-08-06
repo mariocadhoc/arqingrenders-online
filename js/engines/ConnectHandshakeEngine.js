@@ -22,8 +22,8 @@ export class ConnectHandshakeEngine {
     }
 
     prepareEntrance() {
-        const nLeft = document.getElementById('nLeft');
-        const nRight = document.getElementById('nRight');
+        const nLeft = document.getElementById('nLeft') || document.getElementById('tLeft');
+        const nRight = document.getElementById('nRight') || document.getElementById('tRight');
         const partCon = document.getElementById('partCon');
         const partNect = document.getElementById('partNect');
         const subtitle = document.querySelector('.connect-subtitle');
@@ -169,8 +169,8 @@ export class ConnectHandshakeEngine {
     playEntrance() {
         const tl = gsap.timeline();
         
-        const nLeft = document.getElementById('nLeft');
-        const nRight = document.getElementById('nRight');
+        const nLeft = document.getElementById('nLeft') || document.getElementById('tLeft');
+        const nRight = document.getElementById('nRight') || document.getElementById('tRight');
         const partCon = document.getElementById('partCon');
         const partNect = document.getElementById('partNect');
         

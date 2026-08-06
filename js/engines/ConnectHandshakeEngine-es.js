@@ -11,15 +11,34 @@ export class ConnectHandshakeEngineEs {
     }
 
     init() {
+        this.prepareEntrance();
         this.setupInteractions();
         this.setupResizeHandling();
-        
+
         document.fonts.ready.then(() => {
             this.measureCards();
-            setTimeout(() => {
-                this.playEntrance();
-            }, 100);
+            this.playEntrance();
         });
+    }
+
+    prepareEntrance() {
+        const tLeft = document.getElementById('tLeft');
+        const tRight = document.getElementById('tRight');
+        const partCont = document.getElementById('partCon');
+        const partTacto = document.getElementById('partNect');
+        const subtitle = document.querySelector('.connect-subtitle');
+        const earthModel = document.querySelector('.earth-model-wrapper');
+        const desc = document.querySelectorAll('.connect-desc');
+
+        if (partCont) gsap.set(partCont, { x: '-15vw', opacity: 0 });
+        if (partTacto) gsap.set(partTacto, { x: '15vw', opacity: 0 });
+        if (tLeft) gsap.set(tLeft, { rotationZ: -90, transformOrigin: '50% 0%' });
+        if (tRight) gsap.set(tRight, { rotationZ: 90, transformOrigin: '50% 0%' });
+
+        if (subtitle) gsap.set(subtitle, { opacity: 0, y: 20 });
+        if (earthModel) gsap.set(earthModel, { opacity: 0, y: 20 });
+        if (desc.length) gsap.set(desc, { opacity: 0, y: 20 });
+        if (this.methodsWrappers.length) gsap.set(this.methodsWrappers, { opacity: 0, y: 20 });
     }
 
     setupInteractions() {
@@ -175,15 +194,8 @@ export class ConnectHandshakeEngineEs {
         // like pendulums when rotating back to 0°, making the tails appear to meet
         // then fall down together with elastic wobble.
 
-        gsap.set(partCont,  { x: '-15vw', opacity: 0 });
-        gsap.set(partTacto, { x: '15vw',  opacity: 0 });
-        gsap.set(tLeft,  { rotationZ: -90, transformOrigin: '50% 0%' });
-        gsap.set(tRight, { rotationZ:  90, transformOrigin: '50% 0%' });
-        
-        if (subtitle)     gsap.set(subtitle,          { opacity: 0, y: 20 });
-        if (earthModel)   gsap.set(earthModel,         { opacity: 0, y: 20 });
-        if (desc.length)  gsap.set(desc,               { opacity: 0, y: 20 });
-        if (this.methodsWrappers.length) gsap.set(this.methodsWrappers, { opacity: 0, y: 20 });
+        this.prepareEntrance();
+        document.documentElement.classList.remove('connect-preparing');
 
         // Phase 1: word halves slide in from opposite sides
         tl.to([partCont, partTacto], {
