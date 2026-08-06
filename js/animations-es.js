@@ -39,7 +39,9 @@ async function loadCinemaVideos() {
 function getInitialActiveIndex(videos) {
     if (!videos.length) return 0;
 
-    const preferredIndex = videos.findIndex((video) => video.title === DEFAULT_ACTIVE_VIDEO_TITLE);
+    const preferredIndex = videos.findIndex((video) =>
+        video.title === DEFAULT_ACTIVE_VIDEO_TITLE || video.title.includes(DEFAULT_ACTIVE_VIDEO_TITLE)
+    );
     return preferredIndex >= 0 ? preferredIndex : 0;
 }
 
