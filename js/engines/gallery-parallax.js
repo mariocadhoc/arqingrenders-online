@@ -110,14 +110,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  // Mobile devices get WebP instead of AVIF (cheaper decode, same source
+  // resolution — no resizing here). Desktop is unaffected. Checked once at
+  // load since the gallery data is built a single time.
+  const GP_IS_MOBILE = window.matchMedia('(max-width: 768px)').matches;
+
+  function gp_applyMobileFormat(path) {
+    if (!GP_IS_MOBILE || typeof path !== 'string') return path;
+    if (!path.toLowerCase().endsWith('.avif')) return path;
+    return `${path.slice(0, -5)}.webp`;
+  }
+
   function gp_resolveMediaSrc(src) {
     const trimmed = typeof src === 'string' ? src.trim() : '';
     if (!trimmed) return '';
     if (/^(?:[a-z]+:)?\/\//i.test(trimmed) || trimmed.startsWith('data:')) return trimmed;
-    if (trimmed.startsWith('/')) return trimmed;
-    if (trimmed.startsWith('assets/')) return `/${trimmed}`;
+    if (trimmed.startsWith('/')) return gp_applyMobileFormat(trimmed);
+    if (trimmed.startsWith('assets/')) return gp_applyMobileFormat(`/${trimmed}`);
     const baseUrl = new URL(GP_MEDIA_BASE_URL, window.location.origin);
-    return new URL(trimmed, baseUrl).pathname;
+    return gp_applyMobileFormat(new URL(trimmed, baseUrl).pathname);
   }
 
   function gp_normalizeChildren(children) {

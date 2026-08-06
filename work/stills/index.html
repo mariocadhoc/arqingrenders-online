@@ -201,17 +201,7 @@
     <script src="/js/engines/gallery-parallax.js" defer></script>
     <script type="module" src="/js/engines/gallery-lightbox.js"></script>
     <script defer src="/js/boot-ready.js"></script>
-    <!-- TEMP TEST (mobile perf debug, /work/stills only): metrics.js skipped on mobile.
-         Revert by restoring: <script defer src="/js/metrics.js"></script> -->
-    <script>
-        (function () {
-            if (window.matchMedia('(max-width: 768px)').matches) return;
-            var s = document.createElement('script');
-            s.defer = true;
-            s.src = '/js/metrics.js';
-            document.body.appendChild(s);
-        })();
-    </script>
+  <script defer src="/js/metrics.js"></script>
 </body>
 
 </html>
