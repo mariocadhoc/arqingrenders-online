@@ -21,7 +21,7 @@ export default class AerialZoomEngine {
         if (!triggerWrap || !stage || cards.length === 0) return;
 
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
-        const cardTop = isMobile ? 'var(--work-mobile-gallery-top)' : 0;
+        const cardTop = isMobile ? 'var(--work-mobile-gallery-top)' : 'var(--work-desktop-aerials-top)';
         const getTotalScroll = () => (window.innerHeight * 0.64 * cards.length) + (window.innerHeight * 0.24);
 
         function configureStickyStage() {

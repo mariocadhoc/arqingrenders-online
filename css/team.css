@@ -121,7 +121,7 @@
     display: block;
     width: 1px;
     height: 100%;
-    background: linear-gradient(180deg, rgba(232, 213, 176, 0.08), rgba(232, 213, 176, 0.85));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.85));
     transform-origin: top center;
     animation: team-scroll-pulse 1.8s ease-in-out infinite;
     will-change: transform, opacity;

@@ -69,6 +69,56 @@
     justify-content: center;
 }
 
+/* --- HERO SCROLL INDICATOR LINE --- */
+.home-scroll-indicator {
+    position: absolute;
+    bottom: clamp(2rem, 4.5vh, 3.5rem);
+    left: 50%;
+    transform: translate3d(-50%, 14px, 0);
+    width: 1px;
+    height: 82px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    will-change: transform, opacity;
+    transition: opacity 0.7s cubic-bezier(0.19, 1, 0.22, 1), transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.home-scroll-indicator.is-visible {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+}
+
+.home-scroll-indicator-line {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.85));
+    transform-origin: top center;
+    animation: home-scroll-pulse 1.8s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes home-scroll-pulse {
+    0%,
+    100% {
+        transform: scaleY(0.5) translateY(0);
+        opacity: 0.28;
+    }
+
+    50% {
+        transform: scaleY(1) translateY(10px);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-scroll-indicator {
+        height: 64px;
+        bottom: clamp(1.5rem, 3.5vh, 2.5rem);
+    }
+}
+
 .hero-logo-badge {
     width: 180px;
     height: 180px;

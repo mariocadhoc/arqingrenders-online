@@ -349,6 +349,9 @@
 }
 
 .large-images {
+    --work-desktop-gallery-top: clamp(75px, 9.5vh, 95px);
+    --work-desktop-gallery-bottom: clamp(40px, 5.5vh, 60px);
+    --work-desktop-aerials-top: clamp(130px, 16vh, 170px);
     --work-gallery-width: 100%;
     --work-selected-title-gap: clamp(1.25rem, 3vh, 2.5rem);
     --work-zone-image-gap: clamp(1rem, 2.5vh, 1.75rem);
@@ -416,11 +419,12 @@
 .horizon {
     position: relative;
     width: var(--work-gallery-width, 100%);
-    height: calc(100vh - 40px);
-    margin: 20px 0;
+    height: calc(100vh - var(--work-desktop-gallery-top) - var(--work-desktop-gallery-bottom, 55px));
+    margin-top: var(--work-desktop-gallery-top);
+    margin-bottom: var(--work-desktop-gallery-bottom, 55px);
     flex-shrink: 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     background: transparent;
     border-radius: 0;
@@ -434,22 +438,22 @@
     height: auto;
     object-fit: contain;
     border-radius: 12px;
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     display: block;
 }
 
 /* Vertical section */
 .vertical-scroll-container {
-    padding-top: 5vh;
-    padding-bottom: 20vh;
+    padding-top: 2vh;
+    padding-bottom: 10vh;
 }
 
 .large-image.vertical {
-    height: calc(100vh - 20px);
+    height: calc(100vh - var(--work-desktop-gallery-top) - var(--work-desktop-gallery-bottom, 55px));
     width: 90%;
     position: sticky;
-    top: 10px;
-    margin: 10px 0;
+    top: var(--work-desktop-gallery-top);
+    margin: 0 auto;
     /* contenedor invisible: la img lleva el estilo */
     background: transparent;
     border-radius: 0;
@@ -467,7 +471,15 @@
     object-fit: contain;
     display: block;
     border-radius: 12px;
-    box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+}
+
+:is(.horizon, .large-image.vertical, .stacked-card) picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .minimap {
@@ -602,7 +614,10 @@
 
 .stacked-card {
     position: absolute;
-    inset: 0;
+    top: var(--work-desktop-aerials-top);
+    left: 0;
+    right: 0;
+    height: calc(100vh - var(--work-desktop-aerials-top) - var(--work-desktop-gallery-bottom, 55px));
     overflow: hidden;
     will-change: transform, opacity;
     transform-origin: center center;
@@ -789,6 +804,7 @@
 
     .large-images {
         --work-mobile-gallery-top: clamp(84px, 12vh, 112px);
+        --work-mobile-gallery-bottom: clamp(35px, 5vh, 50px);
         width: 100%;
     }
 
@@ -852,9 +868,10 @@
         top: var(--work-mobile-gallery-top);
         left: 0;
         width: 100%;
-        height: calc(100vh - var(--work-mobile-gallery-top) - 20px);
+        height: calc(100vh - var(--work-mobile-gallery-top) - var(--work-mobile-gallery-bottom));
         margin: 0;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
         /* Fix 2 — Promote to GPU compositing layer before scroll begins.
            Prevents WebKit from creating the layer mid-scroll (1-frame flash).
            Scoped to mobile only; no effect on desktop, Chrome, or Edge. */
@@ -864,17 +881,21 @@
 
     .large-image.vertical {
         top: var(--work-mobile-gallery-top);
-        height: calc(100vh - var(--work-mobile-gallery-top) - 20px);
-        align-items: flex-start;
+        height: calc(100vh - var(--work-mobile-gallery-top) - var(--work-mobile-gallery-bottom));
+        align-items: center;
+        justify-content: center;
         /* Fix 2 — Same GPU layer promotion as .horizon above. */
         will-change: transform;
         transform: translateZ(0);
     }
 
     .stacked-card {
-        inset: var(--work-mobile-gallery-top) 0 auto;
-        height: calc(100vh - var(--work-mobile-gallery-top) - 20px);
+        top: var(--work-mobile-gallery-top);
+        left: 0;
+        right: 0;
+        height: calc(100vh - var(--work-mobile-gallery-top) - var(--work-mobile-gallery-bottom));
         align-items: center;
+        justify-content: center;
         transform-origin: center center;
     }
 }

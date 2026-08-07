@@ -13,16 +13,19 @@ export function initVerticalCardsFade() {
     // Passing the var() string to GSAP forces WebKit to recompute it on every layout
     // frame during scroll, which is a measurable source of jank in Safari iOS.
     function resolveGalleryTop() {
+        const isMob = window.matchMedia('(max-width: 768px)').matches;
         const largeImages = document.querySelector('.large-images');
         const el = largeImages || document.documentElement;
-        const raw = getComputedStyle(el).getPropertyValue('--work-mobile-gallery-top').trim();
+        const propName = isMob ? '--work-mobile-gallery-top' : '--work-desktop-gallery-top';
+        const defaultVal = isMob ? '84px' : '80px';
+        const raw = getComputedStyle(el).getPropertyValue(propName).trim();
         const px = parseFloat(raw);
         if (!isNaN(px)) return px;
         // Fallback: render the value into a probe element so the browser resolves clamp()
         const probe = document.createElement('div');
-        probe.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;height:${raw || '84px'}`;
+        probe.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;height:${raw || defaultVal}`;
         document.body.appendChild(probe);
-        const resolved = probe.offsetHeight || 84;
+        const resolved = probe.offsetHeight || (isMob ? 84 : 80);
         document.body.removeChild(probe);
         return resolved;
     }
@@ -59,7 +62,7 @@ export function initVerticalCardsFade() {
         stage.style.zIndex = '1';
     }
 
-    const mobileTopOffset = isMobile ? resolveGalleryTop() : 10;
+    const topOffset = resolveGalleryTop();
     const verticalWrap = document.querySelector('.vertical-scroll-container');
     const groups = [
         {
@@ -96,7 +99,7 @@ export function initVerticalCardsFade() {
             gsap.set(card, {
                 position: 'absolute',
                 left: 0,
-                top: mobileTopOffset,
+                top: topOffset,
                 y: i === 0 ? 0 : window.innerHeight,
                 zIndex: i,
                 margin: 0,
