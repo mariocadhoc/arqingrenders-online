@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <link rel="canonical" href="https://www.arqingrenders.com/clients/archimaera/docs/83-wythe/">
+  <script src="/js/lang-redirect.js"></script>
+  <title>83 Wythe - Payment Summary</title>
+  <!-- CSS Base -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/clients/payment-history.css">
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="client-tag">Client: Archimaera</div>
+        <h1>Project 83 Wythe</h1>
+        <div class="subtitle">Payment History</div>
+      </div>
+      <div class="total-amount">
+        <div class="amount">$<span id="totalAmount"></span></div>
+        <div class="label">Total</div>
+      </div>
+    </div>
+
+    <div class="stats-grid" id="yearlyStats"></div>
+
+    <div class="payments-section">
+      <h2>📊 Payment Details</h2>
+      <div class="payments-list" id="paymentsList"></div>
+    </div>
+
+    <div class="summary-stats">
+      <div class="summary-card">
+        <div class="label">Total Payments</div>
+        <div class="value" id="totalPayments"></div>
+      </div>
+
+      <div class="summary-card">
+        <div class="label">Active Years</div>
+        <div class="value" id="activeYears"></div>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+  <!-- JS Base -->
+  <script src="/js/load-components.js" defer></script>
+  <script defer src="/js/burger.js"></script>
+  <script>
+    window.driveUrls = {
+      '2023': 'https://drive.google.com/drive/folders/15XaQArOgYEd7qTqhkCa05r0ASIbF17_u',
+      '2024': 'https://drive.google.com/drive/folders/1D9uyPSInw-oW4RHVoSNlFHCxnORBhqR5',
+      '2025': 'https://drive.google.com/drive/folders/1Y6ZyC9sxSdoZHtBl15vybjbUePxpvZ25',
+      '2026': 'https://drive.google.com/drive/folders/1_hQjcCBD5_YaiT6cA4TYqxdTwbyzSKQU'
+    };
+
+    window.payments = [
+      { date: '02-01-2023', amount: 2550, concept: '3 Renderings' },
+      { date: '11-04-2023', amount: 3960, concept: '4 Renderings // 50% Advance ( $500 + $1500 = $2000)' },
+      { date: '11-04-2023', amount: 0,    concept: '4 Renderings // 50% 2nd Payment' },
+      { date: '05-09-2024', amount: 0,    concept: 'New Project - May 2024' },
+      { date: '05-09-2024', amount: 693,  concept: 'Changes 35% // 2 Views' },
+      { date: '05-12-2024', amount: 416,  concept: 'Changes 35% // Weekend Work // 1 View' },
+      { date: '05-14-2024', amount: 1980, concept: '2 New Angles // Cam 5 & 6' },
+      { date: '06-09-2024', amount: 1980, concept: '2 New Angles // Cam 7 & 8' },
+      { date: '06-09-2024', amount: 468,  concept: 'Changes 35% // Weekend //' },
+      { date: '06-10-2024', amount: 0,    concept: 'Partial Payment // $3100' },
+      { date: '06-14-2024', amount: 347,  concept: 'Changes // June 10th to 14th //' },
+      { date: '06-15-2024', amount: 468,  concept: 'Changes 35% // Weekend //' },
+      { date: '06-17-2024', amount: 0,    concept: 'Changes // June 17th // In Process' },
+      { date: '06-24-2024', amount: 0,    concept: 'Partial Payment // $3600' },
+      { date: '07-02-2024', amount: 347,  concept: 'Changes // Life Time' },
+      { date: '07-02-2024', amount: 32,   concept: 'Exchange Rate Update // 2 %' },
+      { date: '07-09-2024', amount: 0,    concept: 'Partial Payment // $1300' },
+      { date: '07-19-2024', amount: 174,  concept: 'Changes // Life Time 2' },
+      { date: '01-29-2025', amount: 618,  concept: 'Changes to stores // 3 Views' },
+      { date: '05-15-2025', amount: 735,  concept: 'Changes // New Top Building // 2 Views 35%' },
+      { date: '06-18-2025', amount: 1269, concept: 'Internal Data Adjustment // Various amounts adjusted' },
+      { date: '06-18-2025', amount: 1470, concept: 'Changes // New Building // 4 Views 35%' },
+      { date: '07-16-2025', amount: 210,  concept: 'Changes // New Building // Draft 20%' },
+      { date: '12-08-2025', amount: 1260, concept: 'Changes // New Building // Critical Delivery 20%' },
+      { date: '12-22-2025', amount: 2835, concept: 'Changes // New Building - Critical Delivery + Night Work (2 Renderings) - Iterative Visual Adjustments // Real-Time Direction - Surcharge +35%' },
+      { date: '12-22-2025', amount: 0,    concept: 'Payment' },
+      { date: '12-23-2025', amount: 0,    concept: 'Architectural Detail - Lifetime Signage (1) // No Charge' },
+      { date: '01-02-2026', amount: 735,  concept: 'Changes 35% // 2 Views | Corner & Frontal' },
+      { date: '01-13-2026', amount: 2835, concept: '2 New Angles - Night Work (2 Renderings)' },
+      { date: '01-15-2026', amount: 0,    concept: '2 Orthographic Views + No Signage versions // No Charge' },
+      { date: '01-26-2026', amount: 235,  concept: 'Currency exchange rate update | 18.50 (17.36) = 6.57%' }
+    ];
+  </script>
+  <script defer src="/js/clients/payment-history.js"></script>
+  <script defer src="/js/metrics.js"></script>
+</body>
+
+</html>
