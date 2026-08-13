@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <link rel="canonical" href="https://www.arqingrenders.com/clients/archimaera/docs/944-rogers/">
   <script src="/js/lang-redirect.js"></script>
   <title>944 Rogers - Payment Summary</title>
@@ -13,7 +15,7 @@
   <link rel="stylesheet" href="/css/utilities.css">
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/css/clients/payment-history.css">
 </head>
 
 <body>
@@ -21,11 +23,12 @@
   <div class="container">
     <div class="header">
       <div>
+        <div class="client-tag">Client: Archimaera</div>
         <h1>Project 944 Rogers</h1>
         <div class="subtitle">Payment History Received</div>
       </div>
       <div class="total-amount">
-        <div class="amount">$<span id="totalAmount">23,534</span></div>
+        <div class="amount">$<span id="totalAmount"></span></div>
         <div class="label">Total Received</div>
       </div>
     </div>
@@ -53,7 +56,31 @@
   <!-- JS Base -->
   <script src="/js/load-components.js" defer></script>
   <script defer src="/js/burger.js"></script>
-  <script defer src="script.js"></script>
+  <script>
+    window.payments = [
+      { date: '03-04-2020', amount: 1430, concept: '2 Renderings // $715x2' },
+      { date: '03-04-2020', amount: 250,  concept: 'Extras - 17.5%' },
+      { date: '02-26-2021', amount: 629,  concept: '2 Changes // Night' },
+      { date: '03-12-2022', amount: 899,  concept: '1 Rendering // Weekend' },
+      { date: '03-14-2022', amount: 268,  concept: '1 Change' },
+      { date: '05-26-2022', amount: 268,  concept: '1 Change' },
+      { date: '11-01-2023', amount: 3560, concept: '4 Renderings' },
+      { date: '11-01-2023', amount: 178,  concept: '5% // Currency exchange rate update' },
+      { date: '11-07-2023', amount: 981,  concept: 'Changes // 35% x 3 Images + 5%' },
+      { date: '12-05-2023', amount: 935,  concept: '1 Extra Rendering // 2x5K Images NO CHARGE' },
+      { date: '12-16-2023', amount: 2136, concept: '2 Extra Renderings // Weekend 20%' },
+      { date: '01-11-2024', amount: 665,  concept: 'Changes // 35% Rogers + Aerial' },
+      { date: '01-17-2024', amount: 1900, concept: '2 Renderings // Veronicas x2' },
+      { date: '01-29-2024', amount: 1900, concept: '2 Renderings // Church Interior + Facade' },
+      { date: '01-29-2024', amount: 665,  concept: 'Changes // 35% - 2 Interiors' },
+      { date: '07-08-2024', amount: 693,  concept: 'Changes // 35% - 2 Exteriors' },
+      { date: '11-25-2024', amount: 396,  concept: '2 Changes // 2 Renderings // 20%' },
+      { date: '04-29-2025', amount: 1528, concept: '360° Tour // Church Interior' },
+      { date: '10-23-2025', amount: 3535, concept: '1st Payment - Partial' },
+      { date: '11-13-2025', amount: 718,  concept: '2nd Payment - Cleared' }
+    ];
+  </script>
+  <script defer src="/js/clients/payment-history.js"></script>
   <script defer src="/js/metrics.js"></script>
 </body>
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <link rel="canonical" href="https://www.arqingrenders.com/clients/archimaera/docs/29-wythe/">
+  <script src="/js/lang-redirect.js"></script>
+  <title>29 Wythe - Payment Summary</title>
+  <!-- CSS Base -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/clients/payment-history.css">
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="client-tag">Client: Archimaera</div>
+        <h1>Project 29 Wythe</h1>
+        <div class="subtitle">Payment History</div>
+      </div>
+      <div class="total-amount">
+        <div class="amount">$<span id="totalAmount"></span></div>
+        <div class="label">Total</div>
+      </div>
+    </div>
+
+    <div class="stats-grid" id="yearlyStats"></div>
+
+    <div class="payments-section">
+      <h2>📊 Payment Details</h2>
+      <div class="payments-list" id="paymentsList"></div>
+    </div>
+
+    <div class="summary-stats">
+      <div class="summary-card">
+        <div class="label">Total Payments</div>
+        <div class="value" id="totalPayments"></div>
+      </div>
+
+      <div class="summary-card">
+        <div class="label">Active Years</div>
+        <div class="value" id="activeYears"></div>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+  <!-- JS Base -->
+  <script src="/js/load-components.js" defer></script>
+  <script defer src="/js/burger.js"></script>
+  <script>
+    window.driveUrls = {
+      '2022': 'https://drive.google.com/drive/folders/1rN2Xvb9REang0dH8vcuFrmzsM1LkxwWb',
+      '2023': 'https://drive.google.com/drive/folders/122GZE48bUBVk9-a70xaSV_mm7xfgHLDQ',
+      '2024': 'https://drive.google.com/drive/folders/1OKIhwNlka3a878hdj_DtjyfRRONTmgo_',
+      '2025': 'https://drive.google.com/drive/folders/12kWsURyXOZktOEECJuVwtzkypWdJ1QRM',
+      '2026': 'https://drive.google.com/drive/folders/11ZxhrtUxi9hS-KWMcxNAHxyDw0eZJ8bc'
+    };
+
+    window.payments = [
+      { date: '05-04-2022', amount: 3060, concept: '5 Renderings' },
+      { date: '09-23-2022', amount: 1120, concept: '2 Renderings Stadium // 70% Progress' },
+      { date: '01-17-2023', amount: 537,  concept: 'Mini Golf modelling // Night / 35%' },
+      { date: '05-07-2023', amount: 326,  concept: 'Changes' },
+      { date: '05-17-2023', amount: 324,  concept: 'Changes' },
+      { date: '06-02-2023', amount: 323,  concept: 'Changes // New Facade // No Top Bldg' },
+      { date: '06-17-2023', amount: 312,  concept: 'Changes // New Facade' },
+      { date: '07-20-2023', amount: 890,  concept: '1 Rendering (base)' },
+      { date: '07-20-2023', amount: 1284, concept: 'Partial Payment // $1284' },
+      { date: '10-01-2023', amount: 327,  concept: 'Changes Oct-Nov' },
+      { date: '02-28-2024', amount: 950,  concept: '1 Rendering' },
+      { date: '02-29-2024', amount: 0,    concept: 'Logo Variations // NO CHARGE' },
+      { date: '03-01-2024', amount: 2565, concept: '2 Renderings // + Overtime 2 Days // 35%' },
+      { date: '03-04-2024', amount: 998,  concept: 'Changes // Remodeling Facade // 35%' },
+      { date: '03-07-2024', amount: 1900, concept: '2 Extra Renderings' },
+      { date: '04-04-2024', amount: 68,   concept: 'TC' },
+      { date: '08-07-2024', amount: 693,  concept: 'Changes // Aereal view Glass ceiling + pool rooftop // 35%' },
+      { date: '08-14-2024', amount: 460,  concept: 'Partial Pay' },
+      { date: '09-06-2024', amount: 1980, concept: '2 Renderings // New facade' },
+      { date: '09-06-2024', amount: 0,    concept: 'Purchase of 4 3D models // Porsches // $40 INCLUDED' },
+      { date: '09-15-2024', amount: 693,  concept: '2 Changes // Weekend Fee NO CHARGE' },
+      { date: '09-19-2024', amount: 2970, concept: '3 Renderings // Aerials' },
+      { date: '09-19-2024', amount: 1040, concept: '3 Changes // Front + North + South // 35%' },
+      { date: '09-20-2024', amount: 0,    concept: '3 Selfies // NO CHARGE' },
+      { date: '09-23-2024', amount: 1800, concept: 'Partial Pay' },
+      { date: '09-26-2024', amount: 2903, concept: 'Final Payment // 2903' },
+      { date: '01-30-2025', amount: 721,  concept: '2 Changes // Front + North // 35%' },
+      { date: '03-06-2026', amount: 189,  concept: 'New Building Model Setup & Optimization' },
+      { date: '03-25-2026', amount: 7,    concept: 'Currency exchange rate update | 18.50 (17.74) = 6.57%' },
+      { date: '04-29-2026', amount: 210,  concept: 'Changes // New model and material updates // Preview work only' },
+      { date: '04-29-2026', amount: 14,   concept: 'Currency exchange rate update | 18.50 (17.29) = 7%' },
+      { date: '07-05-2026', amount: 320,  concept: 'Changes July // Sunday availability' },
+      { date: '07-30-2026', amount: 4400, concept: '4 Renderings // 2 Aerials + 2 Interiors' },
+      { date: '08-03-2026', amount: 2640, concept: '2 Renderings // Street Level Exteriors // Critical Delivery +20%' },
+      { date: '08-03-2026', amount: 0,    concept: 'Changes // Aerials: Geometry & People // NO CHARGE' },
+      { date: '08-03-2026', amount: 0,    concept: '2 Renderings // Clean Aerials // NO CHARGE' },
+      { date: '07-30-2026', amount: 524,  concept: 'Currency exchange rate update | 18.50 (17.27) = 7.12%' }
+    ];
+  </script>
+  <script defer src="/js/clients/payment-history.js"></script>
+  <script defer src="/js/metrics.js"></script>
+</body>
+
+</html>

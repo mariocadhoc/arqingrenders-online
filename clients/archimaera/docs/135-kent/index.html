@@ -4,16 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <link rel="canonical" href="https://www.arqingrenders.com/clients/archimaera/docs/135-kent/">
   <script src="/js/lang-redirect.js"></script>
   <title>135 Kent - Payment Summary</title>
+  <!-- CSS Base -->
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/utilities.css">
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/css/clients/payment-history.css">
 </head>
 
 <body>
@@ -21,6 +24,7 @@
   <div class="container">
     <div class="header">
       <div>
+        <div class="client-tag">Client: Archimaera</div>
         <h1>Project 135 Kent</h1>
         <div class="subtitle">Payment History Received</div>
       </div>
@@ -50,9 +54,25 @@
     </div>
   </div>
   <div id="footer"></div>
+  <!-- JS Base -->
   <script src="/js/load-components.js" defer></script>
   <script defer src="/js/burger.js"></script>
-  <script defer src="script.js"></script>
+  <script>
+    window.payments = [
+      { date: '07-10-2025',  amount: 1050, concept: 'New View + Eataly Caffe' },
+      { date: '07-15-2025',  amount: 0,    concept: 'Changes // 2 Set of changes // Included' },
+      { date: '11-11-2025', amount: 368,  concept: 'Changes // Wells Fargo GF | 35%' },
+      { date: '11-13-2025', amount: 184,  concept: 'Changes // Wells Fargo - No Canopy | 17.5%' },
+      { date: '02-20-2026',  amount: 368,  concept: 'Changes // Chase Bank // 35%' },
+      { date: '03-19-2026',  amount: 735,  concept: 'Changes // 2 Images // Marine Layer // 35%' },
+      { date: '03-25-2026',  amount: 47,   concept: 'Currency exchange rate update | 18.50 (17.74) = 4.23%' },
+      { date: '04-07-2026',   amount: 368,  concept: 'Changes // La Cabra + Thisbowl + Fleet Feet // 35%' },
+      { date: '04-09-2026',   amount: 184,  concept: 'Changes // Fjallraven + Theory // 17.5%' },
+      { date: '04-09-2026',   amount: 38,   concept: 'Currency exchange rate update | 18.50 (17.30) = 6.94%' },
+      { date: '05-28-2026',  amount: 0,    concept: 'Changes // Garrett Leight // Colors' }
+    ];
+  </script>
+  <script defer src="/js/clients/payment-history.js"></script>
   <script defer src="/js/metrics.js"></script>
 </body>
 
