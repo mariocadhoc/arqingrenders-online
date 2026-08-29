@@ -1,38 +1,784 @@
 {
   "projects": [
-    { "id": "nyc-001", "name": "NYC Project 01", "lat": 40.64725, "lng": -73.9523056, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-002", "name": "NYC Project 02", "lat": 40.7815, "lng": -73.8488611, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-003", "name": "NYC Project 03", "lat": 40.7419999, "lng": -73.9200833, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-004", "name": "NYC Project 04", "lat": 40.7415, "lng": -73.9011389, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-005", "name": "NYC Project 05", "lat": 40.7156944, "lng": -74.0689167, "borough": "Other NYC", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-006", "name": "NYC Project 06", "lat": 40.7235, "lng": -73.9572222, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-007", "name": "NYC Project 07", "lat": 40.7554167, "lng": -73.9217778, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-008", "name": "NYC Project 08", "lat": 40.7405833, "lng": -74.0084722, "borough": "Manhattan", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-009", "name": "NYC Project 09", "lat": 40.6619167, "lng": -73.9617778, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-010", "name": "NYC Project 10", "lat": 40.7475556, "lng": -73.9530556, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-011", "name": "NYC Project 11", "lat": 40.7026667, "lng": -73.8133889, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-012", "name": "NYC Project 12", "lat": 40.7087778, "lng": -73.9649722, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-013", "name": "NYC Project 13", "lat": 40.7435278, "lng": -73.9125556, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-014", "name": "NYC Project 14", "lat": 40.7113611, "lng": -73.9640556, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-015", "name": "NYC Project 15", "lat": 40.6746944, "lng": -74.001, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-016", "name": "NYC Project 16", "lat": 40.7214167, "lng": -73.9580833, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-017", "name": "NYC Project 17", "lat": 40.7068611, "lng": -73.9255556, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-018", "name": "NYC Project 18", "lat": 40.7196667, "lng": -73.9622778, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-019", "name": "NYC Project 19", "lat": 40.7230556, "lng": -73.9561667, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-020", "name": "NYC Project 20", "lat": 40.6793333, "lng": -73.9605278, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-021", "name": "NYC Project 21", "lat": 40.6979444, "lng": -73.95975, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-022", "name": "NYC Project 22", "lat": 40.6985833, "lng": -73.9589444, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-023", "name": "NYC Project 23", "lat": 40.6811389, "lng": -73.9659167, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-024", "name": "NYC Project 24", "lat": 40.7575833, "lng": -73.9418611, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-025", "name": "NYC Project 25", "lat": 40.7318889, "lng": -73.9587222, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-026", "name": "NYC Project 26", "lat": 40.6313889, "lng": -73.9975833, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-027", "name": "NYC Project 27", "lat": 40.8058611, "lng": -73.9248333, "borough": "Bronx", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-028", "name": "NYC Project 28", "lat": 40.811, "lng": -73.9323056, "borough": "Bronx", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-029", "name": "NYC Project 29", "lat": 40.6798889, "lng": -73.9592778, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-030", "name": "NYC Project 30", "lat": 40.6972222, "lng": -73.9655556, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-031", "name": "NYC Project 31", "lat": 40.7263889, "lng": -73.9572778, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-032", "name": "NYC Project 32", "lat": 40.5765, "lng": -73.8615833, "borough": "Queens", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-033", "name": "NYC Project 33", "lat": 40.7559444, "lng": -73.9966111, "borough": "Manhattan", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } },
-    { "id": "nyc-034", "name": "NYC Project 34", "lat": 40.7211667, "lng": -73.96075, "borough": "Brooklyn", "typology": "", "year": "", "status": "", "description": "", "projectUrl": "", "_phase2": { "featuredImage": "", "renderImages": [], "caseStudyUrl": "" } }
+    {
+      "id": "nyc-001",
+      "name": "NYC Project 01",
+      "lat": 40.723995,
+      "lng": -73.9576,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-002",
+      "name": "NYC Project 02",
+      "lat": 40.708551,
+      "lng": -73.964982,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "100 S 9th St",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-003",
+      "name": "Prosper",
+      "lat": 40.6797282,
+      "lng": -73.959414,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "1042 Atlantic Ave",
+      "commercialName": "Prosper",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-004",
+      "name": "NYC Project 04",
+      "lat": 40.7108728,
+      "lng": -73.9643714,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-005",
+      "name": "NYC Project 05",
+      "lat": 40.719592,
+      "lng": -73.9622483,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "135 Kent Ave",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-006",
+      "name": "NYC Project 06",
+      "lat": 40.5762171,
+      "lng": -73.8611756,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-007",
+      "name": "NYC Project 07",
+      "lat": 40.6748237,
+      "lng": -74.0009839,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-008",
+      "name": "NYC Project 08",
+      "lat": 40.8111671,
+      "lng": -73.9321382,
+      "borough": "Bronx",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-009",
+      "name": "NYC Project 09",
+      "lat": 40.7812988,
+      "lng": -73.8493176,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-010",
+      "name": "NYC Project 10",
+      "lat": 40.7459863,
+      "lng": -73.9468659,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-011",
+      "name": "NYC Project 11",
+      "lat": 40.7070675,
+      "lng": -73.9255966,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "25 Stewart Ave",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-012",
+      "name": "NYC Project 12",
+      "lat": 40.6965979,
+      "lng": -73.9652399,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "29 Ryerson St",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-013",
+      "name": "NYC Project 13",
+      "lat": 40.7231446,
+      "lng": -73.9563181,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-014",
+      "name": "NYC Project 14",
+      "lat": 40.7265235,
+      "lng": -73.9571776,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-015",
+      "name": "Rosecastle",
+      "lat": 40.6980131,
+      "lng": -73.9593694,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "33 Little Nassau St",
+      "commercialName": "Rosecastle",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-016",
+      "name": "NYC Project 16",
+      "lat": 40.754348,
+      "lng": -73.922459,
+      "borough": "Queens",
+      "built": true,
+      "address": "35-25 Steinway St",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-017",
+      "name": "NYC Project 17",
+      "lat": 40.75425,
+      "lng": -73.921382,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-018",
+      "name": "NYC Project 18",
+      "lat": 40.7538621,
+      "lng": -73.9227964,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-019",
+      "name": "NYC Project 19",
+      "lat": 40.6983909,
+      "lng": -73.9591725,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "380 Flushing Ave",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-020",
+      "name": "NYC Project 20",
+      "lat": 40.8798663,
+      "lng": -73.8425193,
+      "borough": "Bronx",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-021",
+      "name": "NYC Project 21",
+      "lat": 40.7575976,
+      "lng": -73.941564,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-022",
+      "name": "NYC Project 22",
+      "lat": 40.7556976,
+      "lng": -73.9965857,
+      "borough": "Manhattan",
+      "built": true,
+      "address": "430 W 37th St",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-023",
+      "name": "NYC Project 23",
+      "lat": 40.7418725,
+      "lng": -73.9202395,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-024",
+      "name": "Paragon",
+      "lat": 40.7473571,
+      "lng": -73.9528853,
+      "borough": "Queens",
+      "built": true,
+      "address": "45-40 Vernon Blvd",
+      "commercialName": "Paragon",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-025",
+      "name": "NYC Project 25",
+      "lat": 40.7317755,
+      "lng": -73.9587062,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "48 India St",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-026",
+      "name": "NYC Project 26",
+      "lat": 40.7431134,
+      "lng": -73.9147226,
+      "borough": "Queens",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-027",
+      "name": "NYC Project 27",
+      "lat": 40.6618026,
+      "lng": -73.9618173,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-028",
+      "name": "Vida 52",
+      "lat": 40.7435817,
+      "lng": -73.9123756,
+      "borough": "Queens",
+      "built": true,
+      "address": "43-15 52nd St",
+      "commercialName": "Vida 52",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-029",
+      "name": "NYC Project 29",
+      "lat": 40.6313751,
+      "lng": -73.9977635,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-030",
+      "name": "NYC Project 30",
+      "lat": 40.7414484,
+      "lng": -73.9009387,
+      "borough": "Queens",
+      "built": true,
+      "address": "64-11 Queens Blvd",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-031",
+      "name": "NYC Project 31",
+      "lat": 40.7213919,
+      "lng": -73.9578454,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-032",
+      "name": "Noble",
+      "lat": 40.702793,
+      "lng": -73.8136678,
+      "borough": "Queens",
+      "built": true,
+      "address": "88-36 139th St",
+      "commercialName": "Noble",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-033",
+      "name": "Eight80",
+      "lat": 40.6811771,
+      "lng": -73.9656904,
+      "borough": "Brooklyn",
+      "built": true,
+      "address": "880 Atlantic Ave",
+      "commercialName": "Eight80",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-034",
+      "name": "NYC Project 34",
+      "lat": 40.8057669,
+      "lng": -73.9245352,
+      "borough": "Bronx",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-035",
+      "name": "NYC Project 35",
+      "lat": 40.6471697,
+      "lng": -73.9523511,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-036",
+      "name": "NYC Project 36",
+      "lat": 40.6792749,
+      "lng": -73.96083,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-037",
+      "name": "NYC Project 37",
+      "lat": 40.7406306,
+      "lng": -74.0084444,
+      "borough": "Manhattan",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-038",
+      "name": "NYC Project 38",
+      "lat": 40.7212736,
+      "lng": -73.9604977,
+      "borough": "Brooklyn",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    },
+    {
+      "id": "nyc-039",
+      "name": "NYC Project 39",
+      "lat": 40.7171071,
+      "lng": -74.072158,
+      "borough": "Other NYC",
+      "built": false,
+      "address": "",
+      "commercialName": "",
+      "typology": "",
+      "year": "",
+      "status": "",
+      "description": "",
+      "projectUrl": "",
+      "_phase2": {
+        "featuredImage": "",
+        "renderImages": [],
+        "caseStudyUrl": ""
+      }
+    }
   ]
 }

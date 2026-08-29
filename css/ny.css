@@ -208,6 +208,61 @@
     color: var(--text);
 }
 
+/* Esri asks for attribution in exchange for a key-free basemap. Kept legible
+   but quiet, so it reads as a credit line and not as part of the design. */
+.leaflet-control-attribution {
+    background: rgba(255, 255, 255, 0.78);
+    color: #6a7378;
+    font-family: var(--font-josefin);
+    font-size: 0.6rem;
+    letter-spacing: 0.02em;
+    padding: 1px 6px;
+    border-radius: 4px 0 0 0;
+}
+
+.leaflet-control-attribution a {
+    color: #4a5257;
+}
+
+/* Hover label, delivered projects only. Sits on the light basemap rather
+   than on the dark page, so it keeps a light card with dark type. Selectors are
+   doubled up on .leaflet-tooltip because Leaflet's own stylesheet loads after
+   this one and would otherwise force its default white-on-white. */
+.leaflet-tooltip.ny-map-tooltip {
+    background: #ffffff;
+    border: 1px solid #d7dcdf;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(16, 20, 24, 0.18);
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
+    color: #2a2f33;
+}
+
+.leaflet-tooltip.ny-map-tooltip.leaflet-tooltip-top::before {
+    border-top-color: #ffffff;
+}
+
+.ny-tip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.leaflet-tooltip.ny-map-tooltip .ny-tip-name {
+    font-family: var(--font-raleway);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #23282c;
+}
+
+.leaflet-tooltip.ny-map-tooltip .ny-tip-address {
+    font-family: var(--font-josefin);
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    color: #6a7378;
+}
+
 .ny-popup-card {
     padding: 1.1rem 1.3rem 1.2rem;
     min-width: 200px;

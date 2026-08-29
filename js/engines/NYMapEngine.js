@@ -51,13 +51,20 @@ export class NYMapEngine {
     }
 
     initMap() {
-        this.map = L.map(this.mapEl, { attributionControl: false }).setView([40.7128, -74.0060], 11);
+        this.map = L.map(this.mapEl, { attributionControl: true }).setView([40.7128, -74.0060], 11);
+        this.map.attributionControl.setPrefix('');
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; CARTO',
-            subdomains: 'abcd',
-            maxZoom: 20
-        }).addTo(this.map);
+        // Esri's light gray canvas, not CARTO: CARTO now stamps
+        // "API KEY REQUIRED" across its free basemap tiles. Esri serves the
+        // same minimal look without a key, and only asks for attribution,
+        // which is why the control is on and styled down in ny.css.
+        L.tileLayer(
+            'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+            {
+                attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+                maxZoom: 16
+            }
+        ).addTo(this.map);
 
         this.clusterGroup = L.markerClusterGroup({ showCoverageOnHover: false });
         this.map.addLayer(this.clusterGroup);
@@ -76,6 +83,18 @@ export class NYMapEngine {
                 closeButton: true
             });
 
+            // Hover label for delivered work only. Projects still in progress
+            // stay anonymous pins, so no client's unbuilt site is ever named.
+            const label = this.buildTooltipHtml(project);
+            if (label) {
+                marker.bindTooltip(label, {
+                    className: 'ny-map-tooltip',
+                    direction: 'top',
+                    offset: [0, -30],
+                    opacity: 1
+                });
+            }
+
             const borough = project.borough || 'Other NYC';
             if (!this.markersByBorough.has(borough)) {
                 this.markersByBorough.set(borough, []);
@@ -84,6 +103,31 @@ export class NYMapEngine {
         });
 
         this.applyFilter('All', { fit: true });
+    }
+
+    buildTooltipHtml(project) {
+        if (!project.built) return '';
+
+        const esc = (value) => String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+
+        const name = (project.commercialName || '').trim();
+        const address = (project.address || '').trim();
+        if (!name && !address) return '';
+
+        // Named buildings lead with the name and carry the address underneath;
+        // the rest show the address alone.
+        const rows = [];
+        if (name) {
+            rows.push(`<span class="ny-tip-name">${esc(name)}</span>`);
+            if (address) rows.push(`<span class="ny-tip-address">${esc(address)}</span>`);
+        } else {
+            rows.push(`<span class="ny-tip-name">${esc(address)}</span>`);
+        }
+        return `<span class="ny-tip">${rows.join('')}</span>`;
     }
 
     buildPopupHtml(project) {
