@@ -116,12 +116,14 @@
     <loc>https://www.arqingrenders.com/studio/blog/</loc>
     <lastmod>2026-09-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/"/>
   </url>
   <url>
     <loc>https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/</loc>
     <lastmod>2026-09-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/blog/vista-aerea-sin-dron/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/"/>
   </url>
   <url>
@@ -135,6 +137,22 @@
     <lastmod>2026-09-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/site-accurate-context-nyc-renders/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/site-accurate-context-nyc-renders/"/>
+  </url>
+
+  <!-- BLOG (ES) -->
+  <url>
+    <loc>https://www.arqingrenders.com/es/estudio/blog/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/es/estudio/blog/vista-aerea-sin-dron/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.arqingrenders.com/es/estudio/blog/vista-aerea-sin-dron/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/"/>
   </url>
 
   <!-- CONTACT (EN) -->

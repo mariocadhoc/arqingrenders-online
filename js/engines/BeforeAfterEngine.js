@@ -24,7 +24,8 @@ export default class BeforeAfterEngine {
     bind() {
         this.handle.setAttribute('tabindex', '0');
         this.handle.setAttribute('role', 'slider');
-        this.handle.setAttribute('aria-label', 'Compare reveal position');
+        const isEs = document.documentElement.lang.toLowerCase().startsWith('es');
+        this.handle.setAttribute('aria-label', isEs ? 'Posición de la comparación' : 'Compare reveal position');
         this.handle.setAttribute('aria-valuemin', '0');
         this.handle.setAttribute('aria-valuemax', '100');
 
