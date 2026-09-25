@@ -111,6 +111,32 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/team/"/>
   </url>
 
+  <!-- BLOG (EN) -->
+  <url>
+    <loc>https://www.arqingrenders.com/studio/blog/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/aerial-view-without-a-drone-shoot/"/>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/studio/blog/model-a-city-block-in-days/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/model-a-city-block-in-days/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/model-a-city-block-in-days/"/>
+  </url>
+  <url>
+    <loc>https://www.arqingrenders.com/studio/blog/site-accurate-context-nyc-renders/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.arqingrenders.com/studio/blog/site-accurate-context-nyc-renders/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.arqingrenders.com/studio/blog/site-accurate-context-nyc-renders/"/>
+  </url>
+
   <!-- CONTACT (EN) -->
   <url>
     <loc>https://www.arqingrenders.com/connect/</loc>
