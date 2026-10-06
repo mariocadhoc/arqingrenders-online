@@ -9,6 +9,10 @@ Disallow: /es/clientes/
 Disallow: /clients
 Disallow: /clients/
 
+# Private quotations (also noindex)
+Disallow: /es/cotizacion/
+Disallow: /quotation/
+
 # HTML component fragments (prevent indexing standalone headers/footers)
 Disallow: /components/
 
