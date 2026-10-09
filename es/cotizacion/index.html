@@ -3,16 +3,41 @@
 
 <head>
     <meta charset="utf-8">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT485BXPK0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        // Diferenciador: agrupa todas las cotizaciones aparte del resto del sitio.
+        // En GA4: Informes > Páginas y pantallas > filtrar por Grupo de contenido = "cotizacion"
+        // (o por page_location que contiene /es/cotizacion/?slug=nombre-fecha para ver cada cotización).
+        gtag('set', 'content_group', 'cotizacion');
+        gtag('config', 'G-HT485BXPK0', {
+            content_group: 'cotizacion',
+            page_type: 'cotizacion',
+            page_language: 'es'
+        });
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
     <title>Cotización | Arqing</title>
-    <meta name="robots" content="noindex, nofollow, noarchive">
-    <meta name="googlebot" content="noindex, nofollow, noarchive">
+
+    <!-- Privado: nunca indexar ni leer por buscadores / IA -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#0d1012">
+    <meta name="color-scheme" content="dark">
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
     <meta name="language" content="es-MX">
     <meta name="author" content="Arqing">
-    <link rel="canonical" href="https://www.arqingrenders.com/es/cotizacion/">
+    <meta name="application-name" content="Arqing Cotización">
+    <!-- Sin canonical ni Open Graph a propósito: página privada, no debe generar previews indexables -->
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/resources/favicon/Favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/resources/favicon/Favicon_16.png">

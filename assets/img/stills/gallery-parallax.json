@@ -871,6 +871,81 @@
           }
         }
       ]
+    },
+    {
+      "type": "project",
+      "category": "Hospitality",
+      "slug": "playa-del-carmen-zazil",
+      "label": "Zazil, Playa del Carmen, MX",
+      "parent": {
+        "role": "parent",
+        "name": "zazil-int-2.avif",
+        "alt": "Interior architectural rendering of a studio apartment at Zazil in Playa del Carmen, MX",
+        "displayWidth": 255,
+        "displayHeight": 191,
+        "full": {
+          "name": "zazil-int-2.avif",
+          "src": "/assets/img/stills/playa-del-carmen-zazil/zazil-int-2.avif",
+          "width": 2520,
+          "height": 1890
+        },
+        "card": {
+          "name": "zazil-int-2-card.avif",
+          "src": "/assets/img/stills/playa-del-carmen-zazil/zazil-int-2-card.avif",
+          "width": 1200,
+          "height": 900
+        }
+      },
+      "children": [
+        {
+          "role": "child",
+          "name": "zazil-1.avif",
+          "full": {
+            "name": "zazil-1.avif",
+            "src": "/assets/img/stills/playa-del-carmen-zazil/children/zazil-1.avif",
+            "width": 1086,
+            "height": 1448
+          },
+          "thumb": {
+            "name": "zazil-1-thumb.avif",
+            "src": "/assets/img/stills/playa-del-carmen-zazil/children/zazil-1-thumb.avif",
+            "width": 240,
+            "height": 320
+          }
+        },
+        {
+          "role": "child",
+          "name": "zazil-2.avif",
+          "full": {
+            "name": "zazil-2.avif",
+            "src": "/assets/img/stills/playa-del-carmen-zazil/children/zazil-2.avif",
+            "width": 2508,
+            "height": 1412
+          },
+          "thumb": {
+            "name": "zazil-2-thumb.avif",
+            "src": "/assets/img/stills/playa-del-carmen-zazil/children/zazil-2-thumb.avif",
+            "width": 320,
+            "height": 180
+          }
+        },
+        {
+          "role": "child",
+          "name": "zazil-int-1.avif",
+          "full": {
+            "name": "zazil-int-1.avif",
+            "src": "/assets/img/stills/playa-del-carmen-zazil/children/zazil-int-1.avif",
+            "width": 1448,
+            "height": 1086
+          },
+          "thumb": {
+            "name": "zazil-int-1-thumb.avif",
+            "src": "/assets/img/stills/playa-del-carmen-zazil/children/zazil-int-1-thumb.avif",
+            "width": 320,
+            "height": 240
+          }
+        }
+      ]
     }
   ]
 }
